@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">x-Splitter</string>
+    <string name="email_hint">Enter your e-mail</string>
+    <string name="signup_img">signup_img</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_username">Enter username</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="divider">divider</string>
+    <string name="username">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="forgot_password_hint">Forgot Password?</string>
+    <string name="login_img_desc">login img</string>
 </resources>
