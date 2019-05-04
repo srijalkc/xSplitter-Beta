@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GetStarted"
+    tools:context=".GetStartedActivity"
     android:background="@drawable/aqua_background">
 
     <ImageView
@@ -26,7 +26,7 @@
         tools:srcCompat="@drawable/xsplitter_logo" />
 
     <Button
-        android:id="@+id/button_start_signup"
+        android:id="@+id/button_signup"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
@@ -44,7 +44,7 @@
         app:layout_constraintVertical_bias="0.697" />
 
     <Button
-        android:id="@+id/button_start_login"
+        android:id="@+id/button_login"
         android:layout_width="150dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
