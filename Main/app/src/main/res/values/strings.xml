@@ -10,4 +10,7 @@
     <string name="password_hint">Password</string>
     <string name="forgot_password_hint">Forgot Password?</string>
     <string name="login_img_desc">login img</string>
+    <string name="textview">TextView</string>
+    <string name="intro_img">intro_img</string>
+    <string name="skip">Skip</string>
 </resources>
