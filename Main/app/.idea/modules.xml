@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../Main.iml" filepath="$PROJECT_DIR$/../Main.iml" />
       <module fileurl="file://$PROJECT_DIR$/app.iml" filepath="$PROJECT_DIR$/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mysql-connector-java-8.0.16/mysql-connector-java-8.0.16.iml" filepath="$PROJECT_DIR$/../mysql-connector-java-8.0.16/mysql-connector-java-8.0.16.iml" />
     </modules>
   </component>
 </project>
