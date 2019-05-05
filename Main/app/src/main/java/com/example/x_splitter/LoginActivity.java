@@ -8,7 +8,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.signup_page);
+        setContentView(R.layout.activity_signup);
         //etContentView(R.layout.login_page);
     }
 }
