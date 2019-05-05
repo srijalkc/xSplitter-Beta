@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config>
+        <device id="Nexus 6P" />
+      </config>
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="958ef5bc-4bc5-417a-a32d-997361b732a1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/x_splitter/IntroActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/x_splitter/IntroActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/x_splitter/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/x_splitter/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/x_splitter/SplashScreenActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/x_splitter/SplashScreenActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-hdpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-hdpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/aqua_background.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/aqua_background.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/btn_login_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/btn_login_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/btn_login_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/btn_login_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/btn_sign_up_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/btn_sign_up_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/btn_sign_up_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/btn_sign_up_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/divider.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/divider.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dot_bar5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dummy_text.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/dummy_text.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/events.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/events.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/gmail_login.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/gmail_login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/groups.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/groups.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/icn_back.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/icn_back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login_click.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login_click.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login_signup_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login_signup_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login_text.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login_text.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login_unclick.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/login_unclick.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/new_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/new_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/new_username.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/new_username.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/password.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/password.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/report.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/report.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/save_time.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/save_time.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up_click.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up_click.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up_text.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up_text.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up_unclick.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/sign_up_unclick.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/skip.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/skip.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/split.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/split.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_data_report_bi6l.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_data_report_bi6l.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_group_selfie_ijc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_group_selfie_ijc6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_having_fun_iais.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_having_fun_iais.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_make_it_rain_iwk4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_make_it_rain_iwk4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_time_management_30iu.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/undraw_time_management_30iu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/username.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/username.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-ldpi/xsplitter_logo.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-ldpi/xsplitter_logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-mdpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-mdpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-xhdpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-xhdpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-xxhdpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-xxhdpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/drawable-xxxhdpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/drawable-xxxhdpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_intro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_intro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_signup.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_signup.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/dot-bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/dot-bar2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/dot-bar3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/dot-bar4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/dot-bar5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/dummy-text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/login-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/login-signup-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/login-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/save-time.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/sign-up-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/sign-up-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-hdpi/xsplitter-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/btn_login_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/btn_login_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/btn_login_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/btn_login_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/btn_sign_up_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/btn_sign_up_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/btn_sign_up_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/btn_sign_up_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/dot-bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/dot-bar2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/dot-bar3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/dot-bar4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/dot-bar5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/dummy-text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/events.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/events.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/get_started.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/get_started.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/groups.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/groups.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/login-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/login-signup-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/login-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/report.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/report.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/save-time.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/sign-up-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/sign-up-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/skip.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/skip.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/split.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/split.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_data_report_bi6l.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_data_report_bi6l.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_group_selfie_ijc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_group_selfie_ijc6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_having_fun_iais.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_having_fun_iais.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_make_it_rain_iwk4.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_make_it_rain_iwk4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_time_management_30iu.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/undraw_time_management_30iu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-ldpi/xsplitter-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/btn_login_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/btn_login_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/btn_login_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/btn_login_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/btn_sign_up_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/btn_sign_up_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/btn_sign_up_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/btn_sign_up_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/dot-bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/dot-bar2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/dot-bar3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/dot-bar4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/dot-bar5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/dummy-text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/events.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/events.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/get_started.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/get_started.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/groups.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/groups.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/login-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/login-signup-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/login-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/report.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/report.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/save-time.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/sign-up-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/sign-up-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/skip.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/skip.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/split.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/split.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_data_report_bi6l.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_data_report_bi6l.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_group_selfie_ijc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_group_selfie_ijc6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_having_fun_iais.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_having_fun_iais.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_make_it_rain_iwk4.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_make_it_rain_iwk4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_time_management_30iu.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/undraw_time_management_30iu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-mdpi/xsplitter-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/btn_login_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/btn_login_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/btn_login_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/btn_login_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/btn_sign_up_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/btn_sign_up_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/btn_sign_up_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/btn_sign_up_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/dot-bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/dot-bar2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/dot-bar3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/dot-bar4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/dot-bar5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/dummy-text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/events.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/events.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/get_started.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/get_started.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/groups.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/groups.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/login-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/login-signup-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/login-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/report.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/report.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/save-time.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/sign-up-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/sign-up-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/skip.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/skip.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/split.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/split.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_data_report_bi6l.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_data_report_bi6l.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_group_selfie_ijc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_group_selfie_ijc6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_having_fun_iais.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_having_fun_iais.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_make_it_rain_iwk4.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_make_it_rain_iwk4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_time_management_30iu.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/undraw_time_management_30iu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xhdpi/xsplitter-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/btn_login_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/btn_login_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/btn_login_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/btn_login_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/btn_sign_up_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/btn_sign_up_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/btn_sign_up_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/btn_sign_up_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/dot-bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/dot-bar2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/dot-bar3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/dot-bar4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/dot-bar5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/dummy-text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/events.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/events.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/get_started.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/get_started.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/groups.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/groups.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/login-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/login-signup-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/login-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/report.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/report.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/save-time.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/sign-up-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/sign-up-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/skip.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/skip.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/split.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/split.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_data_report_bi6l.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_data_report_bi6l.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_group_selfie_ijc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_group_selfie_ijc6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_having_fun_iais.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_having_fun_iais.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_make_it_rain_iwk4.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_make_it_rain_iwk4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_time_management_30iu.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/undraw_time_management_30iu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxhdpi/xsplitter-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/btn_login_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/btn_login_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/btn_login_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/btn_login_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/btn_sign_up_email.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/btn_sign_up_email.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/btn_sign_up_gmail.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/btn_sign_up_gmail.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/dot-bar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/dot-bar2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/dot-bar3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/dot-bar4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/dot-bar5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/dummy-text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/events.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/events.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/get_started.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/get_started.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/groups.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/groups.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/login-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/login-signup-logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/login-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/next.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/next.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/report.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/report.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/save-time.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/sign-up-click.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/sign-up-unclick.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/skip.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/skip.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/split.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/split.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_data_report_bi6l.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_data_report_bi6l.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_group_selfie_ijc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_group_selfie_ijc6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_having_fun_iais.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_having_fun_iais.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_make_it_rain_iwk4.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_make_it_rain_iwk4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_time_management_30iu.png" beforeDir="false" afterPath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/undraw_time_management_30iu.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Resources/images/drawable-xxxhdpi/xsplitter-logo.png" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Main" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/IntroActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1377">
+              <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/IntroViewPagerAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/GetStartedActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="layoutResourceFile" />
+        <option value="Class" />
+        <option value="resourceFile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/com/example/x_splitter/SplashScreen.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_splash_screen.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_get_started.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/x_splitter/Signup.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/x_splitter/ScreenItem.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/x_splitter/SplashScreenActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/x_splitter/LoginActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/x_splitter/GetStarted.java" />
+        <option value="$PROJECT_DIR$/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/indicator_selector.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/indicator_selected.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/drawable/indicator_default.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/layout_screen.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_signup.xml" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_login.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/x_splitter/IntroViewPagerAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/x_splitter/IntroActivity.java" />
+        <option value="$PROJECT_DIR$/src/main/res/layout/activity_intro.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="10" />
+    <option name="y" value="20" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Main" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="Main" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="Main" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="x_splitter" type="cbb59c9e:AndroidPsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="android.project.structure.last.selected" value="SDK Location" />
+    <property name="android.project.structure.proportion" value="0.15" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="device.picker.selection" value="9576c403" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+  </component>
+  <component name="RecentsManager">
+    <key name="android.template.packageName">
+      <recent name="com.example.x_splitter" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="958ef5bc-4bc5-417a-a32d-997361b732a1" name="Default Changelist" comment="" />
+      <created>1556911356721</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1556911356721</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.18154311" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info id="Build Variants" order="4" side_tool="true" />
+      <window_info id="Image Layers" order="5" />
+      <window_info id="Designer" order="6" />
+      <window_info id="Resources Explorer" order="7" />
+      <window_info id="Capture Tool" order="8" />
+      <window_info anchor="bottom" id="Run" order="0" />
+      <window_info anchor="bottom" id="Logcat" order="1" sideWeight="0.49924356" weight="0.3289689" />
+      <window_info anchor="bottom" id="TODO" order="2" sideWeight="0.49924356" weight="0.3289689" />
+      <window_info anchor="bottom" id="Debug" order="3" />
+      <window_info anchor="bottom" id="Terminal" order="4" />
+      <window_info anchor="bottom" id="Event Log" order="5" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Version Control" order="6" />
+      <window_info anchor="bottom" id="Build" order="7" sideWeight="0.49924356" weight="0.29787233" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Find" order="9" weight="0.3289689" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" weight="0.32980332" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Preview" order="4" weight="0.32829046" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_main.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_splash_screen.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="43" selection-start-line="10" selection-start-column="43" selection-end-line="10" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/MainActivity.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/signup.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/SplashScreen.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0216b7d28438bd5aa6778bc19ea34eec/jars/classes.jar!/android/support/design/widget/TabLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3298">
+          <caret line="85" column="13" selection-start-line="85" selection-start-column="13" selection-end-line="85" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/LoginActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="10" column="47" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/Signup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/SignupActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="20" column="33" lean-forward="true" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/GetStarted.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="13" column="43" lean-forward="true" selection-start-line="13" selection-start-column="43" selection-end-line="13" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_get_started.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/indicator_default.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/indicator_selector.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="58" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/drawable/indicator_selected.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_login.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="114" column="4" selection-start-line="114" selection-start-column="4" selection-end-line="114" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_signup.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="144" column="4" selection-start-line="144" selection-start-column="4" selection-end-line="144" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/layout_screen.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="51" column="13" lean-forward="true" selection-start-line="51" selection-start-column="13" selection-end-line="51" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_intro.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="89" column="35" lean-forward="true" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/SplashScreenActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="16" column="86" selection-start-line="16" selection-start-column="86" selection-end-line="16" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/ScreenItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="5" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+          <folding>
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#351#352#0" expanded="true" />
+            <element signature="e#405#406#0" expanded="true" />
+            <element signature="e#446#447#0" expanded="true" />
+            <element signature="e#493#494#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/GetStartedActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/IntroActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1377">
+          <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/x_splitter/IntroViewPagerAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
