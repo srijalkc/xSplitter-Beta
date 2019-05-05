@@ -37,6 +37,7 @@ public class IntroActivity extends AppCompatActivity {
 
         //ini views
         btnNext = findViewById(R.id.button_intro_next);
+        btnSkip = findViewById(R.id.button_intro_skip);
         btnGetStarted = findViewById(R.id.button_get_started);
         tabIndicator = findViewById(R.id.tab_indicator);
 
@@ -85,27 +86,25 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
 
-        btnSkip.setOnClickListener(new View.OnClickListener() {
+        btnSkip.setOnClickListener(new View.OnClickListener(){
+
             @Override
             public void onClick(View v) {
-                position = screenPager.getCurrentItem();
-                if (position < mList.size()) {
-                    loadLastScreen();
-                }
+                startActivity(new Intent(getApplicationContext(),GetStartedActivity.class));
+                finish();
             }
         });
+
 
         btnGetStarted.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //open getStarted page
-                Intent getstarted = new Intent(getApplicationContext(),GetStartedActivity.class);
-                startActivity(getstarted);
+                startActivity(new Intent(getApplicationContext(),GetStartedActivity.class));
 
                 //need to keep boolean value to know if user is seeing intro for 1st time
                 savePrefsData();
                 finish();
-
             }
         });
     }
@@ -130,6 +129,6 @@ public class IntroActivity extends AppCompatActivity {
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
         tabIndicator.setVisibility(View.VISIBLE);
-        btnSkip.setVisibility(View.INVISIBLE);
+
     }
 }
