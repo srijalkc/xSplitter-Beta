@@ -1,34 +1,32 @@
 package com.example.x_splitter;
 
 import android.content.Intent;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class GetStartedActivity extends AppCompatActivity implements View.OnClickListener {
+public class GetStartedActivity extends AppCompatActivity {
 
-     Button buttonSignup;
-     Button buttonLogin;
-
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_get_started);
-        buttonSignup = (Button) findViewById(R.id.button_signup);
-        buttonLogin = (Button) findViewById(R.id.button_login);
+        tabLayout = findViewById(R.id.tab_login_signup);
+        viewPager = findViewById(R.id.view_pager_login_signup);
+        GetStartedViewPagerAdapter adapter = new GetStartedViewPagerAdapter(getSupportFragmentManager());
 
-        buttonSignup.setOnClickListener(this);
-    }
+        //adding fragments
+        adapter.AddFragment(new FragmentSignUp(),"Sign UP");
+        adapter.AddFragment(new FragmentLogin(),"Log In");
 
-    @Override
-    public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.button_signup:
-                startActivity(new Intent(this, SignupActivity.class));
-                break;
-        }
-
+        //adapter setup
+        viewPager.setAdapter(adapter);
+        tabLayout.setupWithViewPager(viewPager);
     }
 }

@@ -8,7 +8,7 @@
     android:background="@drawable/aqua_background">
 
     <ImageView
-        android:id="@+id/imageView5"
+        android:id="@+id/image_view_splash_logo"
         android:layout_width="117dp"
         android:layout_height="110dp"
         android:layout_marginStart="8dp"
