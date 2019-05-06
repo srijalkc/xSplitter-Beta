@@ -80,7 +80,7 @@ public class IntroActivity extends AppCompatActivity {
                     screenPager.setCurrentItem(position);
                 }
 
-                if (position == mList.size() - 1) {
+                if (position == (mList.size() - 1)) {
                     loadLastScreen();
                 }
             }
