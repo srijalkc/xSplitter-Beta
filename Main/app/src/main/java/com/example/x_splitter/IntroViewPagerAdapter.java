@@ -14,9 +14,9 @@ import java.util.List;
 public class IntroViewPagerAdapter extends PagerAdapter {
 
     Context mContext;
-    List<ScreenItem> mListScreen;
+    List<IntroScreenItem> mListScreen;
 
-    public IntroViewPagerAdapter(Context mContext, List<ScreenItem> mListScreen) {
+    public IntroViewPagerAdapter(Context mContext, List<IntroScreenItem> mListScreen) {
         this.mContext = mContext;
         this.mListScreen = mListScreen;
     }
@@ -25,7 +25,7 @@ public class IntroViewPagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View layoutScreen = inflater.inflate(R.layout.layout_screen,null);
+        View layoutScreen = inflater.inflate(R.layout.intro_layout_screen,null);
 
         ImageView imgSlide = layoutScreen.findViewById(R.id.image_view_intro_img);
         TextView title = layoutScreen.findViewById(R.id.text_view_intro_title);
