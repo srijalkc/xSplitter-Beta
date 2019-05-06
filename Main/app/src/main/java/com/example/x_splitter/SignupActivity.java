@@ -25,10 +25,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        editTextEmail = (EditText) findViewById(R.id.edittext_email);
-        editTextUsername = (EditText) findViewById(R.id.edittext_username);
-        editTextPassword = (EditText) findViewById(R.id.edittext_password);
-        editTextConfirmPassword = (EditText) findViewById(R.id.edittext_confirm_password);
+        editTextEmail = (EditText) findViewById(R.id.edit_text_email);
+        editTextUsername = (EditText) findViewById(R.id.edit_text_username);
+        editTextPassword = (EditText) findViewById(R.id.edit_text_password);
+        editTextConfirmPassword = (EditText) findViewById(R.id.edit_text_confirm_password);
         buttonSignUp = (Button) findViewById(R.id.button_signup);
         buttonSignUpGmail = (Button) findViewById(R.id.button_signup_gmail);
 
