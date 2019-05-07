@@ -129,6 +129,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                 pst.setString(2, Username);
                 pst.setString(3, Password);
                 pst.executeUpdate();
+                con.close();
+                pst.close();
             } catch (Exception e) {
                 System.out.println(e);
             }
