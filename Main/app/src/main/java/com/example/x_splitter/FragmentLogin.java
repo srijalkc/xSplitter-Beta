@@ -19,14 +19,13 @@ public class FragmentLogin extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.get_started_login_fragment,container,false);
-        Button btnLogInEmail = (Button)view.findViewById(R.id.btn_get_started_login_email);
-        Button btnSignUpEmail = (Button)view.findViewById(R.id.btn_get_started_signup_email);
+        Button btnLogInEmail = view.findViewById(R.id.btn_get_started_login_email);
         btnLogInEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), LoginActivity.class);
-                startActivity(intent);
 
+                Intent intent = new Intent(FragmentLogin.this.getActivity(),LoginActivity.class);
+                startActivity(intent);
             }
         });
         return view;

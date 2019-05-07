@@ -2,11 +2,8 @@ package com.example.x_splitter;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.icu.text.UnicodeSet;
 import android.os.AsyncTask;
 import android.os.StrictMode;
-import android.provider.ContactsContract;
-import android.provider.ContactsContract.CommonDataKinds;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -14,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -40,10 +36,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        editTextEmail = (EditText) findViewById(R.id.edittext_email);
-        editTextUsername = (EditText) findViewById(R.id.edittext_username);
-        editTextPassword = (EditText) findViewById(R.id.edittext_password);
-        editTextConfirmPassword = (EditText) findViewById(R.id.edittext_confirm_password);
+        editTextEmail = (EditText) findViewById(R.id.edit_text_email);
+        editTextUsername = (EditText) findViewById(R.id.edit_text_username);
+        editTextPassword = (EditText) findViewById(R.id.edit_text_password);
+        editTextConfirmPassword = (EditText) findViewById(R.id.edit_text_confirm_password);
         buttonSignUp = (Button) findViewById(R.id.button_signup);
         buttonSignUpGmail = (Button) findViewById(R.id.button_signup_gmail);
 
