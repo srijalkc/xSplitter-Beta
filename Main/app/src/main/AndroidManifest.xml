@@ -14,8 +14,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".IntroActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".Signup"
-        android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <!--<activity android:name=".SignupActivity"-->
+        <!--android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>-->
         <activity android:name=".LoginActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity

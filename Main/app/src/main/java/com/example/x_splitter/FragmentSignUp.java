@@ -24,7 +24,7 @@ public class FragmentSignUp extends Fragment {
         btnSignUpEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(FragmentSignUp.this.getActivity(),Signup.class);
+                Intent intent = new Intent(FragmentSignUp.this.getActivity(),SignupActivity.class);
                 startActivity(intent);
             }
         });
