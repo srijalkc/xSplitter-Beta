@@ -2,13 +2,12 @@ package com.example.x_splitter;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.EditText;
 
-public class Signup extends AppCompatActivity {
+public class AddTransaction extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup);
+        setContentView(R.layout.activity_add_transaction);
     }
 }
