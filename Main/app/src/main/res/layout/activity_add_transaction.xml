@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AddTransaction"
-    android:background="@color/colorInsideBackground">
+    android:background="@color/colorInsideBackground"
+    android:fitsSystemWindows="true">
 
     <include
         android:id="@+id/toolbar_top_1"
@@ -31,10 +32,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/toolbar_top_1"
+        app:layout_constraintVertical_bias="0.0" />
 
     <include
         android:id="@+id/bottom_navbar"
