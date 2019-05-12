@@ -51,14 +51,14 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-//        switch (v.getId()) {
-//            case R.id.button_signup:
+        switch (v.getId()) {
+            case R.id.button_signup:
                 registerUser();
                 ConnectMySql connectMySql = new ConnectMySql();
                 connectMySql.execute("");
-//                break;
-//
-//        }
+                break;
+
+        }
 
     }
 
@@ -110,10 +110,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         @Override
         protected String doInBackground(String... strings) {
             try {
-                Class.forName("com.mysql.jdbc.Driver");
-                con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:33066/users_db", "srijal", "");
+                Class.forName("com.mysql.jdbc.Driver").newInstance();
+                con = DriverManager.getConnection("jdbc:mysql://192.168.10.5:3306/users_db", "srijal", "");
                 System.out.println("Database Connection Success");
-                Toast.makeText(SignupActivity.this, "Connected...", Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 e.printStackTrace();
             }
