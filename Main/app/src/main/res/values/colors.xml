@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#ffffff</color>
     <color name="colorTabText">#ffffff</color>
     <color name="colorTabIndicator">#ffffff</color>
-
+    <color name="colorInsideBackground">#f0f3f4</color>
+    <color name="colorInsideHint">#9FA2A2</color>
+    <color name="colorToolbarHead">#324755</color>
+    <color name="Aqua">#87bcbf</color>
 </resources>
