@@ -14,44 +14,29 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".Home"></activity>
 
-        <activity android:name=".IntroActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity android:name=".IntroActivity"/>
 
-        <activity android:name=".LoginActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
-            />
+        <activity android:name=".LoginActivity" />
 
         <activity
             android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".GetStartedActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".GetStartedActivity">
+    
 
-        <activity
-            android:name=".SignupActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.VIEW" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".SignupActivity"/>
+    
 
-        <activity
-            android:name=".AddTransaction"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-    </application>
+        <activity android:name=".AddTransaction" />
+    
 
 </manifest>
