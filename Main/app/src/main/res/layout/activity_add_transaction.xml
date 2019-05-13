@@ -9,58 +9,62 @@
     android:background="@color/colorInsideBackground"
     android:fitsSystemWindows="true">
 
-        <include
-            android:id="@+id/toolbar_top_1"
-            layout="@layout/toolbar_with_back"
-            />
-
-    <TextView
-        android:id="@+id/text_view_add_transaction"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/add_transaction"
-        android:textColor="@color/colorToolbarHead"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        android:id="@+id/layout_for_toolbar">
 
-    <include
-        android:id="@+id/bottom_navbar"
-        layout="@layout/bottom_navigation_bar"
-        />
+        <include
+            android:id="@+id/toolbar_top_1"
+            layout="@layout/toolbar_with_back" />
 
-    <TextView
-        android:id="@+id/textView_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:clickable="true"
-        android:text="@string/save"
-        android:textAllCaps="false"
-        android:textColor="@color/Aqua"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toEndOf="@+id/text_view_add_transaction"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:focusable="true" />
+        <TextView
+            android:id="@+id/text_view_add_transaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/add_transaction"
+            android:textColor="@color/colorToolbarHead"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.012"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/Aqua"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.956"
+            app:layout_constraintStart_toEndOf="@+id/text_view_add_transaction"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            android:focusable="true" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_transaction_elements"
-        android:layout_width="339dp"
-        android:layout_height="346dp"
+        android:layout_width="340dp"
+        android:layout_height="345dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -69,8 +73,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_top_1"
-        app:layout_constraintVertical_bias="0.051">
+        app:layout_constraintTop_toBottomOf="@+id/layout_for_toolbar"
+        app:layout_constraintVertical_bias="0.882">
 
         <ImageView
             android:id="@+id/image_view_amount"
@@ -233,7 +237,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_transaction_note"
-        android:layout_width="331dp"
+        android:layout_width="345dp"
         android:layout_height="169dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="28dp"
@@ -266,8 +270,8 @@
             android:layout_marginStart="23dp"
             android:layout_marginEnd="28dp"
             android:background="@drawable/transaction_text_box"
-            android:inputType="text"
             android:hint="Note"
+            android:inputType="text"
             android:paddingStart="20dp"
             android:paddingTop="0dp"
             android:textColorHint="@color/colorInsideHint"
@@ -279,4 +283,7 @@
             app:layout_constraintVertical_bias="0.347" />
     </android.support.constraint.ConstraintLayout>
 
+        <include
+            android:id="@+id/bottom_navbar"
+            layout="@layout/bottom_navigation_bar" />
 </android.support.constraint.ConstraintLayout>
