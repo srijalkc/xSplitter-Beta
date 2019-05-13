@@ -68,9 +68,10 @@
         android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_top_1"
-        app:layout_constraintVertical_bias="0.051">
+        app:layout_constraintVertical_bias="1.0">
 
         <ImageView
             android:id="@+id/image_view_amount"
@@ -115,7 +116,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25"
+            app:layout_constraintVertical_bias="0.3"
             app:srcCompat="@drawable/icon_date" />
 
         <EditText
@@ -123,6 +124,7 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="23dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="28dp"
             android:background="@drawable/transaction_text_box"
             android:hint="Date"
@@ -133,8 +135,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_view_date"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.247" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_amount"
+            app:layout_constraintVertical_bias="0.123" />
 
         <ImageView
             android:id="@+id/image_view_category"
@@ -146,7 +148,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.455"
+            app:layout_constraintVertical_bias="0.531"
             app:srcCompat="@drawable/icon_category" />
 
         <EditText
@@ -154,6 +156,7 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="23dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="28dp"
             android:background="@drawable/transaction_text_box"
             android:hint="Category"
@@ -164,39 +167,39 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_view_category"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.453" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_date"
+            app:layout_constraintVertical_bias="0.187" />
 
-        <ImageView
-            android:id="@+id/image_view_event"
-            android:layout_width="36dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="28dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/text_view_event"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.636"
-            app:srcCompat="@drawable/icon_event" />
+        <!--<ImageView-->
+        <!--android:id="@+id/image_view_event"-->
+        <!--android:layout_width="36dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--android:layout_marginStart="28dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toStartOf="@+id/text_view_event"-->
+        <!--app:layout_constraintHorizontal_bias="0.0"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.636"-->
+        <!--app:srcCompat="@drawable/icon_event" />-->
 
-        <EditText
-            android:id="@+id/text_view_event"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="23dp"
-            android:layout_marginEnd="28dp"
-            android:background="@drawable/transaction_text_box"
-            android:hint="Event"
-            android:paddingStart="20dp"
-            android:paddingEnd="0dp"
-            android:textColorHint="@color/colorInsideHint"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image_view_event"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.634" />
+        <!--<EditText-->
+        <!--android:id="@+id/text_view_event"-->
+        <!--android:layout_width="240dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="23dp"-->
+        <!--android:layout_marginEnd="28dp"-->
+        <!--android:background="@drawable/transaction_text_box"-->
+        <!--android:hint="Event"-->
+        <!--android:paddingStart="20dp"-->
+        <!--android:paddingEnd="0dp"-->
+        <!--android:textColorHint="@color/colorInsideHint"-->
+        <!--android:textSize="15sp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toEndOf="@+id/image_view_event"-->
+        <!--app:layout_constraintTop_toTopOf="parent"-->
+        <!--app:layout_constraintVertical_bias="0.634" />-->
 
         <ImageView
             android:id="@+id/image_view_paidby"
@@ -208,7 +211,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.841"
+            app:layout_constraintVertical_bias="0.778"
             app:srcCompat="@drawable/icon_paid_by" />
 
         <EditText
@@ -216,6 +219,7 @@
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="23dp"
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="28dp"
             android:background="@drawable/transaction_text_box"
             android:hint="Paid by"
@@ -226,8 +230,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_view_paidby"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.841" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_category"
+            app:layout_constraintVertical_bias="0.342" />
 
     </android.support.constraint.ConstraintLayout>
 
