@@ -14,4 +14,5 @@
     <string name="intro_img">intro_img</string>
     <string name="skip">Skip</string>
     <string name="add_transaction">Add Transaction</string>
+    <string name="save">Save</string>
 </resources>

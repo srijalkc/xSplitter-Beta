@@ -36,7 +36,7 @@
                 <category android:name="android.intent.category.VIEW" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddTransaction"/>
+        <activity android:name=".AddTransaction" />
     </application>
 
 </manifest>
