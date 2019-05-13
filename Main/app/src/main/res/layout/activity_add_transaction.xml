@@ -29,7 +29,8 @@
         app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        android:layout_marginLeft="32dp" />
 
     <include
         android:id="@+id/bottom_navbar"
@@ -55,7 +56,9 @@
         app:layout_constraintStart_toEndOf="@+id/text_view_add_transaction"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        android:focusable="true" />
+        android:focusable="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_transaction_elements"
@@ -84,7 +87,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.08"
-            app:srcCompat="@drawable/icon_amount" />
+            app:srcCompat="@drawable/icon_amount"
+            android:layout_marginLeft="28dp" />
 
         <EditText
             android:id="@+id/text_view_amount"
@@ -104,7 +108,11 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_view_amount"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.06" />
+            app:layout_constraintVertical_bias="0.06"
+            android:paddingRight="0dp"
+            android:paddingLeft="20dp"
+            android:layout_marginRight="28dp"
+            android:layout_marginLeft="23dp" />
 
         <ImageView
             android:id="@+id/image_view_date"
@@ -119,7 +127,7 @@
             app:layout_constraintVertical_bias="0.3"
             app:srcCompat="@drawable/icon_date" />
 
-        <EditText
+        <TextView
             android:id="@+id/text_view_date"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
@@ -261,7 +269,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.179"
-            app:srcCompat="@drawable/icon_note" />
+            app:srcCompat="@drawable/icon_note"
+            android:layout_marginLeft="28dp" />
 
         <EditText
             android:id="@+id/text_view_note"
@@ -280,7 +289,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_view_note"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.347" />
+            app:layout_constraintVertical_bias="0.347"
+            android:layout_marginLeft="23dp"
+            android:layout_marginRight="28dp"
+            android:paddingLeft="20dp" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
