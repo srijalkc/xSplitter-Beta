@@ -14,14 +14,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <activity android:name=".Home"></activity>
+
         <activity android:name=".IntroActivity" />
+
         <activity android:name=".LoginActivity" />
+
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".GetStartedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -29,6 +35,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+
         <activity android:name=".SignupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
@@ -36,6 +43,7 @@
                 <category android:name="android.intent.category.VIEW" />
             </intent-filter>
         </activity>
+
         <activity android:name=".AddTransaction" />
     </application>
 
