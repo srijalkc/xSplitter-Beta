@@ -85,7 +85,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
         if (Password.length() < 6) {
-            Toast.makeText(this, "Minimum password length is 4", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Minimum password length is 6", Toast.LENGTH_SHORT).show();
             return;
         }
 
