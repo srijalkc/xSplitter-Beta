@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "694838428468",
+    "firebase_url": "https://realtimedatabase-2019.firebaseio.com",
+    "project_id": "realtimedatabase-2019",
+    "storage_bucket": "realtimedatabase-2019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694838428468:android:8a2bdafd398ebe4b",
+        "android_client_info": {
+          "package_name": "com.example.firebaserealtimedatabase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694838428468-ftl80lc3i06a6in2c2tcpnt246g945fl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firebaserealtimedatabase",
+            "certificate_hash": "e925bd1fdea2f5d831adf7fef852aed509364acb"
+          }
+        },
+        {
+          "client_id": "694838428468-cofspiano7vapnm6hrdkmvgn7gck5nbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsTjwR_11__mwv18lyagsoWUqMeuItBsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694838428468-cofspiano7vapnm6hrdkmvgn7gck5nbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694838428468:android:e64fdd8dc04ad846",
+        "android_client_info": {
+          "package_name": "com.example.transactionpractice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694838428468-r2usg2d49jq3nn897lmiu0qnnf39bor1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.transactionpractice",
+            "certificate_hash": "e925bd1fdea2f5d831adf7fef852aed509364acb"
+          }
+        },
+        {
+          "client_id": "694838428468-cofspiano7vapnm6hrdkmvgn7gck5nbf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsTjwR_11__mwv18lyagsoWUqMeuItBsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694838428468-cofspiano7vapnm6hrdkmvgn7gck5nbf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

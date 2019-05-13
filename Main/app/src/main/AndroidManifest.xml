@@ -16,11 +16,13 @@
 
         <activity android:name=".Home"></activity>
 
-        <activity android:name=".IntroActivity" />
+        <activity android:name=".IntroActivity"/>
 
         <activity android:name=".LoginActivity" />
 
-        <activity android:name=".SplashScreenActivity">
+        <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -29,22 +31,12 @@
         </activity>
 
         <activity android:name=".GetStartedActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+    
 
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".SignupActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.VIEW" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".SignupActivity"/>
+    
 
         <activity android:name=".AddTransaction" />
-    </application>
+    
 
 </manifest>
