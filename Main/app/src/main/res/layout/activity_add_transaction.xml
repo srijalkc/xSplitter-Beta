@@ -9,72 +9,72 @@
     android:background="@color/colorInsideBackground"
     android:fitsSystemWindows="true">
 
-        <include
-            android:id="@+id/toolbar_top_1"
-            layout="@layout/toolbar_with_back"
-            />
-
-    <TextView
-        android:id="@+id/text_view_add_transaction"
-        android:layout_width="wrap_content"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/transaction_toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/add_transaction"
-        android:textColor="@color/colorToolbarHead"
-        android:textSize="18sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.012"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginLeft="32dp" />
+        app:layout_constraintVertical_bias="0.0">
 
-    <include
-        android:id="@+id/bottom_navbar"
-        layout="@layout/bottom_navigation_bar"
-        />
+        <include
+            layout="@layout/toolbar_with_back"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="-165dp" />
 
-    <TextView
-        android:id="@+id/textView_save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:clickable="true"
-        android:text="@string/save"
-        android:textAllCaps="false"
-        android:textColor="@color/Aqua"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.956"
-        app:layout_constraintStart_toEndOf="@+id/text_view_add_transaction"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:focusable="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp" />
+        <TextView
+            android:id="@+id/text_view_add_transaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/add_transaction"
+            android:textColor="@color/colorToolbarHead"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.012"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/Aqua"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.956"
+            app:layout_constraintStart_toEndOf="@+id/text_view_add_transaction"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_transaction_elements"
-        android:layout_width="339dp"
-        android:layout_height="346dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="304dp"
+        android:layout_width="340dp"
+        android:layout_height="300dp"
         android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/layout_transaction_note"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_top_1"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/transaction_toolbar"
+        app:layout_constraintVertical_bias="0.32999998">
 
         <ImageView
             android:id="@+id/image_view_amount"
@@ -87,8 +87,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.08"
-            app:srcCompat="@drawable/icon_amount"
-            android:layout_marginLeft="28dp" />
+            app:srcCompat="@drawable/icon_amount" />
 
         <EditText
             android:id="@+id/text_view_amount"
@@ -108,11 +107,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_view_amount"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.06"
-            android:paddingRight="0dp"
-            android:paddingLeft="20dp"
-            android:layout_marginRight="28dp"
-            android:layout_marginLeft="23dp" />
+            app:layout_constraintVertical_bias="0.06" />
 
         <ImageView
             android:id="@+id/image_view_date"
@@ -245,32 +240,28 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_transaction_note"
-        android:layout_width="331dp"
-        android:layout_height="169dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="54dp"
+        android:layout_width="340dp"
+        android:layout_height="165dp"
+        android:layout_marginBottom="70dp"
         android:background="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_transaction_elements"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/layout_transaction_elements">
 
         <ImageView
             android:id="@+id/image_view_note"
             android:layout_width="36dp"
             android:layout_height="30dp"
             android:layout_marginStart="28dp"
+            android:layout_marginLeft="28dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/text_view_note"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.179"
-            app:srcCompat="@drawable/icon_note"
-            android:layout_marginLeft="28dp" />
+            app:srcCompat="@drawable/icon_note" />
 
         <EditText
             android:id="@+id/text_view_note"
@@ -279,9 +270,10 @@
             android:layout_marginStart="23dp"
             android:layout_marginEnd="28dp"
             android:background="@drawable/transaction_text_box"
-            android:inputType="text"
             android:hint="Note"
+            android:inputType="text"
             android:paddingStart="20dp"
+            android:paddingLeft="20dp"
             android:paddingTop="0dp"
             android:textColorHint="@color/colorInsideHint"
             android:textSize="15sp"
@@ -289,10 +281,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_view_note"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.347"
-            android:layout_marginLeft="23dp"
-            android:layout_marginRight="28dp"
-            android:paddingLeft="20dp" />
+            app:layout_constraintVertical_bias="0.347" />
+
     </android.support.constraint.ConstraintLayout>
+
+        <include
+            android:id="@+id/bottom_navbar"
+            layout="@layout/bottom_navigation_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
