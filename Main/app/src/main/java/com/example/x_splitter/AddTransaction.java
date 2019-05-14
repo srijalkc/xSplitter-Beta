@@ -20,7 +20,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     EditText TextViewAmount;
     TextView TextViewDate;
     EditText TextViewCategory;
-    EditText TextViewEvent;
     EditText TextViewPaidBy;
     EditText TextViewNote;
     DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -34,7 +33,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         TextViewAmount = (EditText) findViewById(R.id.text_view_amount);
 
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
-        TextViewEvent = (EditText) findViewById(R.id.text_view_event);
+
         TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
         TextViewNote = (EditText) findViewById(R.id.text_view_note);
 
