@@ -9,13 +9,18 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
 import java.util.Calendar;
 
+import static java.sql.Types.NULL;
+
 public class AddTransaction extends AppCompatActivity implements View.OnClickListener {
-    TextView TextViewAddTransaction;
     TextView TextViewSave;
     EditText TextViewAmount;
     TextView TextViewDate;
@@ -25,11 +30,15 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     EditText TextViewNote;
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
+    DatabaseReference databaseTransaction;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
+
+        databaseTransaction = FirebaseDatabase.getInstance().getReference("Transaction");
 
         TextViewAmount = (EditText) findViewById(R.id.text_view_amount);
 
@@ -48,10 +57,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             }
         };
 
-        TextViewAddTransaction = (TextView)findViewById(R.id.text_view_add_transaction);
         TextViewSave = (TextView)findViewById(R.id.textView_save);
 
-        TextViewAddTransaction.setOnClickListener(this);
         TextViewSave.setOnClickListener(this);
         TextViewDate.setOnClickListener(this);
     }
@@ -70,13 +77,38 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         dialog.show();
     }
 
-    private void addTransaction(){
-
-    }
-
     private void saveTransaction(){
-        int amount = (Integer.parseInt(TextViewAmount.getText().toString().trim()));
+        String amount = TextViewAmount.getText().toString().trim();
+        String date = TextViewDate.getText().toString().trim();
+        String event = TextViewEvent.getText().toString().trim();
+        String category = TextViewCategory.getText().toString().trim();
+        String paidBy = TextViewPaidBy.getText().toString().trim();
+        String note = TextViewNote.getText().toString().trim();
 
+        if(amount.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter Amount", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(date.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please choose Date", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(event.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter event", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(category.isEmpty()){
+            Toast.makeText(getApplicationContext(), "Please enter Category", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(note.isEmpty()){
+            Toast.makeText(getApplicationContext(), "No Note added", Toast.LENGTH_SHORT).show();
+        }
+
+        String id = databaseTransaction.push().getKey();
+        TransactionInfo transactionInfo = new TransactionInfo(amount, date, event, category, paidBy, note);
+        databaseTransaction.child(id).setValue(transactionInfo);
+        Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
 
     }
 
@@ -85,10 +117,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()){
             case R.id.text_view_date:
                 dateSelector();
-                break;
-
-            case R.id.text_view_add_transaction:
-                addTransaction();
                 break;
 
             case R.id.textView_save:
