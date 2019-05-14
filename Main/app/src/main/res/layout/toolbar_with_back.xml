@@ -1,16 +1,18 @@
-<merge  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.design.widget.CoordinatorLayout
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_top_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?android:attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:fitsSystemWindows="true"
         android:minHeight="?attr/actionBarSize"
-        android:theme="?attr/toolbarStyle">
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:elevation="2dp">
 
         <ImageButton
             android:id="@+id/image_button_back"
@@ -21,5 +23,5 @@
 
     </android.support.v7.widget.Toolbar>
 
-    </android.support.design.widget.CoordinatorLayout>
-</merge>
+</android.support.design.widget.CoordinatorLayout>
+
