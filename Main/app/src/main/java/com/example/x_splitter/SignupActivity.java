@@ -100,7 +100,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                         Toast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Not Registered", Toast.LENGTH_SHORT).show();
                     }
                 }
             }
