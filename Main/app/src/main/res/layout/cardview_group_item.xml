@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.circularreveal.cardview.CircularRevealCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    android:layout_height="190dp"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    cardview:cardCornerRadius="5dp">
+
+    
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:background="@color/Aqua"
+            />
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Group name"
+        android:gravity="center"
+        android:textColor="@color/colorToolbarHead"
+        android:textSize="14sp"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Not setteled"
+            android:gravity="center"
+            android:textColor="@color/colorToolbarHead"
+            android:textSize="12sp"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Setteled"
+            android:gravity="center"
+            android:textColor="@color/colorToolbarHead"
+            android:textSize="12sp"
+            />
+        
+    </LinearLayout>
+</android.support.design.circularreveal.cardview.CircularRevealCardView>

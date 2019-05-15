@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">x-Splitter</string>
+    <string name="app_name">Xplitter</string>
     <string name="email_hint">Enter your e-mail</string>
     <string name="signup_img">signup_img</string>
     <string name="enter_password">Enter password</string>
@@ -15,4 +15,5 @@
     <string name="skip">Skip</string>
     <string name="add_transaction">Add Transaction</string>
     <string name="save">Save</string>
+    <string name="search">Search Group, Event or Transaction</string>
 </resources>
