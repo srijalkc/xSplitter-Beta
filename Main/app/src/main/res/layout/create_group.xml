@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorInsideBackground">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_add_group_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <include
+            layout="@layout/toolbar_with_back"/>
+
+        <TextView
+            android:id="@+id/text_view_add_transaction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/add_group"
+            android:textColor="@color/colorToolbarHead"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.012"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/Aqua"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.956"
+            app:layout_constraintStart_toEndOf="@+id/text_view_add_transaction"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/add_group"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:layout_margin="30dp"
+        android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_add_group_toolbar"
+        app:layout_constraintVertical_bias="0.0">
+
+        <EditText
+            android:id="@+id/edit_text_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="20"
+            android:hint="@string/group_name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/layout_add_group"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/layout_add_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_group_name"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginTop="20dp">
+
+            <ImageView
+                android:id="@+id/image_view_add_friend"
+                android:layout_width="36dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/add_group" />
+
+            <EditText
+                android:id="@+id/text_view_friend_name"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/transaction_text_box"
+                android:hint="@string/friend_name"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="0dp"
+                android:textColorHint="@color/colorInsideHint"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
