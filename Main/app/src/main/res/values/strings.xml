@@ -16,4 +16,7 @@
     <string name="add_transaction">Add Transaction</string>
     <string name="save">Save</string>
     <string name="search">Search Group, Event or Transaction</string>
+    <string name="group_name">Group name</string>
+    <string name="friend_name">Friend name</string>
+    <string name="add_group">Add group</string>
 </resources>
