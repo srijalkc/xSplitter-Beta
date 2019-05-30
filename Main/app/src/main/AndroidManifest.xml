@@ -13,11 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FAB_Menu_page"/>
+        <activity android:name=".AddEvent"></activity>
+        <activity android:name=".FAB_Menu_page" />
         <activity
-            android:name=".Create_group"
-            android:windowSoftInputMode="adjustNothing"/>
-
+            android:name=".AddGroup"
+            android:windowSoftInputMode="adjustNothing" />
         <activity
             android:name=".Home"
             android:windowSoftInputMode="adjustNothing" />

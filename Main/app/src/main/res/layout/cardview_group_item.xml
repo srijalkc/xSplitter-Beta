@@ -30,15 +30,14 @@
 
         <TextView
             android:id="@+id/group_name"
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
             android:text="Group name"
             android:gravity="center"
             android:textColor="@color/colorToolbarHead"
             android:textSize="14sp"
             android:inputType="text"
-            android:layout_marginTop="5dp"
-        />
+            android:layout_marginTop="5dp"/>
         <!--<TextView-->
             <!--android:id="@+id/group_unsettle_status"-->
             <!--android:layout_width="match_parent"-->

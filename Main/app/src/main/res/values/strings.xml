@@ -19,4 +19,5 @@
     <string name="group_name">Group name</string>
     <string name="friend_name">Friend name</string>
     <string name="add_group">Add group</string>
+    <string name="add_event">Add event</string>
 </resources>

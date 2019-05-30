@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     EditText TextViewEvent;
     EditText TextViewPaidBy;
     EditText TextViewNote;
+    ImageButton btn_back;
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
     DatabaseReference databaseTransaction;
@@ -33,6 +35,10 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
+
+        btn_back = findViewById(R.id.image_button_back);
+
+
 
         databaseTransaction = FirebaseDatabase.getInstance().getReference("Transaction");
 
@@ -44,6 +50,15 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         TextViewNote = (EditText) findViewById(R.id.text_view_note);
 
         TextViewDate = (TextView) findViewById(R.id.text_view_date);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AddTransaction.super.onBackPressed();
+            }
+        });
+
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {

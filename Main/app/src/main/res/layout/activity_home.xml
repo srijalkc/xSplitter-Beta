@@ -109,12 +109,6 @@
     </android.support.constraint.ConstraintLayout>
 
     <include
-        android:id="@+id/bottom_navbar"
-        layout="@layout/bottom_navigation_bar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        layout="@layout/bottom_navigation_bar"/>
 
 </android.support.constraint.ConstraintLayout>
