@@ -8,17 +8,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import org.w3c.dom.Text;
-
 import java.util.Calendar;
-
-import static java.sql.Types.NULL;
 
 public class AddTransaction extends AppCompatActivity implements View.OnClickListener {
     TextView TextViewSave;
@@ -28,6 +25,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     EditText TextViewEvent;
     EditText TextViewPaidBy;
     EditText TextViewNote;
+    ImageButton btn_back;
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
     DatabaseReference databaseTransaction;
@@ -38,16 +36,29 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_transaction);
 
+        btn_back = findViewById(R.id.image_button_back);
+
+
+
         databaseTransaction = FirebaseDatabase.getInstance().getReference("Transaction");
 
         TextViewAmount = (EditText) findViewById(R.id.text_view_amount);
 
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
-        TextViewEvent = (EditText) findViewById(R.id.text_view_event);
+        //TextViewEvent = (EditText) findViewById(R.id.text_view_event);
         TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
         TextViewNote = (EditText) findViewById(R.id.text_view_note);
 
         TextViewDate = (TextView) findViewById(R.id.text_view_date);
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                AddTransaction.super.onBackPressed();
+            }
+        });
+
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -80,7 +91,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     private void saveTransaction(){
         String amount = TextViewAmount.getText().toString().trim();
         String date = TextViewDate.getText().toString().trim();
-        String event = TextViewEvent.getText().toString().trim();
+        //String event = TextViewEvent.getText().toString().trim();
         String category = TextViewCategory.getText().toString().trim();
         String paidBy = TextViewPaidBy.getText().toString().trim();
         String note = TextViewNote.getText().toString().trim();
@@ -93,10 +104,10 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(getApplicationContext(), "Please choose Date", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(event.isEmpty()){
-            Toast.makeText(getApplicationContext(), "Please enter event", Toast.LENGTH_SHORT).show();
-            return;
-        }
+//        if(event.isEmpty()){
+//            Toast.makeText(getApplicationContext(), "Please enter event", Toast.LENGTH_SHORT).show();
+//            return;
+//        }
         if(category.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please enter Category", Toast.LENGTH_SHORT).show();
             return;
@@ -106,7 +117,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         }
 
         String id = databaseTransaction.push().getKey();
-        TransactionInfo transactionInfo = new TransactionInfo(amount, date, event, category, paidBy, note);
+        //TransactionInfo transactionInfo = new TransactionInfo(amount, date, event, category, paidBy, note);
+        TransactionInfo transactionInfo = new TransactionInfo(amount, date, category, paidBy, note);
         databaseTransaction.child(id).setValue(transactionInfo);
         Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
 
