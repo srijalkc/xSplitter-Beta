@@ -1,48 +1,24 @@
-<android.support.constraint.ConstraintLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AddTransaction"
-    android:background="@color/colorInsideBackground"
-    android:fitsSystemWindows="true">
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
 
-    <android.support.constraint.ConstraintLayout
-        android:id="@+id/transaction_toolbar"
-        android:layout_width="match_parent"
+    <include
+        layout="@layout/large_toolbar_with_notification" />
+
+    <EditText
+        android:id="@+id/edit_text_search"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
-
-        <include
-            layout="@layout/large_toolbar_with_notification"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/edit_text_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/search_bar"
-            android:hint="@string/search"
-            android:paddingStart="40dp"
-            android:paddingEnd="8dp"
-            android:textColorHint="@color/colorInsideHint"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.32"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.9" />
-
-    </android.support.constraint.ConstraintLayout>
-</android.support.constraint.ConstraintLayout>
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/search_bar"
+        android:hint="@string/search"
+        android:paddingStart="40dp"
+        android:paddingEnd="8dp"
+        android:textColorHint="@color/colorInsideHint"
+        android:textSize="14sp"
+        android:layout_gravity="center|bottom"
+        android:maxLines="1"
+        android:inputType="text"/>
+</android.support.design.widget.CoordinatorLayout>
