@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -78,7 +77,7 @@ public class Home extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
         RecyclerView recyclerView = findViewById(R.id.group_recycler_view);
         recyclerView.setLayoutManager(layoutManager);
-        RecycleViewAdapter adapter = new RecycleViewAdapter(this, mGroupNames, mImageUrls);
+        RecycleViewAdapterHomeGroup adapter = new RecycleViewAdapterHomeGroup(this, mGroupNames, mImageUrls);
         recyclerView.setAdapter(adapter);
     }
 

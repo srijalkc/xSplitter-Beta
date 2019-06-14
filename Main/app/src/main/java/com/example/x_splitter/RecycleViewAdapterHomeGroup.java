@@ -13,14 +13,14 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.ViewHolder> {
+public class RecycleViewAdapterHomeGroup extends RecyclerView.Adapter<RecycleViewAdapterHomeGroup.ViewHolder> {
     private ArrayList<String> mGroupNames;
 //    private ArrayList<String> mUnsettleStatus = new ArrayList<>();
 //    private ArrayList<String>
     private ArrayList<String> mImageurls;
     private Context mcontext;
 
-    public RecycleViewAdapter(Context mcontext,ArrayList<String> mGroupNames, ArrayList<String> mImageurls) {
+    public RecycleViewAdapterHomeGroup(Context mcontext, ArrayList<String> mGroupNames, ArrayList<String> mImageurls) {
         this.mGroupNames = mGroupNames;
         this.mImageurls = mImageurls;
         this.mcontext = mcontext;
