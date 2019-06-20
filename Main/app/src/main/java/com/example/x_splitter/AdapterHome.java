@@ -81,7 +81,7 @@ public class AdapterHome extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private void eventView(EventViewHolder holder) {
 
-        AdapterHomeEvent adapter1 = new AdapterHomeEvent(this,Event.getEventData());
+        AdapterHomeEvent adapter1 = new AdapterHomeEvent(this.context,Event.getEventData());
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
         holder.recyclerView.setAdapter(adapter1);
     }

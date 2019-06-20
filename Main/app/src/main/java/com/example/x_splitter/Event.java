@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +34,8 @@ public class Event extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.event_recycler_view);
         AdapterHomeEvent adapterHomeEvent = new AdapterHomeEvent(this,getEventData());
         recyclerView.setAdapter(adapterHomeEvent);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         setBottomNavigationView();
     }
 
