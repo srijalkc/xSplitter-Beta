@@ -5,6 +5,11 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout_group"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +39,16 @@
             />
 
     </android.support.constraint.ConstraintLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/group_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/group_layout_toolbar"
+        android:layout_marginBottom="74dp"/>
+
+    </RelativeLayout>
+
     <include
         android:id="@+id/bottom_navbar"
         layout="@layout/bottom_navigation_bar"

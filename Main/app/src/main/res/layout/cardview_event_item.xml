@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="320dp"
+    android:layout_width="385dp"
     android:layout_height="130dp"
-    android:layout_margin="20dp">
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="10dp"
+    android:layout_gravity="center_horizontal">
 
 
     <RelativeLayout
@@ -21,51 +24,79 @@
                 android:id="@+id/event_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Event name"
                 android:layout_margin="5dp"
+                android:layout_marginTop="5dp"
+                android:text="Event name"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16sp"
-                android:layout_marginTop="5dp"/>
+                android:textSize="16sp" />
 
             <ImageButton
                 android:id="@+id/btn_edit_event"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="160dp"
-                android:layout_marginTop="12dp"
-                android:layout_toEndOf="@+id/event_name"
-                android:background="@drawable/edit_btn"/>
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/edit_btn" />
 
             <TextView
                 android:id="@+id/event_settle_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/event_name"
+                android:layout_marginStart="5dp"
                 android:text="Not settled/Settled"
                 android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:layout_marginStart="5dp"
-                android:layout_below="@+id/event_name"/>
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/event_to_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To pay"
+                android:layout_below="@+id/event_settle_status"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="To pay:"
                 android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:layout_margin="5dp"
-                android:layout_below="@+id/event_settle_status"/>
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/event_to_pay_amt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_settle_status"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/event_to_pay"
+                android:hint="1234"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="12sp" />
+
 
             <TextView
                 android:id="@+id/event_to_receive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="To Recieve"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp"
-                android:layout_margin="5dp"
                 android:layout_below="@+id/event_settle_status"
-                android:layout_toEndOf="@+id/event_to_pay"/>
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/event_to_pay_amt"
+                android:text="To Recieve:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/event_to_receive_amt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/event_settle_status"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@+id/event_to_receive"
+                android:hint="1234"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="12sp" />
 
         </RelativeLayout>
 
@@ -79,19 +110,18 @@
                 android:id="@+id/tv_event_add_transaction"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/add_transaction"
                 android:layout_margin="10dp"
-                android:textColor="@color/Aqua"
-                />
+                android:text="@string/add_transaction"
+                android:textColor="@color/Aqua" />
 
             <ImageButton
                 android:id="@+id/btn_event_add_transaction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/next_arrow"
-                android:layout_toEndOf="@+id/tv_event_add_transaction"
                 android:layout_marginStart="160dp"
-                android:layout_marginTop="12dp"/>
+                android:layout_marginTop="12dp"
+                android:layout_toEndOf="@+id/tv_event_add_transaction"
+                android:background="@drawable/next_arrow" />
 
         </RelativeLayout>
 

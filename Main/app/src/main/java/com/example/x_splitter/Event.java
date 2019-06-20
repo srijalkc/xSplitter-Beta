@@ -5,9 +5,12 @@ import android.os.Bundle;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import java.util.ArrayList;
 
 public class Event extends AppCompatActivity {
     FloatingActionButton fab_add;
@@ -27,7 +30,23 @@ public class Event extends AppCompatActivity {
             }
         });
 
+        RecyclerView recyclerView = findViewById(R.id.event_recycler_view);
+        AdapterHomeEvent adapterHomeEvent = new AdapterHomeEvent(this,getEventData());
+        recyclerView.setAdapter(adapterHomeEvent);
         setBottomNavigationView();
+    }
+
+    public static ArrayList<ModelHomeEvent> getEventData(){
+        ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
+
+        modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0"));
+        modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7"));
+        modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0"));
+        modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0"));
+        modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7"));
+        modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0"));
+
+        return modelHomeEvents;
     }
 
     private void setBottomNavigationView(){
