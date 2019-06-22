@@ -39,6 +39,7 @@
         </activity>
         <activity android:name=".SignupActivity" />
         <activity android:name=".AddTransaction" />
+        <activity android:name=".AddUser" />
         <activity android:name=".Event" />
         <activity android:name=".Group" />
         <activity android:name=".Profile" />
