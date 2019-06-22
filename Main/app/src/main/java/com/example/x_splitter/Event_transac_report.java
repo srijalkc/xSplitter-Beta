@@ -5,34 +5,16 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
 
-public class Group_event_member extends AppCompatActivity {
-
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+public class Event_transac_report extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.group_event_member);
 
-        tabLayout = findViewById(R.id.tab_event_member);
-        viewPager = findViewById(R.id.view_pager_event_member);
-
-        AdapterGroup_event_member adapter = new AdapterGroup_event_member(getSupportFragmentManager());
-
-        //adding fragments
-        adapter.AddFragment(new FragmentEvent(), "Events");
-        adapter.AddFragment(new FragmentMember(), "Members");
-
-        //adapter setup
-        viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        setContentView(R.layout.event_transac_report);
 
         setBottomNavigationView();
     }
@@ -45,28 +27,28 @@ public class Group_event_member extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.ic_home:
-                        Intent intent1 = new Intent(Group_event_member.this, Home.class); // Activity_num = 0
+                        Intent intent1 = new Intent(Event_transac_report.this, Home.class); // Activity_num = 0
                         intent1.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intent1);
                         overridePendingTransition(0,0);
                         break;
 
                     case R.id.ic_group:
-                        Intent intent2 = new Intent(Group_event_member.this, Group.class); // Activity_num = 1
+                        Intent intent2 = new Intent(Event_transac_report.this, Group.class); // Activity_num = 1
                         intent2.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intent2);
                         overridePendingTransition(0,0);
                         break;
 
                     case R.id.ic_event:
-                        Intent intent3 = new Intent(Group_event_member.this, Event.class); // Activity_num = 3
+                        Intent intent3 = new Intent(Event_transac_report.this, Event.class); // Activity_num = 3
                         intent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intent3);
                         overridePendingTransition(0,0);
                         break;
 
                     case R.id.ic_profile:
-                        Intent intent4 = new Intent(Group_event_member.this, Profile.class); // Activity_num = 4
+                        Intent intent4 = new Intent(Event_transac_report.this, Profile.class); // Activity_num = 4
                         intent4.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                         startActivity(intent4);
                         overridePendingTransition(0,0);
@@ -77,5 +59,4 @@ public class Group_event_member extends AppCompatActivity {
             }
         });
     }
-
 }
