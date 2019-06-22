@@ -3,6 +3,7 @@ package com.example.x_splitter;
 
         import android.content.Intent;
         import android.os.Bundle;
+        import android.support.annotation.NonNull;
         import android.support.annotation.Nullable;
         import android.support.design.widget.BottomNavigationView;
         import android.support.design.widget.FloatingActionButton;
@@ -62,7 +63,39 @@ public class Group extends AppCompatActivity {
 
     private void setBottomNavigationView(){
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navbar);
-        BottomNavigationHelper.enableNavigation(Group.this,bottomNavigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.ic_home:
+                        Intent intent1 = new Intent(Group.this, Home.class); // Activity_num = 0
+                        intent1.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(intent1);
+                        overridePendingTransition(0,0);
+                        break;
+
+                    case R.id.ic_group:
+                        break;
+
+                    case R.id.ic_event:
+                        Intent intent3 = new Intent(Group.this, Event.class); // Activity_num = 3
+                        intent3.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(intent3);
+                        overridePendingTransition(0,0);
+                        break;
+
+                    case R.id.ic_profile:
+                        Intent intent4 = new Intent(Group.this, Profile.class); // Activity_num = 4
+                        intent4.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        startActivity(intent4);
+                        overridePendingTransition(0,0);
+                        break;
+
+                }
+                return false;
+            }
+        });
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(Activity_num);
         menuItem.setChecked(true);

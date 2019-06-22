@@ -22,7 +22,7 @@
             layout="@layout/toolbar_with_back"/>
 
         <TextView
-            android:id="@+id/text_view_add_transaction"
+            android:id="@+id/text_view_add_event"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -55,9 +55,69 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.956"
-            app:layout_constraintStart_toEndOf="@+id/text_view_add_transaction"
+            app:layout_constraintStart_toEndOf="@+id/text_view_add_event"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/add_event"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:padding="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_add_event_toolbar"
+        app:layout_constraintVertical_bias="0.07"
+        app:layout_constraintHorizontal_bias="0.5">
+
+        <EditText
+            android:id="@+id/edit_text_event_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ems="20"
+            android:hint="Event name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/layout_add_event"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/layout_add_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_event_name">
+
+            <ImageView
+                android:id="@+id/image_view_add_group"
+                android:layout_width="36dp"
+                android:layout_height="30dp"
+                app:srcCompat="@drawable/add_group" />
+
+            <EditText
+                android:id="@+id/text_select_gname"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:background="@drawable/transaction_text_box"
+                android:hint="Select Group"
+                android:inputType="text"
+                android:paddingStart="20dp"
+                android:paddingEnd="0dp"
+                android:textColorHint="@color/colorInsideHint"
+                android:textSize="16sp" />
+
+        </RelativeLayout>
+
+
 
     </android.support.constraint.ConstraintLayout>
 

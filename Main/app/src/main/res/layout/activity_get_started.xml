@@ -31,8 +31,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="212dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:tabIndicatorColor="@color/colorTabIndicator"
-        app:tabTextColor="@color/colorTabText"
+        app:tabIndicatorColor="@color/getStartedTabText"
+        app:tabTextColor="@color/getStartedTabText"
         tools:layout_editor_absoluteX="-16dp">
 
         <android.support.design.widget.TabItem
