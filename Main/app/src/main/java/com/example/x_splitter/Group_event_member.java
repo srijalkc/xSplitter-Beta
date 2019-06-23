@@ -5,13 +5,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 public class Group_event_member extends AppCompatActivity {
+
+    FloatingActionButton fab_add;
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -20,6 +24,14 @@ public class Group_event_member extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.group_event_member);
+
+        fab_add = findViewById(R.id.fab_add);
+        fab_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Group_event_member.this,FAB_Menu_page.class));
+            }
+        });
 
         tabLayout = findViewById(R.id.tab_event_member);
         viewPager = findViewById(R.id.view_pager_event_member);

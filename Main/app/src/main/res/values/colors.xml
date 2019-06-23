@@ -12,4 +12,5 @@
     <color name="lightAqua_Item"> #D5E7E9 </color>
     <color name="item_fill"> #6E8CA0 </color>
     <color name="groupTab">#6E8CA0</color>
+    <color name="date">#9EA3A4</color>
 </resources>
