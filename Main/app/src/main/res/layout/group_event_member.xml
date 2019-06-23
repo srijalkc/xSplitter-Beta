@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorInsideBackground"
@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="80dp">
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/group_layout_toolbar"
@@ -38,7 +38,7 @@
             app:layout_constraintVertical_bias="0.24"
             />
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include
             android:id="@+id/cardview_each_group"
@@ -47,7 +47,7 @@
             android:layout_height="100dp"
             android:layout_below="@+id/group_layout_toolbar"/>
 
-    <android.support.design.widget.TabLayout
+    <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_event_member"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -56,18 +56,18 @@
         app:tabIndicatorColor="@color/groupTab"
         app:tabTextColor="@color/groupTab">
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Events" />
 
-        <android.support.design.widget.TabItem
+        <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Members" />
-    </android.support.design.widget.TabLayout>
+    </com.google.android.material.tabs.TabLayout>
 
-        <android.support.v4.view.ViewPager
+        <androidx.viewpager.widget.ViewPager
             android:id="@+id/view_pager_event_member"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -80,4 +80,4 @@
         android:id="@+id/bottom_navbar"
         layout="@layout/bottom_navigation_bar"
         />
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
