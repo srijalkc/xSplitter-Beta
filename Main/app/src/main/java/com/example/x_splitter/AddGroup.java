@@ -38,10 +38,9 @@ public class AddGroup extends AppCompatActivity {
             public void onClick(View v) {
 
                 LayoutInflater inflater = getLayoutInflater();
-
-                ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.add_group);
-                View view = inflater.inflate(R.layout.activity_add_group_inflater, constraintLayout, false);
-                constraintLayout.addView(view);
+                LinearLayout linearLayout = findViewById(R.id.ll_add_group);
+                View view = inflater.inflate(R.layout.activity_add_group_inflater, linearLayout, false);
+                linearLayout.addView(view);
             }
         });
     }
