@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorInsideBackground"
     android:fitsSystemWindows="true">
 
@@ -18,8 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <include
-            layout="@layout/toolbar_with_back"/>
+        <include layout="@layout/toolbar_with_back" />
 
         <TextView
             android:id="@+id/text_view_add_transaction"
@@ -69,10 +68,10 @@
         android:padding="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_add_group_toolbar"
-        app:layout_constraintVertical_bias="0.07"
-        app:layout_constraintHorizontal_bias="0.5">
+        app:layout_constraintVertical_bias="0.07">
 
         <EditText
             android:id="@+id/edit_text_group_name"
@@ -112,23 +111,25 @@
                 android:inputType="text"
                 android:paddingStart="20dp"
                 android:paddingEnd="0dp"
+                android:textColor="@color/Aqua"
                 android:textColorHint="@color/colorInsideHint"
-                android:textSize="16sp"
-                android:textColor="@color/Aqua"/>
+                android:textSize="16sp" />
 
         </RelativeLayout>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/button_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="305dp"
-        tools:layout_editor_absoluteY="48dp"
-        tools:text="@string/add_friend_group"
-        tools:ignore="MissingConstraints" />
+        android:layout_marginStart="304dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_add_group_toolbar"
+        tools:ignore="MissingConstraints"
+        tools:text="@string/add_friend_group" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
