@@ -81,19 +81,25 @@
             android:ems="20"
             android:hint="@string/group_name"
             android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/layout_add_group"
+            app:layout_constraintBottom_toTopOf="@+id/ll_add_group"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <RelativeLayout
-            android:id="@+id/layout_add_group"
+        <LinearLayout
+            android:id="@+id/ll_add_group"
+            android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_group_name">
+
+        <RelativeLayout
+            android:id="@+id/layout_add_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/image_view_add_friend"
@@ -116,6 +122,9 @@
                 android:textSize="16sp" />
 
         </RelativeLayout>
+
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
