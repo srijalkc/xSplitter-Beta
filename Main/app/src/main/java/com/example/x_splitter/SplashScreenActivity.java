@@ -1,9 +1,10 @@
 package com.example.x_splitter;
 
 import android.content.Intent;
-import android.os.Handler;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -14,7 +15,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreenActivity.this, Event_transac_report.class);
+                Intent i = new Intent(SplashScreenActivity.this, Home.class);
                 startActivity(i);
                 finish();
             }
