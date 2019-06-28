@@ -1,16 +1,17 @@
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
         <include
                 layout="@layout/toolbar_no_back"/>
 
-                <ImageButton
-                    android:id="@+id/image_button_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/icn_back_dark"
-                    android:layout_marginStart="12dp"
-                    android:layout_gravity="start|center"/>
-</android.support.design.widget.CoordinatorLayout>
+        <ImageButton
+            android:id="@+id/image_button_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="start|center"
+            android:layout_marginStart="2dp"
+            android:background="@color/colorPrimary"
+            app:srcCompat="@drawable/icn_back_dark" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 

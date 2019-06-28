@@ -1,8 +1,8 @@
-<android.support.design.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent">
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/large_toolbar_top_notification"
             android:layout_width="match_parent"
             android:layout_height="100dp"
@@ -20,5 +20,5 @@
                     android:layout_marginEnd="25dp"
                     android:background="@drawable/icn_inbox_dark" />
 
-        </android.support.v7.widget.Toolbar>
-</android.support.design.widget.CoordinatorLayout>
+        </androidx.appcompat.widget.Toolbar>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

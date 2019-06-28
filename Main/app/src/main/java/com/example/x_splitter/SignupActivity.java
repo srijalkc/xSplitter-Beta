@@ -1,11 +1,9 @@
 package com.example.x_splitter;
 
-import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
-import android.os.AsyncTask;
-import android.os.StrictMode;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -19,12 +17,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-
-import static android.provider.ContactsContract.CommonDataKinds.*;
 
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {

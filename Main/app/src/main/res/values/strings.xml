@@ -20,4 +20,8 @@
     <string name="friend_name">Friend name</string>
     <string name="add_group">Add group</string>
     <string name="add_event">Add event</string>
+    <string name="add_user">Add user</string>
+    <string name="add_friend_group">Add Friend</string>
+    <string name="members"> <u> MEMBERS </u></string>
+    <string name="profile_name">Profile name</string>
 </resources>
