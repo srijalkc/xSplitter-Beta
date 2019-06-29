@@ -1,9 +1,6 @@
 package com.example.x_splitter;
 
 import android.app.ProgressDialog;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -11,12 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.regex.Pattern;
 
 
 public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
@@ -28,6 +32,9 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private Button buttonSignUpGmail;
     private ProgressDialog progressDialog;
     private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
+    private FirebaseUser currentUser;
+    private String userID;
 
 
 
@@ -37,6 +44,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_signup);
 
         mAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
         editTextEmail = (EditText) findViewById(R.id.edit_text_email);
         editTextUsername = (EditText) findViewById(R.id.edit_text_username);
@@ -57,11 +65,20 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         String Username = editTextUsername.getText().toString().trim();
         String Password = editTextPassword.getText().toString().trim();
         String ConfirmPassword = editTextConfirmPassword.getText().toString().trim();
+        final Pattern PasswordPattern = Pattern.compile("^" +
+                    "(?=.*[0-9])" +
+                    "(?=.*[a-z])" +
+                    "(?=.*[A-Z])" +
+                    "(?=.*[!@#$%^&*])"+
+                    "(?=\\S+$)" +
+                    ".{6,}" +
+                    "$");
+
         if (Email.isEmpty()) {
             Toast.makeText(this, "Email is required", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
+        else if (!Patterns.EMAIL_ADDRESS.matcher(Email).matches()) {
             Toast.makeText(this, "Email pattern is wrong", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -69,32 +86,49 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(this, "Username is required", Toast.LENGTH_SHORT).show();
             return;
         }
+        else if(Username.contains(" ")){
+            Toast.makeText(this, "You cannot use space", Toast.LENGTH_SHORT).show();
+            return;
+        }
         if (Password.isEmpty()) {
             Toast.makeText(this, "Password is required", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (!Password.equals(ConfirmPassword)) {
-            Toast.makeText(this, "Password mismatch", Toast.LENGTH_SHORT).show();
+        else if(!PasswordPattern.matcher(Password).matches()){
+            Toast.makeText(this, "Password too weak", Toast.LENGTH_SHORT).show();
+            editTextPassword.setError("Your password should contain atleast 1 special character, 1 upper case letter, 1 lowercase letter and 1 number");
             return;
         }
-        if (Password.length() < 6) {
-            Toast.makeText(this, "Minimum password length is 6", Toast.LENGTH_SHORT).show();
+        if (ConfirmPassword.isEmpty()) {
+            Toast.makeText(this, "confirm Your Password", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        else if (!Password.equals(ConfirmPassword)) {
+            Toast.makeText(this, "Password mismatch", Toast.LENGTH_SHORT).show();
             return;
         }
 
         mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                UsersInfo usersinfo = new UsersInfo(Email, Username);
                 if(task.isSuccessful()){
-                    UsersInfo usersinfo = new UsersInfo(Email, Username);
-
-                    FirebaseDatabase.getInstance().getReference("Users")
-                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                            .setValue(usersinfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(getApplicationContext(), "User Registered Successful", Toast.LENGTH_SHORT).show();
+                                databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                        .setValue(usersinfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            Toast.makeText(getApplicationContext(), "User Registered Successful. Please Verify Your Email", Toast.LENGTH_SHORT).show();
+                                        }
+                                        else{
+                                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
                             }
                             else{
                                 Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -129,11 +163,6 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         }
 
     }
-
-
-
-
-
 }
 
 

@@ -24,7 +24,7 @@
                 app:srcCompat="@drawable/add_group" />
 
             <EditText
-                android:id="@+id/text_view_friend_name"
+                android:id="@+id/edit_text_friend_name"
                 android:layout_width="240dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="60dp"
