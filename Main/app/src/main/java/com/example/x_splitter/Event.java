@@ -43,12 +43,12 @@ public class Event extends AppCompatActivity {
     public static ArrayList<ModelHomeEvent> getEventData(){
         ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
 
-        modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0"));
-        modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7"));
-        modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0"));
-        modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0"));
-        modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7"));
-        modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0"));
+        modelHomeEvents.add(new ModelHomeEvent("Tour", "Kathford","Not Settled","123.0","12.0"));
+        modelHomeEvents.add(new ModelHomeEvent("Birthday","Gang", "Not Settled", "234.0","123.7"));
+        modelHomeEvents.add(new ModelHomeEvent("Party", "Lolwa","Not Settled", "568.9","67890.0"));
+        modelHomeEvents.add(new ModelHomeEvent("Tour", "Kathford","Settled","123.0","12.0"));
+        modelHomeEvents.add(new ModelHomeEvent("Birthday","Adhikari", "Not Settled", "234.0","123.7"));
+        modelHomeEvents.add(new ModelHomeEvent("Party", "Lolwa","Not Settled", "568.9","67890.0"));
 
         return modelHomeEvents;
     }
