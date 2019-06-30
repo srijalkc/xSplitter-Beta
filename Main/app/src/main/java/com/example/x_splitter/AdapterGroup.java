@@ -3,6 +3,8 @@ package com.example.x_splitter;
 import android.content.Context;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +53,14 @@ public class AdapterGroup extends RecyclerView.Adapter<AdapterGroup.GroupMyViewH
         holder.inGroup_name.setText(data.get(position).getInGroup_name());
         holder.inUnsettle_no.setText(data.get(position).getInUnsettle_no());
         holder.inSettle_no.setText(data.get(position).getInUnsettle_no());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context,Group_event_member.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

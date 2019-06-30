@@ -3,15 +3,25 @@ package com.example.x_splitter;
 public class ModelHomeEvent {
 
     private String EventName;
+    private String GroupName;
     private String SettleStatus;
     private String ToPayAmt;
     private String ToReceiveAmt;
 
-    public ModelHomeEvent(String eventName, String settleStatus, String toPayAmt, String toReceiveAmt) {
+    public ModelHomeEvent(String eventName, String groupName, String settleStatus, String toPayAmt, String toReceiveAmt) {
         EventName = eventName;
+        GroupName = groupName;
         SettleStatus = settleStatus;
         ToPayAmt = toPayAmt;
         ToReceiveAmt = toReceiveAmt;
+    }
+
+    public String getGroupName() {
+        return GroupName;
+    }
+
+    public void setGroupName(String groupName) {
+        GroupName = groupName;
     }
 
     public String getEventName() {

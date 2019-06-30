@@ -47,12 +47,12 @@ public class Group extends AppCompatActivity {
         ArrayList<ModelGroup> modelGroups = new ArrayList<>();
 
         modelGroups.add(new ModelGroup(R.mipmap.ic_applogo,"Kathford","4","2"));
-        modelGroups.add(new ModelGroup(R.mipmap.ic_applogo_round,"Aimless","2","1"));
-        modelGroups.add(new ModelGroup(R.mipmap.ic_launcher,"Lolwa","3","0"));
-        modelGroups.add(new ModelGroup(R.mipmap.ic_launcher_foreground,"Gang","3","3"));
-        modelGroups.add(new ModelGroup(R.mipmap.ic_applogo_round,"Adhikari","3","3"));
+        modelGroups.add(new ModelGroup(R.drawable.undraw_group_selfie_ijc6,"Aimless","2","1"));
+        modelGroups.add(new ModelGroup(R.drawable.undraw_data_report_bi6l,"Lolwa","3","0"));
+        modelGroups.add(new ModelGroup(R.drawable.undraw_time_management_30iu,"Gang","3","3"));
+        modelGroups.add(new ModelGroup(R.drawable.undraw_make_it_rain_iwk4,"Adhikari","3","3"));
         modelGroups.add(new ModelGroup(R.mipmap.ic_launcher_foreground,"Maharjan","4","3"));
-        modelGroups.add(new ModelGroup(R.mipmap.ic_applogo,"K.C.","3","3"));
+        modelGroups.add(new ModelGroup(R.drawable.undraw_having_fun_iais,"K.C.","3","3"));
         modelGroups.add(new ModelGroup(R.mipmap.ic_launcher,"Kirat","3","2"));
         modelGroups.add(new ModelGroup(R.mipmap.ic_launcher_foreground,"Mainali","1","3"));
         modelGroups.add(new ModelGroup(R.mipmap.ic_launcher,"Acchami","4","2"));

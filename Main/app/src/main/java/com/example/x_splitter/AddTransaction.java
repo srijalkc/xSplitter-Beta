@@ -51,6 +51,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         TextViewAmount = (EditText) findViewById(R.id.text_view_amount);
 
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
+        TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
         //TextViewEvent = (EditText) findViewById(R.id.text_view_event);
         //TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
         TextViewNote = (EditText) findViewById(R.id.text_view_note);
