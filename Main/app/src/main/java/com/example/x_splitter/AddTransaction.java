@@ -125,7 +125,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         String date = TextViewDate.getText().toString().trim();
         //String event = TextViewEvent.getText().toString().trim();
         String category = TextViewCategory.getText().toString().trim();
-        String paidBy = TextViewPaidBy.getText().toString().trim();
+       // String paidBy = TextViewPaidBy.getText().toString().trim();
         String note = TextViewNote.getText().toString().trim();
 
         if(amount.isEmpty()){

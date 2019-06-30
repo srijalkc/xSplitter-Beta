@@ -5,12 +5,17 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.FirebaseDatabase;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 public class Profile extends AppCompatActivity {
+    private FirebaseDatabase mDatabase;
+    
+
     FloatingActionButton fab_add;
 
     private static final int Activity_num = 4; // for recognizing menu item number
