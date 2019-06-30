@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -19,11 +18,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
-public class AddTransaction extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class AddTransaction extends AppCompatActivity implements View.OnClickListener {
     TextView TextViewSave;
     EditText TextViewAmount;
     TextView TextViewDate;
@@ -55,16 +52,16 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
         //TextViewEvent = (EditText) findViewById(R.id.text_view_event);
 
-        SpinnerPaidBy = (Spinner) findViewById(R.id.spinner_paidby);
+        //SpinnerPaidBy = (Spinner) findViewById(R.id.spinner_paidby);
 
         TextViewNote = (EditText) findViewById(R.id.text_view_note);
 
 
-        Spinner spinner_split = findViewById(R.id.spinner_split);
+        //Spinner spinner_split = findViewById(R.id.spinner_split);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_split.setAdapter(adapter);
-        spinner_split.setOnItemSelectedListener(this);
+       // spinner_split.setAdapter(adapter);
+        //spinner_split.setOnItemSelectedListener(this);
 
 
         TextViewDate = (TextView) findViewById(R.id.text_view_date);
@@ -156,13 +153,13 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-        String text = parent.getItemAtPosition(position).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+//        String text = parent.getItemAtPosition(position).toString();
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//    }
 
 }

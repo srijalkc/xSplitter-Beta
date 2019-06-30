@@ -153,7 +153,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/transaction_text_box"
-            android:hint="Paid by"
+            android:hint="Paid By"
             android:paddingStart="20dp"
             android:paddingEnd="0dp"
             android:textColorHint="@color/colorInsideHint"
@@ -162,73 +162,73 @@
             android:layout_toEndOf="@+id/image_view_paid_by" />
 
 
-        <ImageView
-            android:id="@+id/image_view_group"
-            android:layout_width="36dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            app:srcCompat="@drawable/add_group"
-            android:layout_below="@+id/image_view_paid_by"/>
+        <!--<ImageView-->
+            <!--android:id="@+id/image_view_group"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_margin="10dp"-->
+            <!--app:srcCompat="@drawable/add_group"-->
+            <!--android:layout_below="@+id/image_view_category"/>-->
 
-        <Spinner
-            android:id="@+id/spinner_group"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/image_view_paid_by"
-            android:layout_toEndOf="@+id/image_view_group"
-            android:textSize="15sp"/>
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_group"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_below="@+id/image_view_category"-->
+            <!--android:layout_toEndOf="@+id/image_view_group"-->
+            <!--android:textSize="15sp"/>-->
 
-        <ImageView
-            android:id="@+id/image_view_event"
-            android:layout_width="36dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/image_view_group"
-            app:srcCompat="@drawable/icon_event" />
+        <!--<ImageView-->
+            <!--android:id="@+id/image_view_event"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_below="@+id/image_view_group"-->
+            <!--app:srcCompat="@drawable/icon_event" />-->
 
-        <Spinner
-            android:id="@+id/spinner_event"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/image_view_group"
-            android:layout_toEndOf="@+id/image_view_event"
-            android:textSize="15sp"/>
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_event"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_below="@+id/image_view_group"-->
+            <!--android:layout_toEndOf="@+id/image_view_event"-->
+            <!--android:textSize="15sp"/>-->
 
-        <ImageView
-            android:id="@+id/image_view_paidby"
-            android:layout_width="36dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/image_view_event"
-            app:srcCompat="@drawable/icon_paid_by" />
+        <!--<ImageView-->
+            <!--android:id="@+id/image_view_paidby"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_below="@+id/image_view_event"-->
+            <!--app:srcCompat="@drawable/icon_paid_by" />-->
 
-        <Spinner
-            android:id="@+id/spinner_paidby"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/image_view_event"
-            android:layout_toEndOf="@+id/image_view_paidby"
-            android:textSize="15sp"/>
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_paidby"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_below="@+id/image_view_event"-->
+            <!--android:layout_toEndOf="@+id/image_view_paidby"-->
+            <!--android:textSize="15sp"/>-->
 
-        <ImageView
-            android:id="@+id/image_view_split"
-            android:layout_width="36dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/image_view_paidby"
-            app:srcCompat="@drawable/icon_split" />
+        <!--<ImageView-->
+            <!--android:id="@+id/image_view_split"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_below="@+id/image_view_paidby"-->
+            <!--app:srcCompat="@drawable/icon_split" />-->
 
-        <Spinner
-            android:id="@+id/spinner_split"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/image_view_paidby"
-            android:layout_toEndOf="@+id/image_view_split"
-            android:textSize="15sp"/>
+        <!--<Spinner-->
+            <!--android:id="@+id/spinner_split"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_below="@+id/image_view_paidby"-->
+            <!--android:layout_toEndOf="@+id/image_view_split"-->
+            <!--android:textSize="15sp"/>-->
 
 
     </RelativeLayout>
