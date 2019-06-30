@@ -3,7 +3,6 @@ package com.example.x_splitter;
 import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +13,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -27,8 +28,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     EditText TextViewAmount;
     TextView TextViewDate;
     EditText TextViewCategory;
-    EditText TextViewEvent;
     EditText TextViewPaidBy;
+    Spinner SpinnerPaidBy;
     EditText TextViewNote;
     ImageButton btn_back;
     DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -53,7 +54,9 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
         TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
         //TextViewEvent = (EditText) findViewById(R.id.text_view_event);
-        //TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
+
+        SpinnerPaidBy = (Spinner) findViewById(R.id.spinner_paidby);
+
         TextViewNote = (EditText) findViewById(R.id.text_view_note);
 
 
@@ -160,6 +163,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
+
 }
