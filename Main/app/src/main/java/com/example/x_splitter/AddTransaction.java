@@ -3,14 +3,16 @@ package com.example.x_splitter;
 import android.app.DatePickerDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -23,7 +25,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     TextView TextViewDate;
     EditText TextViewCategory;
     EditText TextViewEvent;
-    EditText TextViewPaidBy;
+    Spinner TextViewPaidBy;
     EditText TextViewNote;
     ImageButton btn_back;
     DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -46,7 +48,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
         //TextViewEvent = (EditText) findViewById(R.id.text_view_event);
-        TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
+        TextViewPaidBy = (Spinner) findViewById(R.id.spinner_paidby);
         TextViewNote = (EditText) findViewById(R.id.text_view_note);
 
         TextViewDate = (TextView) findViewById(R.id.text_view_date);
