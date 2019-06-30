@@ -3,15 +3,12 @@ package com.example.x_splitter;
 import java.util.ArrayList;
 
 public class AddGroupInfo {
-    String friends;
-    AddGroupInfo(){
+    ArrayList friends = new ArrayList();
 
-    }
-
-    AddGroupInfo(ArrayList al){
+    AddGroupInfo(ArrayList<String> al){
         for(int i = 0; i < al.size(); i++){
-            String a = (String) al.get(i);
-            friends = a;
+            String a = al.get(i);
+            friends.add(a);
         }
     }
 
