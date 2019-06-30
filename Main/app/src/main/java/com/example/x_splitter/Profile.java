@@ -22,6 +22,7 @@ import android.widget.TextView;
 public class Profile extends AppCompatActivity {
 
     private TextView mProfileName;
+    private TextView mProfileEmail;
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
 
@@ -35,19 +36,26 @@ public class Profile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        mProfileName=
+        mProfileName=(TextView)findViewById(R.id.profile_name);
+        mProfileEmail=(TextView)findViewById(R.id.profile_email);
+
 
         firebaseAuth=FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("Users");
-        FirebaseUser user = firebaseAuth.getCurrentUser();
+      //  String user = firebaseAuth.getCurrentUser().getUid();
 
 
 
-        mDatabase.child("Users").addValueEventListener(new ValueEventListener() {
+        mDatabase.child(firebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                String display_name = dataSnapshot
+                String display_name = dataSnapshot.child("username").getValue(String.class);
+                String display_email = dataSnapshot.child("email").getValue(String.class);
+
+
+                mProfileName.setText(display_name);
+                mProfileEmail.setText(display_email);
 
             }
 
@@ -55,7 +63,7 @@ public class Profile extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        })
+        });
 
         fab_add = findViewById(R.id.fab_add);
         fab_add.setOnClickListener(new View.OnClickListener() {
