@@ -6,7 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class AddTransaction extends AppCompatActivity implements View.OnClickListener, OnItemSelectedListener{
+public class AddTransaction extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
     TextView TextViewSave;
     EditText TextViewAmount;
     TextView TextViewDate;
@@ -35,7 +35,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
     DatabaseReference databaseTransaction;
 
-    Spinner spinner_paidby;
 
 
     @Override
@@ -56,24 +55,12 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         //TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
         TextViewNote = (EditText) findViewById(R.id.text_view_note);
 
-        //spinner element
-        spinner_paidby = findViewById(R.id.spinner_paidby);
 
-        //spinner click listener
-        spinner_paidby.setOnItemSelectedListener(this);
-
-        //Spinner drop down elements
-        List<String> users = new ArrayList<String>();
-        users.add("Namkong");
-        users.add("Neha");
-        users.add("Ruxana");
-        users.add("Srijal");
-
-        //Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,users);
-
-        //drop down layout style - list view with radio button
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        Spinner spinner_split = findViewById(R.id.spinner_split);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_split.setAdapter(adapter);
+        spinner_split.setOnItemSelectedListener(this);
 
 
         TextViewDate = (TextView) findViewById(R.id.text_view_date);
@@ -162,6 +149,16 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                 saveTransaction();
                 break;
         }
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+        String text = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 }
