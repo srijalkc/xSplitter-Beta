@@ -5,7 +5,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -21,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
 
-public class AddTransaction extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemSelectedListener {
+public class AddTransaction extends AppCompatActivity implements View.OnClickListener {
     TextView TextViewSave;
     EditText TextViewAmount;
     TextView TextViewDate;
@@ -154,13 +153,13 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
-        String text = parent.getItemAtPosition(position).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-    }
+//    @Override
+//    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+//        String text = parent.getItemAtPosition(position).toString();
+//    }
+//
+//    @Override
+//    public void onNothingSelected(AdapterView<?> adapterView) {
+//    }
 
 }
