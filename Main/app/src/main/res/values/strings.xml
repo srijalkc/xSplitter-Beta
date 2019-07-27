@@ -29,4 +29,10 @@
         <item> Split Equally</item>
         <item> Split Unequally</item>
     </string-array>
+
+    <string-array name="friend_name">
+        <item> Friend 1</item>
+        <item> Friend 2</item>
+        <item> Friend 3</item>
+    </string-array>
 </resources>

@@ -3,9 +3,12 @@ package com.example.x_splitter;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,10 +18,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-public class AddGroup extends AppCompatActivity {
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
+
+public class AddGroup extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     ImageButton btn_back;
     Button buttonAddFriend;
@@ -27,6 +37,7 @@ public class AddGroup extends AppCompatActivity {
     DatabaseReference dbReference;
     //Integer childCount;
     EditText friendName;
+    Spinner spinnerFriendName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,7 +50,13 @@ public class AddGroup extends AppCompatActivity {
 
         groupName = (EditText) findViewById(R.id.edit_text_group_name);
         friendName = (EditText) findViewById(R.id.edit_text_friend_name);
+
+        //For Spinner
+        spinnerFriendName = (Spinner) findViewById(R.id.spinner_friend_name);
+        spinnerFriendName.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, retrieve()));
+
         dbReference = FirebaseDatabase.getInstance().getReference("Groups");
+
         //String friend_name = friendName.getText().toString();
 
         btn_back = findViewById(R.id.image_button_back);
@@ -74,13 +91,6 @@ public class AddGroup extends AppCompatActivity {
                                 }
                             }
                         });
-
-
-
-//                LayoutInflater inflater = getLayoutInflater();
-//                View view = inflater.inflate(R.layout.activity_add_group_inflater, linearLayout, false);
-//                linearLayout.addView(view);
-//                childCount++;
             }
         });
 
@@ -93,17 +103,6 @@ public class AddGroup extends AppCompatActivity {
             if(TextUtils.isEmpty(group_name)){
                 Toast.makeText(AddGroup.this, "Enter the group name", Toast.LENGTH_SHORT).show();
             }
-
-//            for (int i = 0; i < childCount; i++) {
-//                View view = linearLayout.getChildAt(i);
-//                if(view instanceof EditText){
-//                    EditText editText = (EditText)view;
-//                    String a = editText.getText().toString();
-//                    al.add(a);
-//                }
-//            }
-
-            //AddGroupInfo addGroupInfo = new AddGroupInfo();
 
             dbReference.child("Groups").child(group_name).setValue("").
                 addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -122,4 +121,34 @@ public class AddGroup extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String text = parent.getItemAtPosition(position).toString();
+        Toast.makeText(parent.getContext(), "text", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    public ArrayList<String> retrieve(){
+        ArrayList<String> friendLists = new ArrayList<>();
+        FirebaseDatabase.getInstance().getReference("Users").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
+                    String name = (String) Objects.requireNonNull(data).get("username");
+                    friendLists.add(name);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+        return friendLists;
+    }
 }
