@@ -2,6 +2,9 @@ package com.example.x_splitter;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,6 +43,14 @@ public class AdapterHomeGroup extends RecyclerView.Adapter<AdapterHomeGroup.MyVi
 
         holder.GroupName.setText(Data.get(position).getGroupName()); //getter made in ModelHomeGroup
         holder.GroupImage.setImageResource(Data.get(position).getGroupImage());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Context context = view.getContext();
+                Intent intent = new Intent(context,Group_event_member.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
