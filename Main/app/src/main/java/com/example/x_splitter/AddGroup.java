@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
-public class AddGroup extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+public class AddGroup extends AppCompatActivity {
 
     ImageButton btn_back;
     Button buttonAddFriend;
@@ -44,23 +44,36 @@ public class AddGroup extends AppCompatActivity implements AdapterView.OnItemSel
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_group);
 
-        //LinearLayout linearLayout = (LinearLayout) findViewById(R.id.ll_add_group);
-        //childCount = linearLayout.getChildCount();
-        //ArrayList<String> al = new ArrayList<>();
-
         groupName = (EditText) findViewById(R.id.edit_text_group_name);
         friendName = (EditText) findViewById(R.id.edit_text_friend_name);
-
-        //For Spinner
-        spinnerFriendName = (Spinner) findViewById(R.id.spinner_friend_name);
-        spinnerFriendName.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, retrieve()));
-
         dbReference = FirebaseDatabase.getInstance().getReference("Groups");
 
-        //String friend_name = friendName.getText().toString();
+        //For Spinner
+        ArrayAdapter<String> dataAdapter;
+        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, retrieve());
+        spinnerFriendName = (Spinner) findViewById(R.id.spinner_friend_name);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFriendName.setAdapter(dataAdapter);
+
+        spinnerFriendName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(parent.getItemAtPosition(position).equals("Choose Friend")){
+
+                }
+                else{
+                    String text = parent.getItemAtPosition(position).toString();
+                    Toast.makeText(parent.getContext(), "hello", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         btn_back = findViewById(R.id.image_button_back);
-
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,7 +81,6 @@ public class AddGroup extends AppCompatActivity implements AdapterView.OnItemSel
                 AddGroup.super.onBackPressed();
             }
         });
-
 
         buttonAddFriend = (Button)findViewById(R.id.button_add);
         buttonAddFriend.setOnClickListener(new View.OnClickListener() {
@@ -116,30 +128,20 @@ public class AddGroup extends AppCompatActivity implements AdapterView.OnItemSel
                         }
                     }
                 });
-    }
-});
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), "text", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+             }
+         });
 
     }
 
     public ArrayList<String> retrieve(){
         ArrayList<String> friendLists = new ArrayList<>();
+        friendLists.add(0, "Choose Friend");
         FirebaseDatabase.getInstance().getReference("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
-                    String name = (String) Objects.requireNonNull(data).get("username");
+                    String name = (String) Objects.requireNonNull(data).get("email");
                     friendLists.add(name);
                 }
             }
