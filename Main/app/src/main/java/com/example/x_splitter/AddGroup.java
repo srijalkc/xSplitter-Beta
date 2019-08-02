@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -47,6 +48,8 @@ public class AddGroup extends AppCompatActivity {
         groupName = (EditText) findViewById(R.id.edit_text_group_name);
         friendName = (EditText) findViewById(R.id.edit_text_friend_name);
         dbReference = FirebaseDatabase.getInstance().getReference("Groups");
+        String ID = dbReference.push().getKey();
+        Map<String, Object> totalFriends = new HashMap<>();
 
         //For Spinner
         ArrayAdapter<String> dataAdapter;
@@ -58,12 +61,13 @@ public class AddGroup extends AppCompatActivity {
         spinnerFriendName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = spinnerFriendName.getSelectedItem().toString();
                 if(parent.getItemAtPosition(position).equals("Choose Friend")){
-
+                    //do nothing
                 }
                 else{
-                    String text = parent.getItemAtPosition(position).toString();
-                    Toast.makeText(parent.getContext(), "hello", Toast.LENGTH_SHORT).show();
+                    totalFriends.put(item, "true");
+                    Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -111,24 +115,25 @@ public class AddGroup extends AppCompatActivity {
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            String group_name = groupName.getText().toString();
-            if(TextUtils.isEmpty(group_name)){
-                Toast.makeText(AddGroup.this, "Enter the group name", Toast.LENGTH_SHORT).show();
+                String group_name = groupName.getText().toString();
+                if (TextUtils.isEmpty(group_name)) {
+                    Toast.makeText(AddGroup.this, "Enter the group name", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
+                    dbReference.child(ID).child(groupName.getText().toString()).child("Members").setValue(groupInfo).
+                            addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(AddGroup.this, "Group Created", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(AddGroup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
             }
-
-            dbReference.child("Groups").child(group_name).setValue("").
-                addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(AddGroup.this, "Group Created", Toast.LENGTH_SHORT).show();
-                        }
-                        else{
-                            Toast.makeText(AddGroup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-             }
          });
 
     }
