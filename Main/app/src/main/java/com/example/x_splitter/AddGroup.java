@@ -66,7 +66,7 @@ public class AddGroup extends AppCompatActivity {
                     //do nothing
                 }
                 else{
-                    totalFriends.put(item, "true");
+                    totalFriends.put("true", item);
                     Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -120,8 +120,8 @@ public class AddGroup extends AppCompatActivity {
                     Toast.makeText(AddGroup.this, "Enter the group name", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
-                    dbReference.child(ID).child(groupName.getText().toString()).child("Members").setValue(groupInfo).
+                    //AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
+                    dbReference.child(ID).child(groupName.getText().toString()).child("Members").setValue(totalFriends).
                             addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
