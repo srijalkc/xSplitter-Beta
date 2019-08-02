@@ -1,15 +1,25 @@
 package com.example.x_splitter;
 
-import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 public class AddGroupInfo {
-    ArrayList friends = new ArrayList();
+    Map<String, Object> Email;
 
-    AddGroupInfo(ArrayList<String> al){
-        for(int i = 0; i < al.size(); i++){
-            String a = al.get(i);
-            friends.add(a);
-        }
+    public AddGroupInfo(){
+
     }
 
+    public AddGroupInfo(Map<String, Object> Emails){
+        Set set = (Set) Emails.entrySet();
+        Iterator iterator = set.iterator();
+        for (int i = 0; i < Emails.size(); i++){
+            while (iterator.hasNext()) {
+                Map.Entry mapEntry = (Map.Entry) iterator.next();
+                String j = (String) mapEntry.getKey();
+                Emails.put(j, "true");
+            }
+        }
+    }
 }
