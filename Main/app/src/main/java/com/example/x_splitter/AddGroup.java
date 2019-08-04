@@ -62,7 +62,6 @@ public class AddGroup extends AppCompatActivity {
         HashMap<String, Object> totalFriends = new HashMap<String, Object>();
 
         //For Spinner
-<<<<<<< HEAD
         ArrayAdapter<String> dataAdapter;
         dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, retrieve());
         spinnerFriendName = (Spinner) findViewById(R.id.spinner_friend_name);
@@ -92,7 +91,7 @@ public class AddGroup extends AppCompatActivity {
 
             }
         });
-=======
+
 //        ArrayAdapter<String> dataAdapter;
 //        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, retrieve());
 //        spinnerFriendName = (Spinner) findViewById(R.id.spinner_friend_name);
@@ -117,7 +116,7 @@ public class AddGroup extends AppCompatActivity {
 //
 //            }
 //        });
->>>>>>> 805abae3ade4a004c117b8d1f41c0405d9fa9069
+
 
         btn_back = findViewById(R.id.image_button_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -128,8 +127,7 @@ public class AddGroup extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
-=======
+
 //        buttonAddFriend = (Button)findViewById(R.id.button_add_friend);
 //        buttonAddFriend.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -154,7 +152,6 @@ public class AddGroup extends AppCompatActivity {
 //            }
 //        });
 
->>>>>>> 805abae3ade4a004c117b8d1f41c0405d9fa9069
 
         save = (TextView)findViewById(R.id.textView_save);
         save.setOnClickListener(new View.OnClickListener() {
