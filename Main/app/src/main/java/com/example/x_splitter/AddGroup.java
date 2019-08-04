@@ -47,9 +47,10 @@ public class AddGroup extends AppCompatActivity {
 
         groupName = (EditText) findViewById(R.id.edit_text_group_name);
         friendName = (EditText) findViewById(R.id.edit_text_friend_name);
+        buttonAddFriend = (Button)findViewById(R.id.button_add);
         dbReference = FirebaseDatabase.getInstance().getReference("Groups");
         String ID = dbReference.push().getKey();
-        Map<String, Object> totalFriends = new HashMap<>();
+        HashMap<String, Object> totalFriends = new HashMap<String, Object>();
 
         //For Spinner
         ArrayAdapter<String> dataAdapter;
@@ -66,8 +67,13 @@ public class AddGroup extends AppCompatActivity {
                     //do nothing
                 }
                 else{
-                    totalFriends.put("true", item);
-                    Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                    buttonAddFriend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            totalFriends.put("1", item);
+                            Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             }
 
@@ -86,30 +92,6 @@ public class AddGroup extends AppCompatActivity {
             }
         });
 
-        buttonAddFriend = (Button)findViewById(R.id.button_add);
-        buttonAddFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String friend_name = friendName.getText().toString();
-                String group_name = groupName.getText().toString();
-                if(TextUtils.isEmpty(friend_name)){
-                    Toast.makeText(AddGroup.this, "Enter the friend name", Toast.LENGTH_SHORT).show();
-                }
-                dbReference.child(group_name).child("Members").setValue(friend_name).
-                        addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(AddGroup.this, "Group Created", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
-                                    Toast.makeText(AddGroup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-            }
-        });
-
 
         save = (TextView)findViewById(R.id.textView_save);
         save.setOnClickListener(new View.OnClickListener() {
@@ -120,7 +102,7 @@ public class AddGroup extends AppCompatActivity {
                     Toast.makeText(AddGroup.this, "Enter the group name", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    //AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
+                    AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
                     dbReference.child(ID).child(groupName.getText().toString()).child("Members").setValue(totalFriends).
                             addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
