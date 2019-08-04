@@ -56,11 +56,43 @@ public class AddGroup extends AppCompatActivity {
 
         groupName = (EditText) findViewById(R.id.edit_text_group_name);
         friendName = (EditText) findViewById(R.id.edit_text_friend_name);
+        buttonAddFriend = (Button)findViewById(R.id.button_add);
         dbReference = FirebaseDatabase.getInstance().getReference("Groups");
         String ID = dbReference.push().getKey();
-        Map<String, Object> totalFriends = new HashMap<>();
+        HashMap<String, Object> totalFriends = new HashMap<String, Object>();
 
         //For Spinner
+<<<<<<< HEAD
+        ArrayAdapter<String> dataAdapter;
+        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, retrieve());
+        spinnerFriendName = (Spinner) findViewById(R.id.spinner_friend_name);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerFriendName.setAdapter(dataAdapter);
+
+        spinnerFriendName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = spinnerFriendName.getSelectedItem().toString();
+                if(parent.getItemAtPosition(position).equals("Choose Friend")){
+                    //do nothing
+                }
+                else{
+                    buttonAddFriend.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            totalFriends.put("1", item);
+                            Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+=======
 //        ArrayAdapter<String> dataAdapter;
 //        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, retrieve());
 //        spinnerFriendName = (Spinner) findViewById(R.id.spinner_friend_name);
@@ -85,6 +117,7 @@ public class AddGroup extends AppCompatActivity {
 //
 //            }
 //        });
+>>>>>>> 805abae3ade4a004c117b8d1f41c0405d9fa9069
 
         btn_back = findViewById(R.id.image_button_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +128,8 @@ public class AddGroup extends AppCompatActivity {
             }
         });
 
+<<<<<<< HEAD
+=======
 //        buttonAddFriend = (Button)findViewById(R.id.button_add_friend);
 //        buttonAddFriend.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -119,6 +154,7 @@ public class AddGroup extends AppCompatActivity {
 //            }
 //        });
 
+>>>>>>> 805abae3ade4a004c117b8d1f41c0405d9fa9069
 
         save = (TextView)findViewById(R.id.textView_save);
         save.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +165,7 @@ public class AddGroup extends AppCompatActivity {
                     Toast.makeText(AddGroup.this, "Enter the group name", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    //AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
+                    AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
                     dbReference.child(ID).child(groupName.getText().toString()).child("Members").setValue(totalFriends).
                             addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
