@@ -1,5 +1,7 @@
 package com.example.x_splitter;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -24,7 +26,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -33,12 +37,17 @@ public class AddGroup extends AppCompatActivity {
 
     ImageButton btn_back;
     Button buttonAddFriend;
+    TextView friendSelected;
+    String[] friendList;
+    boolean[] checkedFriend;
+    ArrayList<Integer> groupFriend = new ArrayList<>();
     TextView save;
     EditText groupName;
     DatabaseReference dbReference;
     //Integer childCount;
     EditText friendName;
     Spinner spinnerFriendName;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -52,30 +61,30 @@ public class AddGroup extends AppCompatActivity {
         Map<String, Object> totalFriends = new HashMap<>();
 
         //For Spinner
-        ArrayAdapter<String> dataAdapter;
-        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, retrieve());
-        spinnerFriendName = (Spinner) findViewById(R.id.spinner_friend_name);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerFriendName.setAdapter(dataAdapter);
+//        ArrayAdapter<String> dataAdapter;
+//        dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, retrieve());
+//        spinnerFriendName = (Spinner) findViewById(R.id.spinner_friend_name);
+//        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinnerFriendName.setAdapter(dataAdapter);
 
-        spinnerFriendName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String item = spinnerFriendName.getSelectedItem().toString();
-                if(parent.getItemAtPosition(position).equals("Choose Friend")){
-                    //do nothing
-                }
-                else{
-                    totalFriends.put("true", item);
-                    Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        spinnerFriendName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                String item = spinnerFriendName.getSelectedItem().toString();
+//                if(parent.getItemAtPosition(position).equals("Choose Friend")){
+//                    //do nothing
+//                }
+//                else{
+//                    totalFriends.put("true", item);
+//                    Toast.makeText(getApplicationContext(), "Done", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
         btn_back = findViewById(R.id.image_button_back);
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -86,29 +95,29 @@ public class AddGroup extends AppCompatActivity {
             }
         });
 
-        buttonAddFriend = (Button)findViewById(R.id.button_add);
-        buttonAddFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String friend_name = friendName.getText().toString();
-                String group_name = groupName.getText().toString();
-                if(TextUtils.isEmpty(friend_name)){
-                    Toast.makeText(AddGroup.this, "Enter the friend name", Toast.LENGTH_SHORT).show();
-                }
-                dbReference.child(group_name).child("Members").setValue(friend_name).
-                        addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    Toast.makeText(AddGroup.this, "Group Created", Toast.LENGTH_SHORT).show();
-                                }
-                                else{
-                                    Toast.makeText(AddGroup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-            }
-        });
+//        buttonAddFriend = (Button)findViewById(R.id.button_add_friend);
+//        buttonAddFriend.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String friend_name = friendName.getText().toString();
+//                String group_name = groupName.getText().toString();
+//                if(TextUtils.isEmpty(friend_name)){
+//                    Toast.makeText(AddGroup.this, "Enter the friend name", Toast.LENGTH_SHORT).show();
+//                }
+//                dbReference.child(group_name).child("Members").setValue(friend_name).
+//                        addOnCompleteListener(new OnCompleteListener<Void>() {
+//                            @Override
+//                            public void onComplete(@NonNull Task<Void> task) {
+//                                if(task.isSuccessful()){
+//                                    Toast.makeText(AddGroup.this, "Group Created", Toast.LENGTH_SHORT).show();
+//                                }
+//                                else{
+//                                    Toast.makeText(AddGroup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
+//            }
+//        });
 
 
         save = (TextView)findViewById(R.id.textView_save);
@@ -135,6 +144,74 @@ public class AddGroup extends AppCompatActivity {
                 }
             }
          });
+
+
+
+        //my part_1
+
+        buttonAddFriend = findViewById(R.id.button_add_friend);
+        friendSelected = findViewById(R.id.tv_friend_selected);
+
+        //to convert arraylist to string[] array;
+        Object[] objectList = retrieve().toArray();
+        friendList = Arrays.copyOf(objectList,objectList.length,String[].class);
+
+        checkedFriend = new boolean[friendList.length];
+
+        buttonAddFriend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final  AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddGroup.this);
+                mBuilder.setTitle("Your Friends");
+                mBuilder.setMultiChoiceItems(friendList, checkedFriend, new DialogInterface.OnMultiChoiceClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                                if(isChecked){
+                                        groupFriend.add(position);
+                                    } else {
+                                        groupFriend.remove((Integer.valueOf(position)));
+                                    }
+                                }
+                });
+                        mBuilder.setCancelable(false);
+                        mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int position) {
+                                String item = "";
+                                for (int i=0; i<groupFriend.size();i++){
+                                    item = item + friendList[groupFriend.get(i)];
+                                    if (i != groupFriend.size()-1){
+                                        item = item + ",";
+                                    }
+                                }
+                                friendSelected.setText(item);
+                            }
+                        });
+
+                        mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int position) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+
+                        mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int position) {
+                                for(int i = 0; i < checkedFriend.length;i++){
+                                    checkedFriend[i] = false;
+                                    groupFriend.clear();
+                                    friendSelected.setText("");
+                                }
+                            }
+                        });
+
+                        AlertDialog mDialog = mBuilder.create();
+                        mDialog.show();
+            }
+        });
+
+        // end of my part_1
 
     }
 

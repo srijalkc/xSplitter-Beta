@@ -83,30 +83,53 @@
             android:hint="@string/group_name"
             android:inputType="textPersonName" />
 
-        <RelativeLayout
-            android:id="@+id/rl_add_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+
+        <Button
+            android:id="@+id/button_add_friend"
+            android:layout_width="110dp"
+            android:layout_height="30dp"
             android:layout_below="@+id/edit_text_group_name"
-            android:layout_marginTop="20dp">
+            android:layout_margin="20dp"
+            android:background="@drawable/settle_button"
+            android:text="@string/add_friend_group"
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textSize="14sp"
+            android:layout_centerInParent="true"/>
 
-            <ImageView
-                android:id="@+id/image_view_add_friend"
-                android:layout_width="36dp"
-                android:layout_height="30dp"
-                app:srcCompat="@drawable/add_group" />
+        <TextView
+            android:id="@+id/tv_friend_selected"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
+            android:textColor="@color/colorToolbarHead"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/button_add"
+            />
 
-            <Spinner
-                android:id="@+id/spinner_friend_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:background="@drawable/transaction_text_box"
-                android:layout_toEndOf="@+id/image_view_add_friend"
-                android:textColor="@color/Aqua"
-                android:textColorHint="@color/colorInsideHint"
-                android:textSize="16sp"
-                android:padding="5dp"/>
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/rl_add_group"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/edit_text_group_name"-->
+            <!--android:layout_marginTop="20dp">-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/image_view_add_friend"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--app:srcCompat="@drawable/add_group" />-->
+
+            <!--<Spinner-->
+            <!--android:id="@+id/spinner_friend_name"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:background="@drawable/transaction_text_box"-->
+            <!--android:layout_toEndOf="@+id/image_view_add_friend"-->
+            <!--android:textColor="@color/Aqua"-->
+            <!--android:textColorHint="@color/colorInsideHint"-->
+            <!--android:textSize="16sp"-->
+            <!--android:padding="5dp"/>-->
 
             <!--<ImageButton-->
             <!--android:id="@+id/btn_del_friend"-->
@@ -117,21 +140,7 @@
             <!--app:srcCompat="@drawable/trash"-->
             <!--android:onClick="onTrash"/>-->
 
-        </RelativeLayout>
-
-
-        <Button
-            android:id="@+id/button_add"
-            android:layout_width="110dp"
-            android:layout_height="30dp"
-            android:layout_below="@+id/rl_add_group"
-            android:layout_margin="20dp"
-            android:background="@drawable/settle_button"
-            android:text="@string/add_friend_group"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimary"
-            android:textSize="14sp"
-            android:layout_centerInParent="true"/>
+        <!--</RelativeLayout>-->
 
     </RelativeLayout>
 
