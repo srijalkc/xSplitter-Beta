@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class AdapterAddGroup extends RecyclerView.Adapter<AdapterAddGroup.AddGroupViewHolder> {
     private Context context;
     private ArrayList<ModelAddGroup> data;
-    private ArrayList<ModelAddGroup> checkedFriends = new ArrayList<>();
+    ArrayList<ModelAddGroup> checkedFriends = new ArrayList<>();
 
     public AdapterAddGroup(Context context, ArrayList<ModelAddGroup> data) {
         this.context = context;

@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -50,6 +52,7 @@ public class AddGroup extends AppCompatActivity {
     //Integer childCount;
     EditText friendName;
     Spinner spinnerFriendName;
+    StringBuffer sb = null;
 
 
     @Override
@@ -263,12 +266,22 @@ public class AddGroup extends AppCompatActivity {
         AdapterAddGroup adapterAddGroup = new AdapterAddGroup(this,retrieve());
         recyclerView.setAdapter(adapterAddGroup);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         FloatingActionButton fab_add_friend = findViewById(R.id.fab_addfriend);
         fab_add_friend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
+                sb = new StringBuffer();
 
+                for(ModelAddGroup m : adapterAddGroup.checkedFriends){
+                    sb.append(m.getEmail());
+                    sb.append("\n");
+                }
+
+                if(adapterAddGroup.checkedFriends.size()<0){
+                    Toast.makeText(AddGroup.this,"Please select friends",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         // end my part_2
@@ -277,6 +290,7 @@ public class AddGroup extends AppCompatActivity {
 
     public static ArrayList<ModelAddGroup> retrieve(){
         ArrayList<ModelAddGroup> friendLists = new ArrayList<>();
+        //friendLists.clear();
 //        friendLists.add(0, "Choose Friend");
         FirebaseDatabase.getInstance().getReference("Users").addValueEventListener(new ValueEventListener() {
             @Override
@@ -284,8 +298,10 @@ public class AddGroup extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
                     String name = (String) Objects.requireNonNull(data).get("email");
+                    Log.d("mytag",name);
                     friendLists.add(new ModelAddGroup(name, false));
                 }
+                System.out.println(friendLists);
             }
 
             @Override
@@ -293,6 +309,7 @@ public class AddGroup extends AppCompatActivity {
 
             }
         });
+        friendLists.add(new ModelAddGroup("Kathford",false));
         return friendLists;
     }
 }
