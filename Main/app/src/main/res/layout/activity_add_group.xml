@@ -92,14 +92,13 @@
             <!--android:layout_below="@+id/button_add_friend"-->
             <!--/>-->
 
-<<<<<<< HEAD
         <RelativeLayout
             android:id="@+id/rl_add_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/edit_text_group_name"
             android:layout_marginTop="20dp">
-=======
+
         <TextView
             android:id="@+id/tv_add_friend"
             android:layout_width="match_parent"
@@ -137,7 +136,6 @@
             <!--android:layout_height="wrap_content"-->
             <!--android:layout_below="@+id/edit_text_group_name"-->
             <!--android:layout_marginTop="20dp">-->
->>>>>>> df2c4b866363cc3a64f8664a1beed3027f2f3e22
 
             <!--<ImageView-->
             <!--android:id="@+id/image_view_add_friend"-->
