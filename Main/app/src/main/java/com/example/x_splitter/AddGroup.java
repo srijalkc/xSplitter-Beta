@@ -268,7 +268,7 @@ public class AddGroup extends AppCompatActivity {
         fab_add_friend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                
+
             }
         });
         // end my part_2
@@ -277,14 +277,14 @@ public class AddGroup extends AppCompatActivity {
 
     public static ArrayList<ModelAddGroup> retrieve(){
         ArrayList<ModelAddGroup> friendLists = new ArrayList<>();
-        friendLists.add(0, "Choose Friend");
+//        friendLists.add(0, "Choose Friend");
         FirebaseDatabase.getInstance().getReference("Users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
                     String name = (String) Objects.requireNonNull(data).get("email");
-                    friendLists.add(name);
+                    friendLists.add(new ModelAddGroup(name, false));
                 }
             }
 
