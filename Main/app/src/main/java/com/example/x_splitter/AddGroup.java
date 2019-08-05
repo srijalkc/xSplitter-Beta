@@ -17,9 +17,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -180,76 +183,100 @@ public class AddGroup extends AppCompatActivity {
 
 
 
+
         //my part_1
 
-        buttonAddFriend = findViewById(R.id.button_add_friend);
-        friendSelected = findViewById(R.id.tv_friend_selected);
+//        buttonAddFriend = findViewById(R.id.button_add_friend);
+//        friendSelected = findViewById(R.id.tv_friend_selected);
+//
+//        // convert arraylist to string[] array;
+//        Object[] objectList = retrieve().toArray();
+//        friendList = Arrays.copyOf(objectList,objectList.length,String[].class);
 
-        //to convert arraylist to string[] array;
-        Object[] objectList = retrieve().toArray();
-        friendList = Arrays.copyOf(objectList,objectList.length,String[].class);
+//        ArrayList<String> ar = retrieve();
+//        friendList= new String[ar.size()];
+//        for(int j = 0; j < ar.size(); j++){
+//            friendList[j] = ar.get(j);
+//        }
 
-        checkedFriend = new boolean[friendList.length];
-
-        buttonAddFriend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final  AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddGroup.this);
-                mBuilder.setTitle("Your Friends");
-                mBuilder.setMultiChoiceItems(friendList, checkedFriend, new DialogInterface.OnMultiChoiceClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
-                                if(isChecked){
-                                        groupFriend.add(position);
-                                    } else {
-                                        groupFriend.remove((Integer.valueOf(position)));
-                                    }
-                                }
-                });
-                        mBuilder.setCancelable(false);
-                        mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int position) {
-                                String item = "";
-                                for (int i=0; i<groupFriend.size();i++){
-                                    item = item + friendList[groupFriend.get(i)];
-                                    if (i != groupFriend.size()-1){
-                                        item = item + ",";
-                                    }
-                                }
-                                friendSelected.setText(item);
-                            }
-                        });
-
-                        mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int position) {
-                                dialogInterface.dismiss();
-                            }
-                        });
-
-                        mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int position) {
-                                for(int i = 0; i < checkedFriend.length;i++){
-                                    checkedFriend[i] = false;
-                                    groupFriend.clear();
-                                    friendSelected.setText("");
-                                }
-                            }
-                        });
-
-                        AlertDialog mDialog = mBuilder.create();
-                        mDialog.show();
-            }
-        });
+//        checkedFriend = new boolean[friendList.length];
+//
+//        buttonAddFriend.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                final  AlertDialog.Builder mBuilder = new AlertDialog.Builder(AddGroup.this);
+//                mBuilder.setTitle("Your Friends");
+//                mBuilder.setMultiChoiceItems(friendList, checkedFriend, new DialogInterface.OnMultiChoiceClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+//                                if(isChecked){
+//                                        groupFriend.add(position);
+//                                    } else {
+//                                        groupFriend.remove((Integer.valueOf(position)));
+//                                    }
+//                                }
+//                });
+//                        mBuilder.setCancelable(false);
+//                        mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int position) {
+//                                String item = "";
+//                                for (int i=0; i<groupFriend.size();i++){
+//                                    item = item + friendList[groupFriend.get(i)];
+//                                    if (i != groupFriend.size()-1){
+//                                        item = item + ",";
+//                                    }
+//                                }
+//                                friendSelected.setText(item);
+//                            }
+//                        });
+//
+//                        mBuilder.setNegativeButton("Dismiss", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int position) {
+//                                dialogInterface.dismiss();
+//                            }
+//                        });
+//
+//                        mBuilder.setNeutralButton("Clear all", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int position) {
+//                                for(int i = 0; i < checkedFriend.length;i++){
+//                                    checkedFriend[i] = false;
+//                                    groupFriend.clear();
+//                                    friendSelected.setText("");
+//                                }
+//                            }
+//                        });
+//
+//                        AlertDialog mDialog = mBuilder.create();
+//                        mDialog.show();
+//            }
+//        });
+//
 
         // end of my part_1
 
+        //my part_2
+
+        RecyclerView recyclerView = findViewById(R.id.rv_add_friend);
+        AdapterAddGroup adapterAddGroup = new AdapterAddGroup(this,retrieve());
+        recyclerView.setAdapter(adapterAddGroup);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        FloatingActionButton fab_add_friend = findViewById(R.id.fab_addfriend);
+        fab_add_friend.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                
+            }
+        });
+        // end my part_2
     }
 
-    public ArrayList<String> retrieve(){
-        ArrayList<String> friendLists = new ArrayList<>();
+
+    public static ArrayList<ModelAddGroup> retrieve(){
+        ArrayList<ModelAddGroup> friendLists = new ArrayList<>();
         friendLists.add(0, "Choose Friend");
         FirebaseDatabase.getInstance().getReference("Users").addValueEventListener(new ValueEventListener() {
             @Override
