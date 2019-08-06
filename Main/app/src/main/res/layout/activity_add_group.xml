@@ -107,7 +107,6 @@
             android:textColor="@color/colorToolbarHead"
             android:text="Add friends"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/edit_text_group_name"
             android:layout_marginTop="20dp"
             />
 

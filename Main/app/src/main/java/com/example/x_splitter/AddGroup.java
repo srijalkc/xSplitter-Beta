@@ -280,6 +280,13 @@ public class AddGroup extends AppCompatActivity {
                     sb.append(m.getEmail());
                     sb.append("\n");
                 }
+
+                if(adapterAddGroup.checkedFriends.size()>0){
+                    Toast.makeText(AddGroup.this,sb.toString(),Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(AddGroup.this,"Please select friends",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         // end my part_2
@@ -296,7 +303,6 @@ public class AddGroup extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
                     String name = (String) Objects.requireNonNull(data).get("email");
-                    Log.d(TAG,name);
                     friendLists.add(new ModelAddGroup(name, false));
                 }
                 System.out.println(friendLists);
