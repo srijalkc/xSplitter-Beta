@@ -45,7 +45,9 @@ public class AddGroup extends AppCompatActivity {
     DatabaseReference dbReference;
     //Integer childCount;
     EditText friendName;
+    String refId;
     Spinner spinnerFriendName;
+   // private final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     ArrayList sb;
     StringBuffer sbb =null;
 
@@ -61,6 +63,8 @@ public class AddGroup extends AppCompatActivity {
         dbReference = FirebaseDatabase.getInstance().getReference("Groups");
         String ID = dbReference.push().getKey();
         HashMap<String, Object> totalFriends = new HashMap<String, Object>();
+
+       // refId = randomAlphaNumeric(8);
 
         //For Spinner
 
@@ -163,12 +167,15 @@ public class AddGroup extends AppCompatActivity {
                     Toast.makeText(AddGroup.this, "Enter the group name", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
+                    //AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
                     dbReference.child(ID).child(groupName.getText().toString()).child("Members").setValue(sb).
                             addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                       GroupInfo groupInfo = new GroupInfo(ID, groupName.getText().toString());
+                                      FirebaseDatabase.getInstance().getReference("GroupName")
+                                             .child(ID).setValue(groupInfo);
                                         Toast.makeText(AddGroup.this, "Group Created", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(AddGroup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -178,7 +185,6 @@ public class AddGroup extends AppCompatActivity {
                 }
             }
          });
-
 
 
 
@@ -311,4 +317,16 @@ public class AddGroup extends AppCompatActivity {
         });
         return friendLists;
     }
+
+    /*
+    generate random value
+     */
+//    public String randomAlphaNumeric(int count) {
+//        StringBuilder builder = new StringBuilder();
+//        while (count-- != 0) {
+//            int character = (int)(Math.random()*ALPHA_NUMERIC_STRING.length());
+//            builder.append(ALPHA_NUMERIC_STRING.charAt(character));
+//        }
+//        return builder.toString();
+//    }
 }
