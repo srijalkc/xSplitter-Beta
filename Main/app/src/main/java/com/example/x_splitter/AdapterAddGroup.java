@@ -75,6 +75,7 @@ public class AdapterAddGroup extends RecyclerView.Adapter<AdapterAddGroup.AddGro
 
     @Override
     public int getItemCount() {
+
         return data.size();
     }
 }

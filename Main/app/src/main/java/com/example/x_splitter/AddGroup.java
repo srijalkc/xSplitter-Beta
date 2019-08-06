@@ -1,13 +1,8 @@
 package com.example.x_splitter;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -31,9 +26,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -53,7 +46,8 @@ public class AddGroup extends AppCompatActivity {
     //Integer childCount;
     EditText friendName;
     Spinner spinnerFriendName;
-    StringBuffer sb = null;
+    ArrayList sb;
+    StringBuffer sbb =null;
 
 
     @Override
@@ -170,7 +164,7 @@ public class AddGroup extends AppCompatActivity {
                 }
                 else {
                     AddGroupInfo groupInfo = new AddGroupInfo(totalFriends);
-                    dbReference.child(ID).child(groupName.getText().toString()).child("Members").setValue(totalFriends).
+                    dbReference.child(ID).child(groupName.getText().toString()).child("Members").setValue(sb).
                             addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -274,15 +268,17 @@ public class AddGroup extends AppCompatActivity {
         fab_add_friend.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                sb = new StringBuffer();
+                sb = new ArrayList();
+                sbb= new StringBuffer();
 
                 for(ModelAddGroup m : adapterAddGroup.checkedFriends){
-                    sb.append(m.getEmail());
-                    sb.append("\n");
+                    sb.add(m.getEmail());
+                    sbb.append(m.getEmail());
+                    sbb.append("\n");
                 }
 
                 if(adapterAddGroup.checkedFriends.size()>0){
-                    Toast.makeText(AddGroup.this,sb.toString(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddGroup.this,sbb.toString(),Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(AddGroup.this,"Please select friends",Toast.LENGTH_SHORT).show();
