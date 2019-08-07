@@ -49,19 +49,18 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         TextViewAmount = (EditText) findViewById(R.id.text_view_amount);
 
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
-        TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
+        //TextViewPaidBy = (EditText) findViewById(R.id.text_view_paidby);
         //TextViewEvent = (EditText) findViewById(R.id.text_view_event);
 
-        //SpinnerPaidBy = (Spinner) findViewById(R.id.spinner_paidby);
+        SpinnerPaidBy =  findViewById(R.id.spinner_paidby);
 
-        TextViewNote = (EditText) findViewById(R.id.text_view_note);
+        //TextViewNote = findViewById(R.id.text_view_note);
 
 
-        //Spinner spinner_split = findViewById(R.id.spinner_split);
+        Spinner spinner_split = findViewById(R.id.spinner_split);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-       // spinner_split.setAdapter(adapter);
-        //spinner_split.setOnItemSelectedListener(this);
+        spinner_split.setAdapter(adapter);
 
 
         TextViewDate = (TextView) findViewById(R.id.text_view_date);

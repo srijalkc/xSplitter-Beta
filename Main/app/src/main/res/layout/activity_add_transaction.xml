@@ -66,14 +66,14 @@
         android:id="@+id/layout_transaction_elements"
         android:layout_width="340dp"
         android:layout_height="450dp"
-        android:padding="20dp"
+        android:padding="40dp"
+        android:layout_marginTop="50dp"
         android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/layout_transaction_note"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_transaction_toolbar"
-        app:layout_constraintVertical_bias="0.3">
+        app:layout_constraintVertical_bias="1">
 
         <ImageView
             android:id="@+id/image_view_add_amount"
@@ -105,6 +105,7 @@
 
         <TextView
             android:id="@+id/text_view_date"
+            android:paddingTop="3dp"
             android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -139,28 +140,6 @@
             android:layout_below="@+id/image_view_date"
             android:layout_toEndOf="@+id/image_view_category" />
 
-        <ImageView
-            android:id="@+id/image_view_paid_by"
-            android:layout_width="36dp"
-            android:layout_height="30dp"
-            android:layout_margin="10dp"
-            android:layout_below="@+id/image_view_category"
-            app:srcCompat="@drawable/icon_paid_by" />
-
-        <EditText
-            android:id="@+id/text_view_paidby"
-            android:layout_width="240dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/transaction_text_box"
-            android:hint="Paid By"
-            android:paddingStart="20dp"
-            android:paddingEnd="0dp"
-            android:textColorHint="@color/colorInsideHint"
-            android:textSize="15sp"
-            android:layout_below="@+id/image_view_category"
-            android:layout_toEndOf="@+id/image_view_paid_by" />
-
 
         <ImageView
             android:id="@+id/image_view_group"
@@ -194,7 +173,7 @@
             android:layout_margin="10dp"
             android:layout_below="@+id/image_view_group"
             android:layout_toEndOf="@+id/image_view_event"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
 
         <ImageView
             android:id="@+id/image_view_paidby"
@@ -233,37 +212,37 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/layout_transaction_note"
-        android:layout_width="340dp"
-        android:layout_height="120dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_transaction_elements">
+    <!--<RelativeLayout-->
+        <!--android:id="@+id/layout_transaction_note"-->
+        <!--android:layout_width="340dp"-->
+        <!--android:layout_height="120dp"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toBottomOf="@+id/layout_transaction_elements">-->
 
-        <ImageView
-            android:id="@+id/image_view_note"
-            android:layout_width="36dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            app:srcCompat="@drawable/icon_note" />
+        <!--<ImageView-->
+            <!--android:id="@+id/image_view_note"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:layout_marginStart="10dp"-->
+            <!--app:srcCompat="@drawable/icon_note" />-->
 
-        <EditText
-            android:id="@+id/text_view_note"
-            android:layout_width="240dp"
-            android:layout_height="70dp"
-            android:layout_margin="20dp"
-            android:background="@drawable/transaction_text_box"
-            android:hint="Note"
-            android:inputType="text"
-            android:layout_toEndOf="@+id/image_view_note"
-            android:paddingTop="0dp"
-            android:textColorHint="@color/colorInsideHint"
-            android:textSize="15sp" />
+        <!--<EditText-->
+            <!--android:id="@+id/text_view_note"-->
+            <!--android:layout_width="240dp"-->
+            <!--android:layout_height="70dp"-->
+            <!--android:layout_margin="20dp"-->
+            <!--android:background="@drawable/transaction_text_box"-->
+            <!--android:hint="Note"-->
+            <!--android:inputType="text"-->
+            <!--android:layout_toEndOf="@+id/image_view_note"-->
+            <!--android:paddingTop="0dp"-->
+            <!--android:textColorHint="@color/colorInsideHint"-->
+            <!--android:textSize="15sp" />-->
 
-    </RelativeLayout>
+    <!--</RelativeLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

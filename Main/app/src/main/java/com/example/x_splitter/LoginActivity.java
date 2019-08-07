@@ -33,10 +33,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         Username = (EditText)findViewById(R.id.edit_text_login_username);
         Password = (EditText)findViewById(R.id.edit_text_login_password);
         ButtonLogin = (Button)findViewById(R.id.button_login);
-        ButtonLoginWithGmail = (Button)findViewById(R.id.button_login_gmail);
+        //ButtonLoginWithGmail = (Button)findViewById(R.id.button_login_gmail);
 
         ButtonLogin.setOnClickListener(this);
-        ButtonLoginWithGmail.setOnClickListener(this);
+        //ButtonLoginWithGmail.setOnClickListener(this);
 
 
 
@@ -79,14 +79,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        switch(v.getId()){
-            case R.id.button_login:
+        if(v.getId()==  R.id.button_login){
                 loginUser();
-                break;
-
-
-            case R.id.button_login_gmail:
-                break;
         }
     }
 }

@@ -51,12 +51,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
         editTextPassword = (EditText) findViewById(R.id.edit_text_password);
         editTextConfirmPassword = (EditText) findViewById(R.id.edit_text_confirm_password);
         buttonSignUp = (Button) findViewById(R.id.button_signup);
-        buttonSignUpGmail = (Button) findViewById(R.id.button_signup_gmail);
+        //buttonSignUpGmail = (Button) findViewById(R.id.button_signup_gmail);
 
         progressDialog = new ProgressDialog(this);
 
         buttonSignUp.setOnClickListener(this);
-        buttonSignUpGmail.setOnClickListener(this);
+        //buttonSignUpGmail.setOnClickListener(this);
 
     }
 
@@ -150,15 +150,8 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.button_signup:
+        if (v.getId()== R.id.button_signup) {
                 registerUser();
-                break;
-
-            case R.id.button_signup_gmail:
-
-
-                break;
 
         }
 
