@@ -68,14 +68,12 @@ public class AdapterAddGroup extends RecyclerView.Adapter<AdapterAddGroup.AddGro
                 }else if(!chk.isChecked()){
                     checkedFriends.remove(data.get(pos));
                 }
-
             }
         });
     }
 
     @Override
     public int getItemCount() {
-
         return data.size();
     }
 }
