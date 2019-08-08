@@ -3,10 +3,8 @@ package com.example.x_splitter;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,21 +33,22 @@ public class AddGroup extends AppCompatActivity {
 
     private static final String TAG = AddGroup.class.getSimpleName();
     ImageButton btn_back;
-    Button buttonAddFriend;
-    TextView friendSelected;
-    String[] friendList;
-    boolean[] checkedFriend;
+//    Button buttonAddFriend;
+//    TextView friendSelected;
+//    String[] friendList;
+//    boolean[] checkedFriend;
     ArrayList<Integer> groupFriend = new ArrayList<>();
     TextView save;
     EditText groupName;
     DatabaseReference dbReference;
     //Integer childCount;
     EditText friendName;
-    String refId;
-    Spinner spinnerFriendName;
+    //String refId;
+    //Spinner spinnerFriendName;
    // private final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     ArrayList sb;
     StringBuffer sbb =null;
+    String ID;
 
 
     @Override
@@ -61,7 +60,7 @@ public class AddGroup extends AppCompatActivity {
         friendName = (EditText) findViewById(R.id.edit_text_friend_name);
        // buttonAddFriend = (Button)findViewById(R.id.button_add_friend);
         dbReference = FirebaseDatabase.getInstance().getReference("Groups");
-        String ID = dbReference.push().getKey();
+        ID = dbReference.push().getKey();
         HashMap<String, Object> totalFriends = new HashMap<String, Object>();
 
        // refId = randomAlphaNumeric(8);
@@ -173,9 +172,8 @@ public class AddGroup extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                       GroupInfo groupInfo = new GroupInfo(ID, groupName.getText().toString());
-                                      FirebaseDatabase.getInstance().getReference("GroupName")
-                                             .child(ID).setValue(groupInfo);
+                                        GroupInfo groupInfo = new GroupInfo(ID, groupName.getText().toString());
+                                        FirebaseDatabase.getInstance().getReference("GroupName").child(ID).setValue(groupInfo);
                                         Toast.makeText(AddGroup.this, "Group Created", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(AddGroup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();

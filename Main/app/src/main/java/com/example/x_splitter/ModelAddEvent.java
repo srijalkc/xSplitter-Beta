@@ -3,6 +3,7 @@ package com.example.x_splitter;
 public class ModelAddEvent {
     String groupName;
     Boolean isSelectedEvent;
+    String ID;
 
     ModelAddEvent(){
 
@@ -11,6 +12,12 @@ public class ModelAddEvent {
     public ModelAddEvent(String groupName, Boolean isSelectedEvent) {
         this.groupName = groupName;
         this.isSelectedEvent = isSelectedEvent;
+    }
+
+    public ModelAddEvent(String groupName, Boolean isSelectedEvent, String ID) {
+        this.groupName = groupName;
+        this.isSelectedEvent = isSelectedEvent;
+        this.ID = ID;
     }
 
     public String getGroupName() {
@@ -27,5 +34,13 @@ public class ModelAddEvent {
 
     public void setSelectedEvent(Boolean selectedEvent) {
         isSelectedEvent = selectedEvent;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }
