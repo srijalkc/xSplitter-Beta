@@ -56,6 +56,9 @@ public class AddEvent extends AppCompatActivity {
             }
         });
 
+        ModelAddEvent model = new ModelAddEvent();
+        String GGID = model.getID();
+
         save = (TextView) findViewById(R.id.textView_save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +72,7 @@ public class AddEvent extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        EventInfo eventInfo = new EventInfo(ID, event_name, groupID);
+                                        EventInfo eventInfo = new EventInfo(ID, event_name, GGID);
                                         FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
                                         Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
                                     } else {
