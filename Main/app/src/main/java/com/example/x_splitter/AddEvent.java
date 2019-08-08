@@ -33,6 +33,7 @@ public class AddEvent extends AppCompatActivity {
     DatabaseReference dbReferenceEvent;
     ArrayList arEvent;
     String groupID;
+    String groupname;
 
     ImageButton btn_back;
 
@@ -68,7 +69,7 @@ public class AddEvent extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        EventInfo eventInfo = new EventInfo(ID, event_name,groupID);
+                                        EventInfo eventInfo = new EventInfo(ID, event_name, groupID);
                                         FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
                                         Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
                                     } else {
@@ -120,7 +121,7 @@ public class AddEvent extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
-                    String groupname = (String) Objects.requireNonNull(groupdata).get("GroupName");
+                    groupname = (String) Objects.requireNonNull(groupdata).get("GroupName");
                     groupID = (String) Objects.requireNonNull(groupdata).get("ID");
                     groupList.add(new ModelAddEvent(groupname, false, groupID));
                 }

@@ -5,10 +5,7 @@ public class EventInfo {
     String EventName;
     String GroupID;
 
-
-
     EventInfo(){
-
     }
 
     public EventInfo(String ID, String eventName, String groupID) {
