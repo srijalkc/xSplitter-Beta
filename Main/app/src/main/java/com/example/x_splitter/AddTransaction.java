@@ -26,8 +26,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 public class AddTransaction extends AppCompatActivity implements View.OnClickListener {
     TextView TextViewSave;
@@ -38,16 +36,17 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     Spinner SpinnerPaidBy;
     Spinner SpinnerGroup;
     Spinner SpinnerEvent;
-    List<GroupInfo> groupInfos;
     Spinner SpinnerSplit;
-//    EditText TextViewNote;
     ImageButton btn_back;
     DatePickerDialog.OnDateSetListener mDateSetListener;
     ArrayList totalGroupTransaction;
     ArrayList totalEventTransaction;
     ArrayList totalPaidByTransaction;
+    List<GroupInfo> groupInfos;
     String groupnametransaction;
+    String eventnametransaction;
     String groupnameID;
+    String eventnameID;
 
 
     DatabaseReference databaseTransaction;
@@ -61,63 +60,22 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
         btn_back = findViewById(R.id.image_button_back);
         SpinnerPaidBy =  findViewById(R.id.spinner_paidby);
+        SpinnerEvent = findViewById(R.id.spinner_event);
         totalGroupTransaction = new ArrayList();
         totalEventTransaction = new ArrayList();
 
         groupInfos = new ArrayList<>();
 
         databaseTransaction = FirebaseDatabase.getInstance().getReference("Transaction");
-
         TextViewAmount = (EditText) findViewById(R.id.text_view_amount);
-
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
 
-
-retrievegroup();
-
-//*************************Group Spinner***********************************************
-
-//***********************end of Group Spinner**********************************************
-
-
-//***********************Event Spinner*****************************************************
-        SpinnerEvent = findViewById(R.id.spinner_event);
-        ArrayAdapter<String> dataAdapterEvent= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, retrieveEvent());
-        dataAdapterEvent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        SpinnerEvent.setAdapter(dataAdapterEvent);
-        SpinnerEvent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String itemEvent = SpinnerGroup.getSelectedItem().toString();
-                if(parent.getItemAtPosition(position).equals("Choose Event")){
-                    //do Nothing
-                }
-                else{
-//                    totalEventTransaction.add(itemEvent);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-//***********************end of Event Spinner****************************************************
-
-
-//***********************PaidBy Spinner****************************************************
-
-
-//***********************end of PaidBy Spinner****************************************************
-
+        retrievegroup();
 
         Spinner spinner_split = findViewById(R.id.spinner_split);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_split.setAdapter(adapter);
-
-
-        TextViewDate = (TextView) findViewById(R.id.text_view_date);
 
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,6 +85,8 @@ retrievegroup();
             }
         });
 
+//***********************Date & Time***************************************************************
+        TextViewDate = (TextView) findViewById(R.id.text_view_date);
         mDateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -155,6 +115,7 @@ retrievegroup();
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.show();
     }
+//***********************End of Date & Time*********************************************************
 
     private void saveTransaction(){
         String amount = TextViewAmount.getText().toString().trim();
@@ -162,7 +123,6 @@ retrievegroup();
         //String event = TextViewEvent.getText().toString().trim();
         String category = TextViewCategory.getText().toString().trim();
         String paidBy = TextViewPaidBy.getText().toString().trim();
-        //String note = TextViewNote.getText().toString().trim();
 
         if(amount.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please enter Amount", Toast.LENGTH_SHORT).show();
@@ -206,16 +166,17 @@ retrievegroup();
 
     }
 
+//*********************** Group with Spinner****************************************************
     public ArrayList<String> retrievegroup(){
         ArrayList<String> groupListTranscation = new ArrayList<>();
+
         groupListTranscation.clear();
         groupListTranscation.add(0, "Choose Group");
         FirebaseDatabase.getInstance().getReference("GroupName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot1: dataSnapshot.getChildren()){
-                    Map<String, Object> groupdatatransaction = (Map<String, Object>) snapshot1.getValue();
 
+                for(DataSnapshot snapshot1: dataSnapshot.getChildren()){
                     groupListTranscation.add(groupnametransaction);
                     GroupInfo info = snapshot1.getValue(GroupInfo.class);
                     groupInfos.add(info);
@@ -241,9 +202,11 @@ retrievegroup();
                             if (parent.getItemAtPosition(position).equals("Choose Group")) {
                                 //do Nothing
                             } else {
-                                groupnametransaction = name.get(position);
+
                                 groupnameID = gId.get(position);
+                                groupnametransaction = name.get(position);
                                 retrievePaidBy(groupnameID, groupnametransaction);
+                                retrieveEvent(groupnameID);
                             }
                         }
 
@@ -263,19 +226,59 @@ retrievegroup();
         });
         return groupListTranscation;
     }
+//***********************End of Group**********************************************************
 
-    public ArrayList<String> retrieveEvent(){
+//***********************Event with Spinner****************************************************
+    public ArrayList<String> retrieveEvent(String id){
+
         ArrayList<String> eventListTransaction = new ArrayList<>();
         eventListTransaction.clear();
         eventListTransaction.add(0, "Choose Event");
         FirebaseDatabase.getInstance().getReference("EventName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                List<EventInfo> eventInfos  = new ArrayList<>();
                 for(DataSnapshot snapshot3 : dataSnapshot.getChildren()){
-                    Map<String, Object> eventdatatransaction = (Map<String, Object>) snapshot3.getValue();
-                    String eventnametransaction = (String) Objects.requireNonNull(eventdatatransaction).get("EventName");
-                    eventListTransaction.add(eventnametransaction);
+                    System.out.println("SnapShot : "+snapshot3.getValue().toString());
+                    EventInfo eventinfo = snapshot3.getValue(EventInfo.class);
+                    eventInfos.add(eventinfo);
                 }
+
+                runOnUiThread(() -> {
+                    List<String> eId = new ArrayList<>();
+                    List<String> eventname = new ArrayList<>();
+                    List<String> grpId = new ArrayList<>();
+                    for (int i = 0; i < eventInfos.size(); i++) {
+                                if (eventInfos.get(i).GroupID.equals(id)){
+                                    eId.add(eventInfos.get(i).ID);
+                                    grpId.add(eventInfos.get(i).GroupID);
+                                    eventname.add(eventInfos.get(i).EventName);
+                                }
+                    }
+
+                ArrayAdapter<String> dataAdapterEvent= new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, eventname);
+                dataAdapterEvent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                SpinnerEvent.setAdapter(dataAdapterEvent);
+                SpinnerEvent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                String itemEvent = SpinnerGroup.getSelectedItem().toString();
+                        if(parent.getItemAtPosition(position).equals("Choose Event")){
+                            //do Nothing
+                        }
+                        else{
+                            eventnameID = eId.get(position);
+                            eventnametransaction = eventname.get(position);
+
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+                });
             }
 
             @Override
@@ -285,12 +288,10 @@ retrievegroup();
         });
         return eventListTransaction;
     }
-    public ArrayList<String> retrievePaidBy(String id,String name){
-//        GroupInfo ginfo = new GroupInfo();
-//        groupnameID = ginfo.getID();
-//        System.out.println("Id : "+groupnameID);
-//        System.out.println("Name : "+groupnametransaction);
+//***********************End of Event**********************************************************
 
+//***********************PaidBy with Spinner****************************************************
+    public ArrayList<String> retrievePaidBy(String id,String name){
         final ArrayList<String> paidByListTransaction = new ArrayList<>();
         paidByListTransaction.clear();
         paidByListTransaction.add(0, "Choose User");
@@ -301,10 +302,8 @@ retrievegroup();
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         List<String> groupMembers = new ArrayList<>();
                         for(DataSnapshot snapshot4 : dataSnapshot.getChildren()){
-//                            Map<String, Object> paidbydatatransaction = (Map<String, Object>) snapshot4.getValue();
                             groupMembers.add(snapshot4.getValue().toString());
                         }
-
 
                         runOnUiThread(() -> {
                             paidByListTransaction.addAll(groupMembers);
@@ -331,8 +330,6 @@ retrievegroup();
                                 }
                             });
                         });
-
-
                     }
 
                     @Override
@@ -342,5 +339,5 @@ retrievegroup();
                 });
     return paidByListTransaction;
     }
-
 }
+//***********************End of PaidBy**********************************************************

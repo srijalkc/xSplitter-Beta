@@ -32,7 +32,7 @@ public class AddEvent extends AppCompatActivity {
     TextView save;
     DatabaseReference dbReferenceEvent;
     ArrayList arEvent;
-
+    String groupID;
 
     ImageButton btn_back;
 
@@ -68,7 +68,7 @@ public class AddEvent extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        EventInfo eventInfo = new EventInfo(ID, event_name);
+                                        EventInfo eventInfo = new EventInfo(ID, event_name,groupID);
                                         FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
                                         Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
                                     } else {
@@ -112,7 +112,7 @@ public class AddEvent extends AppCompatActivity {
     }
 
 
-    public static ArrayList<ModelAddEvent> retrieveEvents() {
+    public  ArrayList<ModelAddEvent> retrieveEvents() {
         ArrayList<ModelAddEvent> groupList = new ArrayList<>();
         groupList.clear();
         FirebaseDatabase.getInstance().getReference("GroupName").addValueEventListener(new ValueEventListener() {
@@ -121,7 +121,7 @@ public class AddEvent extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
                     String groupname = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                    String groupID = (String) Objects.requireNonNull(groupdata).get("ID");
+                    groupID = (String) Objects.requireNonNull(groupdata).get("ID");
                     groupList.add(new ModelAddEvent(groupname, false, groupID));
                 }
             }

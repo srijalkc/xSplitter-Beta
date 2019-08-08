@@ -3,9 +3,17 @@ package com.example.x_splitter;
 public class EventInfo {
     String ID;
     String EventName;
+    String GroupID;
 
-    public EventInfo(String ID, String EventName) {
+
+
+    EventInfo(){
+
+    }
+
+    public EventInfo(String ID, String eventName, String groupID) {
         this.ID = ID;
-        this.EventName = EventName;
+        EventName = eventName;
+        GroupID = groupID;
     }
 }
