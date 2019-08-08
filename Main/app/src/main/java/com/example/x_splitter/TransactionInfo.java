@@ -6,18 +6,16 @@ public class TransactionInfo {
     //String event;
     String category;
     String paidBy;
-    String note;
 
     public TransactionInfo() {
     }
 
 
-    public TransactionInfo(String amount, String date, String category, String paidBy, String note) {
+    public TransactionInfo(String amount, String date, String category, String paidBy) {
         this.amount = amount;
         this.date = date;
         this.category = category;
         this.paidBy = paidBy;
-        this.note = note;
     }
 }
 

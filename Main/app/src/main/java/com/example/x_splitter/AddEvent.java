@@ -68,6 +68,8 @@ public class AddEvent extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
+                                        EventInfo eventInfo = new EventInfo(ID, event_name);
+                                        FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
                                         Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
                                     } else {
                                         Toast.makeText(AddEvent.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -93,7 +95,7 @@ public class AddEvent extends AppCompatActivity {
                 StringBuffer sbEvent = new StringBuffer();
 
                 for(ModelAddEvent me : adapterAddEvent.checkedGroups){
-                    arEvent.add(me.getGroupName());
+                    arEvent.add(me.getID());
                     sbEvent.append(me.getGroupName());
                     sbEvent.append("\n");
                 }
@@ -119,7 +121,8 @@ public class AddEvent extends AppCompatActivity {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
                     String groupname = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                    groupList.add(new ModelAddEvent(groupname, false));
+                    String groupID = (String) Objects.requireNonNull(groupdata).get("ID");
+                    groupList.add(new ModelAddEvent(groupname, false, groupID));
                 }
             }
 
