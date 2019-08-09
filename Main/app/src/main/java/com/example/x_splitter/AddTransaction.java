@@ -238,6 +238,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<EventInfo> eventInfos  = new ArrayList<>();
+
                 for(DataSnapshot snapshot3 : dataSnapshot.getChildren()){
                     System.out.println("SnapShot : "+snapshot3.getValue().toString());
                     EventInfo eventinfo = snapshot3.getValue(EventInfo.class);
@@ -249,6 +250,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     List<String> eventname = new ArrayList<>();
                     List<String> grpId = new ArrayList<>();
                     for (int i = 0; i < eventInfos.size(); i++) {
+                        //System.out.println("ID : " + eventInfos.get(i).GroupID.toString());
                                 if (eventInfos.get(i).GroupID.equals(id)){
                                     eId.add(eventInfos.get(i).ID);
                                     grpId.add(eventInfos.get(i).GroupID);
