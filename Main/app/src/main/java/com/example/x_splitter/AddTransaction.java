@@ -32,7 +32,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     EditText TextViewAmount;
     TextView TextViewDate;
     EditText TextViewCategory;
-    EditText TextViewPaidBy;
     Spinner SpinnerPaidBy;
     Spinner SpinnerGroup;
     Spinner SpinnerEvent;
@@ -49,6 +48,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     String eventnameID;
     String se;
     String su;
+    String itemPaidBy;
 
 
     DatabaseReference databaseTransaction;
@@ -95,7 +95,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     //do Nothing
                 }
                 else if(parent.getItemAtPosition(position).equals("Split Equally")){
-
                     Toast.makeText(AddTransaction.this,"Split Equally",Toast.LENGTH_SHORT).show();
                 }
                 else if(parent.getItemAtPosition(position).equals("Split Unequally")){
@@ -147,9 +146,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     private void saveTransaction(){
         String amount = TextViewAmount.getText().toString().trim();
         String date = TextViewDate.getText().toString().trim();
-        //String event = TextViewEvent.getText().toString().trim();
         String category = TextViewCategory.getText().toString().trim();
-        String paidBy = TextViewPaidBy.getText().toString().trim();
+
 
         if(amount.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please enter Amount", Toast.LENGTH_SHORT).show();
@@ -172,9 +170,14 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //        }
 
         String id = databaseTransaction.push().getKey();
+        String id1 = FirebaseDatabase.getInstance().getReference("TransactionEvent").push().getKey();
         //TransactionInfo transactionInfo = new TransactionInfo(amount, date, event, category, paidBy, note);
-        TransactionInfo transactionInfo = new TransactionInfo(amount, date, category, paidBy);
+        TransactionInfo transactionInfo = new TransactionInfo
+                (amount, date, category, groupnametransaction, eventnametransaction, itemPaidBy);
+        TransactionInfo transactionInfo1 = new TransactionInfo(itemPaidBy, amount);
         databaseTransaction.child(id).setValue(transactionInfo);
+        FirebaseDatabase.getInstance().getReference("TransactionEvent")
+                .child(groupnameID).child(eventnameID).child(id1).setValue(transactionInfo1);
         Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
 
     }
@@ -343,7 +346,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                             SpinnerPaidBy.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id1) {
-                                    String itemPaidBy = SpinnerPaidBy.getSelectedItem().toString();
+                                    itemPaidBy = SpinnerPaidBy.getSelectedItem().toString();
                                     if(parent.getItemAtPosition(position).equals("Choose User")){
                                         //do Nothing
                                     }
