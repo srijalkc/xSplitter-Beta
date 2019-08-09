@@ -27,7 +27,6 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         //check if it is opened !st time or not
 
         if(restorePrefData()){
@@ -72,6 +71,29 @@ public class IntroActivity extends AppCompatActivity {
         //setup tablayout with viewpager
 
         tabIndicator.setupWithViewPager(screenPager);
+
+        screenPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener(){
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if(position<mList.size()-1){
+                    btnNext.setEnabled(true);
+                    btnNext.setVisibility(View.VISIBLE);
+                }
+                if(position==mList.size()-1){
+                    loadLastScreen();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         //next button click listener
 
