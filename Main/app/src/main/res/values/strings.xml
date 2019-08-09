@@ -26,6 +26,7 @@
     <string name="profile_name">Profile name</string>
 
     <string-array name="splits">
+        <item> Choose Splitting</item>>
         <item> Split Equally</item>
         <item> Split Unequally</item>
     </string-array>

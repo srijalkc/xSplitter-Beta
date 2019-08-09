@@ -47,6 +47,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     String eventnametransaction;
     String groupnameID;
     String eventnameID;
+    String se;
+    String su;
 
 
     DatabaseReference databaseTransaction;
@@ -70,13 +72,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         TextViewAmount = (EditText) findViewById(R.id.text_view_amount);
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
 
-        retrievegroup();
-
-        Spinner spinner_split = findViewById(R.id.spinner_split);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_split.setAdapter(adapter);
-
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +79,38 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                 AddTransaction.super.onBackPressed();
             }
         });
+
+        retrievegroup();
+
+        Spinner spinner_split = findViewById(R.id.spinner_split);
+        se = " Split Equally";
+        su = " Split Unequally";
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_split.setAdapter(adapter);
+        spinner_split.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent.getItemAtPosition(position).equals("Choose Splitting")){
+                    //do Nothing
+                }
+                else if(parent.getItemAtPosition(position).equals("Split Equally")){
+
+                    Toast.makeText(AddTransaction.this,"Split Equally",Toast.LENGTH_SHORT).show();
+                }
+                else if(parent.getItemAtPosition(position).equals("Split Unequally")){
+                    Toast.makeText(AddTransaction.this,"Selected Unequally",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
 
 //***********************Date & Time***************************************************************
         TextViewDate = (TextView) findViewById(R.id.text_view_date);
