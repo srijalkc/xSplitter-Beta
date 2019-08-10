@@ -1,7 +1,9 @@
 package com.example.x_splitter;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -136,6 +138,13 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if(task.isSuccessful()){
                                                         Toast.makeText(getApplicationContext(), "User Registered Successful. Please Verify Your Email", Toast.LENGTH_SHORT).show();
+                                                        new Handler().postDelayed(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                                                finish();
+                                                            }
+                                                        }, 2000);
                                                     }
                                                     else{
                                                         Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
