@@ -89,6 +89,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/transaction_text_box"
             android:hint="Amount"
+            android:inputType="numberDecimal"
             android:paddingStart="20dp"
             android:paddingEnd="0dp"
             android:textColorHint="@color/colorInsideHint"
