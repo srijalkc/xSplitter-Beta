@@ -276,8 +276,8 @@ public class AddGroup extends AppCompatActivity {
                 sbb= new StringBuffer();
 
                 for(ModelAddGroup m : adapterAddGroup.checkedFriends){
-                    sb.add(m.getEmail());
-                    sbb.append(m.getEmail());
+                    sb.add(m.getusername());
+                    sbb.append(m.getusername());
                     sbb.append("\n");
                 }
 
@@ -302,7 +302,7 @@ public class AddGroup extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
-                    String name = (String) Objects.requireNonNull(data).get("email");
+                    String name = (String) Objects.requireNonNull(data).get("username");
                     friendLists.add(new ModelAddGroup(name, false));
                 }
                 System.out.println(friendLists);
