@@ -61,40 +61,33 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/add_event"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_add_event_toolbar"
-        app:layout_constraintVertical_bias="0.07"
-        app:layout_constraintHorizontal_bias="0.5">
-
-        <EditText
-            android:id="@+id/edit_text_event_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:ems="20"
-            android:hint="Event name"
-            android:inputType="textPersonName"
-            app:layout_constraintBottom_toTopOf="@+id/layout_add_event"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <RelativeLayout
-            android:id="@+id/layout_add_event"
-            android:layout_width="wrap_content"
+            android:id="@+id/add_event"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:background="@color/colorPrimary"
+            android:padding="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_event_name">
+            app:layout_constraintTop_toBottomOf="@+id/layout_add_event_toolbar"
+            app:layout_constraintVertical_bias="0.05">
+
+
+            <EditText
+                android:id="@+id/edit_text_event_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:ems="20"
+                android:hint="Event name"
+                android:inputType="textPersonName"
+                app:layout_constraintBottom_toTopOf="@+id/layout_add_event"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!--<ImageView-->
                 <!--android:id="@+id/image_view_add_group"-->
@@ -122,6 +115,7 @@
                 android:textSize="16sp"
                 android:textColor="@color/colorToolbarHead"
                 android:text="Add Groups"
+                android:layout_below="@+id/edit_text_event_name"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 />
@@ -135,25 +129,20 @@
 
         </RelativeLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_addGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/add_button"
-            android:backgroundTint="@android:color/transparent"
-            android:src="@drawable/add_button"
-            app:borderWidth="0dp"
-            app:elevation="3dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.9"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:maxImageSize="56dp" />
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_addGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/add_button"
+        android:backgroundTint="@android:color/transparent"
+        android:src="@drawable/add_button"
+        app:borderWidth="0dp"
+        app:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:maxImageSize="56dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
