@@ -13,4 +13,5 @@ public class EventInfo {
         EventName = eventName;
         GroupID = groupID;
     }
+
 }

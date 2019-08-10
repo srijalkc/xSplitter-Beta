@@ -31,7 +31,7 @@ public class IntroActivity extends AppCompatActivity {
 
         if(restorePrefData()){
             //open getStarted page
-            Intent getstarted = new Intent(getApplicationContext(),Home.class);
+            Intent getstarted = new Intent(getApplicationContext(), Home.class);
             startActivity(getstarted);
             finish();
         }
