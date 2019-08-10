@@ -2,7 +2,15 @@ package com.example.x_splitter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
@@ -10,20 +18,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.Objects;
 
 public class Event extends AppCompatActivity {
     FloatingActionButton fab_add;
-    private static String GN;
+    static String GN;
     static String ID;
     private static final int Activity_num = 3; // for recognizing menu item number
 
@@ -54,29 +55,28 @@ public class Event extends AppCompatActivity {
     public static ArrayList<ModelHomeEvent> getEventData(){
         ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
         modelHomeEvents.clear();
-        FirebaseDatabase.getInstance().getReference("GroupName").child(ID).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
 
-                    GN = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                }
-                }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
         FirebaseDatabase.getInstance().getReference("EventName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> eventdata = (Map<String, Object>) snapshot.getValue();
                     String eventname = (String) Objects.requireNonNull(eventdata).get("EventName");
-                     ID = (String) Objects.requireNonNull(eventdata).get("GroupID");
+                    ID = (String) Objects.requireNonNull(eventdata).get("GroupID");
+                    FirebaseDatabase.getInstance().getReference("GroupName").child(ID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
+                                GN = (String) Objects.requireNonNull(groupdata).get("GroupName");
+                            }
+                        }
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
                     modelHomeEvents.add(new ModelHomeEvent(eventname, GN,"Not Settled","123.0","12.0"));
                 }
             }
@@ -86,7 +86,6 @@ public class Event extends AppCompatActivity {
 
             }
         });
-
 //
 //        modelHomeEvents.add(new ModelHomeEvent("Tour", "Kathford","Not Settled","123.0","12.0"));
 //        modelHomeEvents.add(new ModelHomeEvent("Birthday","Gang", "Not Settled", "234.0","123.7"));
