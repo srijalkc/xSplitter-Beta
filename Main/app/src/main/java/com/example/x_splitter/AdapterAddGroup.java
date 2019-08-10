@@ -55,7 +55,7 @@ public class AdapterAddGroup extends RecyclerView.Adapter<AdapterAddGroup.AddGro
 
     @Override
     public void onBindViewHolder(@NonNull AddGroupViewHolder holder, int position) {
-        holder.addFriendTxt.setText(data.get(position).getEmail());
+        holder.addFriendTxt.setText(data.get(position).getusername());
         holder.chk_add_friend.setChecked(data.get(position).isSelected());
 
         holder.setItemClickListener(new ItemClickListener(){

@@ -49,23 +49,23 @@ public class Home extends AppCompatActivity {
 
         private ArrayList<Object> getObject() {
             objects.add(getGroupData().get(0));
-            objects.add(Event.getEventData().get(0));
+            objects.add(getEventData().get(0));
             return objects;
         }
 
 
-//        public static ArrayList<ModelHomeEvent> getEventData(){
-//            ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
-//
-//            modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0"));
-//            modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7"));
-//            modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0"));
-//            modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0"));
-//            modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7"));
-//            modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0"));
-//
-//            return modelHomeEvents;
-//        }
+       public static ArrayList<ModelHomeEvent> getEventData(){
+            ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
+
+            modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0","345"));
+            modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7", "545"));
+            modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0", "9687"));
+            modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0", "967896"));
+            modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7","9687"));
+            modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0","765"));
+
+            return modelHomeEvents;
+        }
 
 
         public static ArrayList<ModelHomeGroup> getGroupData() {
