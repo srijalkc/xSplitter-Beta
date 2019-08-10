@@ -7,6 +7,15 @@ public class TransactionInfo {
     String group;
     String event;
     String paidBy;
+    String amountToPay;
+    String amountToGet;
+    String amountInvested;
+
+    public TransactionInfo(String amountToPay, String amountToGet, String amountInvested) {
+        this.amountToPay = amountToPay;
+        this.amountToGet = amountToGet;
+        this.amountInvested = amountInvested;
+    }
 
     public TransactionInfo(String amount, String date, String category, String group, String event, String paidBy) {
         this.amount = amount;

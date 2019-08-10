@@ -50,6 +50,9 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     String se;
     String su;
     String itemPaidBy;
+    String amountToPay = "0";
+    String amountToGet = "0";
+    String amountInvested="0";
 
 
     DatabaseReference databaseTransaction;
@@ -96,6 +99,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     //do Nothing
                 }
                 else if(parent.getItemAtPosition(position).equals("Split Equally")){
+
                     Toast.makeText(AddTransaction.this,"Split Equally",Toast.LENGTH_SHORT).show();
                 }
                 else if(parent.getItemAtPosition(position).equals("Split Unequally")){
@@ -172,15 +176,28 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
         String id = databaseTransaction.push().getKey();
         String id1 = FirebaseDatabase.getInstance().getReference("TransactionEvent").push().getKey();
+        String id2 = FirebaseDatabase.getInstance().getReference("TransactionUnequal").push().getKey();
         //TransactionInfo transactionInfo = new TransactionInfo(amount, date, event, category, paidBy, note);
         TransactionInfo transactionInfo = new TransactionInfo
                 (amount, date, category, groupnametransaction, eventnametransaction, itemPaidBy);
         TransactionInfo transactionInfo1 = new TransactionInfo(itemPaidBy, amount);
+        TransactionInfo transactionInfo2 = new TransactionInfo(amountToPay, amountToGet, amount);
         databaseTransaction.child(id).setValue(transactionInfo);
         FirebaseDatabase.getInstance().getReference("TransactionEvent")
                 .child(groupnameID).child(eventnameID).child(id1).setValue(transactionInfo1);
         Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+<<<<<<< HEAD
+
+
+
+
+        FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+                .child(groupnameID).child(eventnameID).child(itemPaidBy).setValue(transactionInfo2);
+        Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+
+=======
         AddTransaction.super.onBackPressed();
+>>>>>>> a14031e90b0fc3b55209e5a6a8f7d6eaa78ab3dd
     }
 
     @Override
