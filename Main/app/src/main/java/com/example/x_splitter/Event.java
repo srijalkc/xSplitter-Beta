@@ -59,17 +59,22 @@ public class Event extends AppCompatActivity {
         FirebaseDatabase.getInstance().getReference("EventName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Map<String, Object> eventdata = (Map<String, Object>) snapshot.getValue();
                     String eventname = (String) Objects.requireNonNull(eventdata).get("EventName");
                     ID = (String) Objects.requireNonNull(eventdata).get("GroupID");
                     FirebaseDatabase.getInstance().getReference("GroupName").child(ID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
+
+                                Map<String, Object> groupdata = (Map<String, Object>) dataSnapshot.getValue();
+                                System.out.println(groupdata);
                                 GN = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                            }
+                                System.out.println(GN);
+                            modelHomeEvents.add(new ModelHomeEvent(eventname, GN, "Not Settled", "123.0", "12.0"));
+
+
+
                         }
 
                         @Override
@@ -77,7 +82,10 @@ public class Event extends AppCompatActivity {
 
                         }
                     });
-                    modelHomeEvents.add(new ModelHomeEvent(eventname, GN,"Not Settled","123.0","12.0"));
+
+
+
+
                 }
             }
 
