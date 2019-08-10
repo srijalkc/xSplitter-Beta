@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class Profile extends AppCompatActivity {
@@ -25,6 +26,7 @@ public class Profile extends AppCompatActivity {
     private TextView mProfileEmail;
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
+    private Button logout_button;
 
 
     FloatingActionButton fab_add;
@@ -38,13 +40,21 @@ public class Profile extends AppCompatActivity {
 
         mProfileName=(TextView)findViewById(R.id.profile_name);
         mProfileEmail=(TextView)findViewById(R.id.profile_email);
-
+        logout_button = (Button) findViewById(R.id.logout_button);
 
         firebaseAuth=FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("Users");
       //  String user = firebaseAuth.getCurrentUser().getUid();
 
-
+        logout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(Profile.this, GetStartedActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);//makesure user cant go back
+                startActivity(intent);
+            }
+        });
 
         mDatabase.child(firebaseAuth.getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
             @Override

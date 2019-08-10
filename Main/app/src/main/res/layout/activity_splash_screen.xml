@@ -23,7 +23,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.383"
-        app:srcCompat="@drawable/xsplitter_logo"
-        tools:srcCompat="@drawable/xsplitter_logo" />
+        app:srcCompat="@drawable/xplitter_logo"
+        tools:srcCompat="@drawable/xplitter_logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
