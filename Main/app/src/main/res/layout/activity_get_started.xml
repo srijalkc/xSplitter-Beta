@@ -22,8 +22,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.272"
-        app:srcCompat="@drawable/xsplitter_logo"
-        tools:srcCompat="@drawable/xsplitter_logo" />
+        app:srcCompat="@drawable/xplitter_logo"
+        tools:srcCompat="@drawable/xplitter_logo" />
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_login_signup"

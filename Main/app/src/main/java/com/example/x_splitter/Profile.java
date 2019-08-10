@@ -26,7 +26,7 @@ public class Profile extends AppCompatActivity {
     private TextView mProfileEmail;
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
-    private Button logout_button;
+    private TextView logout_button;
 
 
     FloatingActionButton fab_add;
@@ -40,7 +40,7 @@ public class Profile extends AppCompatActivity {
 
         mProfileName=(TextView)findViewById(R.id.profile_name);
         mProfileEmail=(TextView)findViewById(R.id.profile_email);
-        logout_button = (Button) findViewById(R.id.logout_button);
+        logout_button =  findViewById(R.id.logout_button);
 
         firebaseAuth=FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference("Users");
