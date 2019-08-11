@@ -68,9 +68,9 @@ public class Event extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                                 Map<String, Object> groupdata = (Map<String, Object>) dataSnapshot.getValue();
-                                System.out.println(groupdata);
+                               // System.out.println(groupdata);
                                 GN = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                                System.out.println(GN);
+                              //  System.out.println(GN);
                             modelHomeEvents.add(new ModelHomeEvent(eventname, GN, "Not Settled", "123.0", "12.0"));
 
 
