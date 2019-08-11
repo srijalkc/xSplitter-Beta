@@ -56,20 +56,20 @@ public class Home extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-    private ArrayList<Object> getObject() {
-        objects.add(getGroupData().get(0));
-        objects.add(getEventData().get(0));
-        return objects;
-    }
-//        public ArrayList<Object> getObject() {
-//            ArrayList<ModelHomeEvent> event = getEventData();
-//            ArrayList<ModelHomeGroup> group = getGroupData();
-//
-//            objects.addAll(group);
-//            objects.addAll(event);
-//            System.out.println(objects);
-//            return objects;
-//        }
+//    private ArrayList<Object> getObject() {
+//        objects.add(getGroupData().get(0));
+//        objects.add(getEventData().get(0));
+//        return objects;
+//    }
+        public ArrayList<Object> getObject() {
+            ArrayList<ModelHomeEvent> event = getEventData();
+            ArrayList<ModelHomeGroup> group = getGroupData();
+
+            objects.addAll(group);
+            objects.addAll(event);
+            System.out.println(objects);
+            return objects;
+        }
 
 
        public static ArrayList<ModelHomeEvent> getEventData(){
