@@ -21,6 +21,7 @@
         android:layout_below="@+id/tv_popup_title"/>
 
     <LinearLayout
+        android:id="@+id/ll_unequal_split"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:orientation="horizontal"
@@ -45,4 +46,38 @@
             />
 
     </LinearLayout>
+    <TextView
+        android:id="@+id/btn_ok_unequal_split"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:text="Ok"
+        android:textSize="16sp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/ll_unequal_split"
+        android:layout_toStartOf="@+id/btn_cancel_unequal_split"/>
+    <TextView
+        android:id="@+id/btn_cancel_unequal_split"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:text="Cancel"
+        android:textSize="16sp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@+id/ll_unequal_split"
+        android:layout_alignParentEnd="true"/>
 </RelativeLayout>

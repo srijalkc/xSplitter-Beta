@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +27,8 @@ public class FragmentUnequalSplit extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.unequal_split_popup,container,false);
 
+        TextView btn_ok = view.findViewById(R.id.btn_ok_unequal_split);
+        TextView btn_cancel = view.findViewById(R.id.btn_cancel_unequal_split);
         RecyclerView recyclerView = view.findViewById(R.id.rv_split_unequal);
         AdapterUnequalSplit adapterGroup = new AdapterUnequalSplit(this.context,memberData);
         recyclerView.setAdapter(adapterGroup);
