@@ -1,6 +1,7 @@
 package com.example.x_splitter;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -15,7 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -51,11 +56,10 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     String itemPaidBy;
     String amountToPay = "0";
     String amountToGet = "0";
-    String amountInvested="0";
+    String amountInvested = "0";
 
 
     DatabaseReference databaseTransaction;
-
 
 
     @Override
@@ -64,7 +68,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_add_transaction);
 
         btn_back = findViewById(R.id.image_button_back);
-        SpinnerPaidBy =  findViewById(R.id.spinner_paidby);
+        SpinnerPaidBy = findViewById(R.id.spinner_paidby);
         SpinnerEvent = findViewById(R.id.spinner_event);
         totalGroupTransaction = new ArrayList();
         totalEventTransaction = new ArrayList();
@@ -88,23 +92,22 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         Spinner spinner_split = findViewById(R.id.spinner_split);
         se = " Split Equally";
         su = " Split Unequally";
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.splits, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_split.setAdapter(adapter);
         spinner_split.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Choose Splitting")){
+                if (parent.getItemAtPosition(position).equals("Choose Splitting")) {
                     //do Nothing
-                }
-                else if(parent.getItemAtPosition(position).equals("Split Equally")){
+                } else if (parent.getItemAtPosition(position).equals("Split Equally")) {
 
-                    Toast.makeText(AddTransaction.this,"Split Equally",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddTransaction.this, "Split Equally", Toast.LENGTH_SHORT).show();
+                } else if (parent.getItemAtPosition(position).equals("Split Unequally")) {
+                    final FragmentManager fr = getSupportFragmentManager();
+                    final FragmentUnequalSplit fragmentUnequalSplit = new FragmentUnequalSplit();
+                    fragmentUnequalSplit.show(fr,"Member");
                 }
-                else if(parent.getItemAtPosition(position).equals("Split Unequally")){
-                    Toast.makeText(AddTransaction.this,"Selected Unequally",Toast.LENGTH_SHORT).show();
-                }
-
             }
 
             @Override
@@ -112,7 +115,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
             }
         });
-
 
 
 //***********************Date & Time***************************************************************
@@ -126,13 +128,13 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             }
         };
 
-        TextViewSave = (TextView)findViewById(R.id.textView_save);
+        TextViewSave = (TextView) findViewById(R.id.textView_save);
 
         TextViewSave.setOnClickListener(this);
         TextViewDate.setOnClickListener(this);
     }
 
-    private void dateSelector(){
+    private void dateSelector() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
@@ -147,17 +149,17 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     }
 //***********************End of Date & Time*********************************************************
 
-    private void saveTransaction(){
+    private void saveTransaction() {
         String amount = TextViewAmount.getText().toString().trim();
         String date = TextViewDate.getText().toString().trim();
         String category = TextViewCategory.getText().toString().trim();
 
 
-        if(amount.isEmpty()){
+        if (amount.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter Amount", Toast.LENGTH_SHORT).show();
             return;
         }
-        if(date.isEmpty()){
+        if (date.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please choose Date", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -165,7 +167,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //            Toast.makeText(getApplicationContext(), "Please enter event", Toast.LENGTH_SHORT).show();
 //            return;
 //        }
-        if(category.isEmpty()){
+        if (category.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter Category", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -198,7 +200,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.text_view_date:
                 dateSelector();
                 break;
@@ -210,8 +212,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
     }
 
-//*********************** Group with Spinner****************************************************
-    public ArrayList<String> retrievegroup(){
+    //*********************** Group with Spinner****************************************************
+    public ArrayList<String> retrievegroup() {
         ArrayList<String> groupListTranscation = new ArrayList<>();
 
         groupListTranscation.clear();
@@ -220,7 +222,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for(DataSnapshot snapshot1: dataSnapshot.getChildren()){
+                for (DataSnapshot snapshot1 : dataSnapshot.getChildren()) {
                     groupListTranscation.add(groupnametransaction);
                     GroupInfo info = snapshot1.getValue(GroupInfo.class);
                     groupInfos.add(info);
@@ -272,8 +274,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     }
 //***********************End of Group**********************************************************
 
-//***********************Event with Spinner****************************************************
-    public ArrayList<String> retrieveEvent(String id){
+    //***********************Event with Spinner****************************************************
+    public ArrayList<String> retrieveEvent(String id) {
 
         ArrayList<String> eventListTransaction = new ArrayList<>();
         eventListTransaction.clear();
@@ -281,10 +283,10 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         FirebaseDatabase.getInstance().getReference("EventName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<EventInfo> eventInfos  = new ArrayList<>();
+                List<EventInfo> eventInfos = new ArrayList<>();
 
-                for(DataSnapshot snapshot3 : dataSnapshot.getChildren()){
-                    System.out.println("SnapShot : "+snapshot3.getValue().toString());
+                for (DataSnapshot snapshot3 : dataSnapshot.getChildren()) {
+                    System.out.println("SnapShot : " + snapshot3.getValue().toString());
                     EventInfo eventinfo = snapshot3.getValue(EventInfo.class);
                     eventInfos.add(eventinfo);
                 }
@@ -295,35 +297,34 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     List<String> grpId = new ArrayList<>();
                     for (int i = 0; i < eventInfos.size(); i++) {
                         //System.out.println("ID : " + eventInfos.get(i).GroupID.toString());
-                                if (eventInfos.get(i).GroupID.equals(id)){
-                                    eId.add(eventInfos.get(i).ID);
-                                    grpId.add(eventInfos.get(i).GroupID);
-                                    eventname.add(eventInfos.get(i).EventName);
-                                }
+                        if (eventInfos.get(i).GroupID.equals(id)) {
+                            eId.add(eventInfos.get(i).ID);
+                            grpId.add(eventInfos.get(i).GroupID);
+                            eventname.add(eventInfos.get(i).EventName);
+                        }
                     }
 
-                ArrayAdapter<String> dataAdapterEvent= new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, eventname);
-                dataAdapterEvent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                SpinnerEvent.setAdapter(dataAdapterEvent);
-                SpinnerEvent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    ArrayAdapter<String> dataAdapterEvent = new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, eventname);
+                    dataAdapterEvent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerEvent.setAdapter(dataAdapterEvent);
+                    SpinnerEvent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                String itemEvent = SpinnerGroup.getSelectedItem().toString();
-                        if(parent.getItemAtPosition(position).equals("Choose Event")){
-                            //do Nothing
+                            if (parent.getItemAtPosition(position).equals("Choose Event")) {
+                                //do Nothing
+                            } else {
+                                eventnameID = eId.get(position);
+                                eventnametransaction = eventname.get(position);
+
+                            }
                         }
-                        else{
-                            eventnameID = eId.get(position);
-                            eventnametransaction = eventname.get(position);
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
 
                         }
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
+                    });
                 });
             }
 
@@ -336,8 +337,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     }
 //***********************End of Event**********************************************************
 
-//***********************PaidBy with Spinner****************************************************
-    public ArrayList<String> retrievePaidBy(String id,String name){
+    //***********************PaidBy with Spinner****************************************************
+    public ArrayList<String> retrievePaidBy(String id, String name) {
         final ArrayList<String> paidByListTransaction = new ArrayList<>();
         paidByListTransaction.clear();
         paidByListTransaction.add(0, "Choose User");
@@ -347,7 +348,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         List<String> groupMembers = new ArrayList<>();
-                        for(DataSnapshot snapshot4 : dataSnapshot.getChildren()){
+                        for (DataSnapshot snapshot4 : dataSnapshot.getChildren()) {
                             groupMembers.add(snapshot4.getValue().toString());
                         }
 
@@ -361,10 +362,9 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id1) {
                                     itemPaidBy = SpinnerPaidBy.getSelectedItem().toString();
-                                    if(parent.getItemAtPosition(position).equals("Choose User")){
+                                    if (parent.getItemAtPosition(position).equals("Choose User")) {
                                         //do Nothing
-                                    }
-                                    else{
+                                    } else {
                                         totalPaidByTransaction = new ArrayList();
                                         totalPaidByTransaction.add(itemPaidBy);
                                     }
@@ -383,7 +383,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
                     }
                 });
-    return paidByListTransaction;
+        return paidByListTransaction;
     }
-}
+
 //***********************End of PaidBy**********************************************************
+}
