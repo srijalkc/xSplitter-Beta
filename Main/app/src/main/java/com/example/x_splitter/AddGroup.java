@@ -1,6 +1,8 @@
 package com.example.x_splitter;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -175,6 +177,14 @@ public class AddGroup extends AppCompatActivity {
                                         GroupInfo groupInfo = new GroupInfo(ID, groupName.getText().toString());
                                         FirebaseDatabase.getInstance().getReference("GroupName").child(ID).setValue(groupInfo);
                                         Toast.makeText(AddGroup.this, "Group Created", Toast.LENGTH_SHORT).show();
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent i = new Intent(AddGroup.this, Group.class);
+                                                startActivity(i);
+                                                finish();
+                                            }
+                                        }, 1500);
                                     } else {
                                         Toast.makeText(AddGroup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
@@ -276,8 +286,8 @@ public class AddGroup extends AppCompatActivity {
                 sbb= new StringBuffer();
 
                 for(ModelAddGroup m : adapterAddGroup.checkedFriends){
-                    sb.add(m.getEmail());
-                    sbb.append(m.getEmail());
+                    sb.add(m.getusername());
+                    sbb.append(m.getusername());
                     sbb.append("\n");
                 }
 
@@ -302,7 +312,7 @@ public class AddGroup extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
-                    String name = (String) Objects.requireNonNull(data).get("email");
+                    String name = (String) Objects.requireNonNull(data).get("username");
                     friendLists.add(new ModelAddGroup(name, false));
                 }
                 System.out.println(friendLists);

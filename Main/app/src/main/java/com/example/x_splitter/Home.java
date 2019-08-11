@@ -4,6 +4,11 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
 
 public class Home extends AppCompatActivity {
  private static final int Activity_num = 0; // for recognizing menu item number
@@ -20,6 +27,8 @@ public class Home extends AppCompatActivity {
 // private ArrayList<String> mImageUrls = new ArrayList<>();
 
  FloatingActionButton fab_add;
+    static String GN;
+    static String ID;
 
  private ArrayList<Object> objects = new ArrayList<>();
 
@@ -47,35 +56,98 @@ public class Home extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
-        private ArrayList<Object> getObject() {
-            objects.add(getGroupData().get(0));
-            objects.add(Event.getEventData().get(0));
+//    private ArrayList<Object> getObject() {
+//        objects.add(getGroupData().get(0));
+//        objects.add(getEventData().get(0));
+//        return objects;
+//    }
+        public ArrayList<Object> getObject() {
+            ArrayList<ModelHomeEvent> event = getEventData();
+            ArrayList<ModelHomeGroup> group = getGroupData();
+
+            objects.addAll(group);
+            objects.addAll(event);
+            System.out.println(objects);
             return objects;
         }
 
 
-//        public static ArrayList<ModelHomeEvent> getEventData(){
-//            ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
-//
-//            modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0"));
-//            modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7"));
-//            modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0"));
-//            modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0"));
-//            modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7"));
-//            modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0"));
-//
-//            return modelHomeEvents;
-//        }
+       public static ArrayList<ModelHomeEvent> getEventData(){
+            ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
+           modelHomeEvents.clear();
+
+           FirebaseDatabase.getInstance().getReference("EventName").addValueEventListener(new ValueEventListener() {
+               @Override
+               public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                   for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                       Map<String, Object> eventdata = (Map<String, Object>) snapshot.getValue();
+                       String eventname = (String) Objects.requireNonNull(eventdata).get("EventName");
+                       ID = (String) Objects.requireNonNull(eventdata).get("GroupID");
+                       FirebaseDatabase.getInstance().getReference("GroupName").child(ID).addValueEventListener(new ValueEventListener() {
+                           @Override
+                           public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                               Map<String, Object> groupdata = (Map<String, Object>) dataSnapshot.getValue();
+                               GN = (String) Objects.requireNonNull(groupdata).get("GroupName");
+                               modelHomeEvents.add(new ModelHomeEvent(eventname, GN, "Not Settled", "123.0", "12.0"));
+//                               System.out.println(modelHomeEvents);
+
+
+                           }
+
+                           @Override
+                           public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                           }
+                       });
+
+
+
+
+                   }
+               }
+
+               @Override
+               public void onCancelled(@NonNull DatabaseError databaseError) {
+
+               }
+           });
+//            modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0","345"));
+//            modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7", "545"));
+//            modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0", "9687"));
+//            modelHomeEvents.add(new ModelHomeEvent("Tour", "Settled","123.0","12.0", "967896"));
+//            modelHomeEvents.add(new ModelHomeEvent("Birthday", "Not Settled", "234.0","123.7","9687"));
+//            modelHomeEvents.add(new ModelHomeEvent("Party", "Not Settled", "568.9","67890.0","765"));
+
+            return modelHomeEvents;
+
+        }
 
 
         public static ArrayList<ModelHomeGroup> getGroupData() {
             ArrayList<ModelHomeGroup> modelHomeGroups = new ArrayList<>();
-            modelHomeGroups.add(new ModelHomeGroup("Kathford", R.mipmap.ic_applogo));
-            modelHomeGroups.add(new ModelHomeGroup("Lolwa", R.mipmap.ic_launcher));
-            modelHomeGroups.add(new ModelHomeGroup("Aimless", R.mipmap.ic_launcher_foreground));
-            modelHomeGroups.add(new ModelHomeGroup("Kathford", R.mipmap.ic_applogo));
-            modelHomeGroups.add(new ModelHomeGroup("Lolwa", R.mipmap.ic_launcher));
-            modelHomeGroups.add(new ModelHomeGroup("Aimless", R.mipmap.ic_launcher_foreground));
+            modelHomeGroups.clear();
+            FirebaseDatabase.getInstance().getReference("GroupName").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                        Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
+                        String groupname = (String) Objects.requireNonNull(groupdata).get("GroupName");
+                        modelHomeGroups.add(new ModelHomeGroup(groupname,R.mipmap.ic_applogo));
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            //            modelHomeGroups.add(new ModelHomeGroup("Kathford", R.mipmap.ic_applogo));
+//            modelHomeGroups.add(new ModelHomeGroup("Lolwa", R.mipmap.ic_launcher));
+//            modelHomeGroups.add(new ModelHomeGroup("Aimless", R.mipmap.ic_launcher_foreground));
+//            modelHomeGroups.add(new ModelHomeGroup("Kathford", R.mipmap.ic_applogo));
+//            modelHomeGroups.add(new ModelHomeGroup("Lolwa", R.mipmap.ic_launcher));
+//            modelHomeGroups.add(new ModelHomeGroup("Aimless", R.mipmap.ic_launcher_foreground));
 
             return modelHomeGroups;
         }

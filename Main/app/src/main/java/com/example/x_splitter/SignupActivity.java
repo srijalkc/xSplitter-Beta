@@ -1,7 +1,9 @@
 package com.example.x_splitter;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -17,8 +19,12 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.regex.Pattern;
 
@@ -35,6 +41,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     private DatabaseReference databaseReference;
     private FirebaseUser currentUser;
     private String userID;
+    Query usernameQuery;
 
 
 
@@ -63,6 +70,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
     public void registerUser() {
         String Email = editTextEmail.getText().toString().trim();
         String Username = editTextUsername.getText().toString().trim();
+        usernameQuery = FirebaseDatabase.getInstance().getReference().child("Users").orderByChild("username").equalTo(Username);
         String Password = editTextPassword.getText().toString().trim();
         String ConfirmPassword = editTextConfirmPassword.getText().toString().trim();
         final Pattern PasswordPattern = Pattern.compile("^" +
@@ -108,21 +116,41 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        usernameQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                UsersInfo usersinfo = new UsersInfo(Email, Username);
-                if(task.isSuccessful()){
-                    mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getChildrenCount()>0){
+                    Toast.makeText(getBaseContext(), "Choose Different Username", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    mAuth.createUserWithEmailAndPassword(Email, Password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
-                        public void onComplete(@NonNull Task<Void> task) {
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            UsersInfo usersinfo = new UsersInfo(Email, Username);
                             if(task.isSuccessful()){
-                                databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                        .setValue(usersinfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                mAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
-                                            Toast.makeText(getApplicationContext(), "User Registered Successful. Please Verify Your Email", Toast.LENGTH_SHORT).show();
+                                            databaseReference.child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                                    .setValue(usersinfo).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        Toast.makeText(getApplicationContext(), "User Registered Successful. Please Verify Your Email", Toast.LENGTH_SHORT).show();
+                                                        new Handler().postDelayed(new Runnable() {
+                                                            @Override
+                                                            public void run() {
+                                                                startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                                                finish();
+                                                            }
+                                                        }, 2000);
+                                                    }
+                                                    else{
+                                                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                            });
                                         }
                                         else{
                                             Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -131,30 +159,31 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                 });
                             }
                             else{
-                                Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                if(task.getException() instanceof FirebaseAuthUserCollisionException){
+                                    Toast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                     });
                 }
-                else{
-                    if(task.getException() instanceof FirebaseAuthUserCollisionException){
-                        Toast.makeText(getApplicationContext(), "Email already registered", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId()== R.id.button_signup) {
                 registerUser();
-
         }
-
     }
 }
 

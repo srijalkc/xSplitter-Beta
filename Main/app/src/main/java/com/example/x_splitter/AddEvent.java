@@ -1,6 +1,8 @@
 package com.example.x_splitter;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
@@ -34,6 +36,8 @@ public class AddEvent extends AppCompatActivity {
     ArrayList arEvent;
     String groupID;
     String groupname;
+    ModelAddEvent model;
+    String s;
 
     ImageButton btn_back;
 
@@ -41,6 +45,7 @@ public class AddEvent extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
+        model = new ModelAddEvent();
 
         eventName = (EditText) findViewById(R.id.edit_text_event_name);
 
@@ -56,9 +61,6 @@ public class AddEvent extends AppCompatActivity {
             }
         });
 
-        ModelAddEvent model = new ModelAddEvent();
-        String GGID = model.getID();
-
         save = (TextView) findViewById(R.id.textView_save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,9 +74,17 @@ public class AddEvent extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        EventInfo eventInfo = new EventInfo(ID, event_name, GGID);
+                                        EventInfo eventInfo = new EventInfo(ID, event_name, s);
                                         FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
                                         Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent i = new Intent(AddEvent.this, Event.class);
+                                                startActivity(i);
+                                                finish();
+                                            }
+                                        }, 1500);
                                     } else {
                                         Toast.makeText(AddEvent.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
@@ -100,6 +110,7 @@ public class AddEvent extends AppCompatActivity {
 
                 for(ModelAddEvent me : adapterAddEvent.checkedGroups){
                     arEvent.add(me.getID());
+                    s = me.getID();
                     sbEvent.append(me.getGroupName());
                     sbEvent.append("\n");
                 }

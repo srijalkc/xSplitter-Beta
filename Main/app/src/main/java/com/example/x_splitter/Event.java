@@ -2,21 +2,30 @@ package com.example.x_splitter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
 
 public class Event extends AppCompatActivity {
     FloatingActionButton fab_add;
-
+    static String GN;
+    static String ID;
     private static final int Activity_num = 3; // for recognizing menu item number
 
     @Override
@@ -32,8 +41,11 @@ public class Event extends AppCompatActivity {
             }
         });
 
+        ArrayList<ModelHomeEvent> event = getEventData();
+
+
         RecyclerView recyclerView = findViewById(R.id.event_recycler_view);
-        AdapterHomeEvent adapterHomeEvent = new AdapterHomeEvent(this,getEventData());
+        AdapterHomeEvent adapterHomeEvent = new AdapterHomeEvent(this,event);
         recyclerView.setAdapter(adapterHomeEvent);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -42,13 +54,53 @@ public class Event extends AppCompatActivity {
 
     public static ArrayList<ModelHomeEvent> getEventData(){
         ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
+        modelHomeEvents.clear();
 
-        modelHomeEvents.add(new ModelHomeEvent("Tour", "Kathford","Not Settled","123.0","12.0"));
-        modelHomeEvents.add(new ModelHomeEvent("Birthday","Gang", "Not Settled", "234.0","123.7"));
-        modelHomeEvents.add(new ModelHomeEvent("Party", "Lolwa","Not Settled", "568.9","67890.0"));
-        modelHomeEvents.add(new ModelHomeEvent("Tour", "Kathford","Settled","123.0","12.0"));
-        modelHomeEvents.add(new ModelHomeEvent("Birthday","Adhikari", "Not Settled", "234.0","123.7"));
-        modelHomeEvents.add(new ModelHomeEvent("Party", "Lolwa","Not Settled", "568.9","67890.0"));
+        FirebaseDatabase.getInstance().getReference("EventName").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Map<String, Object> eventdata = (Map<String, Object>) snapshot.getValue();
+                    String eventname = (String) Objects.requireNonNull(eventdata).get("EventName");
+                    ID = (String) Objects.requireNonNull(eventdata).get("GroupID");
+                    FirebaseDatabase.getInstance().getReference("GroupName").child(ID).addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                Map<String, Object> groupdata = (Map<String, Object>) dataSnapshot.getValue();
+                                System.out.println(groupdata);
+                                GN = (String) Objects.requireNonNull(groupdata).get("GroupName");
+                                System.out.println(GN);
+                            modelHomeEvents.add(new ModelHomeEvent(eventname, GN, "Not Settled", "123.0", "12.0"));
+
+
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+//
+//        modelHomeEvents.add(new ModelHomeEvent("Tour", "Kathford","Not Settled","123.0","12.0"));
+//        modelHomeEvents.add(new ModelHomeEvent("Birthday","Gang", "Not Settled", "234.0","123.7"));
+//        modelHomeEvents.add(new ModelHomeEvent("Party", "Lolwa","Not Settled", "568.9","67890.0"));
+//        modelHomeEvents.add(new ModelHomeEvent("Tour", "Kathford","Settled","123.0","12.0"));
+//        modelHomeEvents.add(new ModelHomeEvent("Birthday","Adhikari", "Not Settled", "234.0","123.7"));
+//        modelHomeEvents.add(new ModelHomeEvent("Party", "Lolwa","Not Settled", "568.9","67890.0"));
 
         return modelHomeEvents;
     }

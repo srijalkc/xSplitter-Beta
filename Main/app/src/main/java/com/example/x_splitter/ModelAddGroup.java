@@ -2,19 +2,21 @@ package com.example.x_splitter;
 
 public class ModelAddGroup {
     private String email;
+    private String username;
     private boolean isSelected;
 
-    public ModelAddGroup(String email, boolean isSelected) {
-        this.email = email;
+    public ModelAddGroup(String username, boolean isSelected) {
+        this.username = username;
         this.isSelected = isSelected;
     }
 
-    public String getEmail() {
-        return email;
+
+    public String getusername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setusername(String username) {
+        this.username = username;
     }
 
     public boolean isSelected() {

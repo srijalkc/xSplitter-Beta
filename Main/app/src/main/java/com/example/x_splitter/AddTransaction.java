@@ -32,7 +32,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     EditText TextViewAmount;
     TextView TextViewDate;
     EditText TextViewCategory;
-    EditText TextViewPaidBy;
     Spinner SpinnerPaidBy;
     Spinner SpinnerGroup;
     Spinner SpinnerEvent;
@@ -47,6 +46,12 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     String eventnametransaction;
     String groupnameID;
     String eventnameID;
+    String se;
+    String su;
+    String itemPaidBy;
+    String amountToPay = "0";
+    String amountToGet = "0";
+    String amountInvested="0";
 
 
     DatabaseReference databaseTransaction;
@@ -70,13 +75,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         TextViewAmount = (EditText) findViewById(R.id.text_view_amount);
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
 
-        retrievegroup();
-
-        Spinner spinner_split = findViewById(R.id.spinner_split);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_split.setAdapter(adapter);
-
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,6 +82,38 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                 AddTransaction.super.onBackPressed();
             }
         });
+
+        retrievegroup();
+
+        Spinner spinner_split = findViewById(R.id.spinner_split);
+        se = " Split Equally";
+        su = " Split Unequally";
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_split.setAdapter(adapter);
+        spinner_split.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (parent.getItemAtPosition(position).equals("Choose Splitting")){
+                    //do Nothing
+                }
+                else if(parent.getItemAtPosition(position).equals("Split Equally")){
+
+                    Toast.makeText(AddTransaction.this,"Split Equally",Toast.LENGTH_SHORT).show();
+                }
+                else if(parent.getItemAtPosition(position).equals("Split Unequally")){
+                    Toast.makeText(AddTransaction.this,"Selected Unequally",Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
 
 //***********************Date & Time***************************************************************
         TextViewDate = (TextView) findViewById(R.id.text_view_date);
@@ -120,9 +150,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     private void saveTransaction(){
         String amount = TextViewAmount.getText().toString().trim();
         String date = TextViewDate.getText().toString().trim();
-        //String event = TextViewEvent.getText().toString().trim();
         String category = TextViewCategory.getText().toString().trim();
-        String paidBy = TextViewPaidBy.getText().toString().trim();
+
 
         if(amount.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please enter Amount", Toast.LENGTH_SHORT).show();
@@ -145,10 +174,25 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //        }
 
         String id = databaseTransaction.push().getKey();
+        String id1 = FirebaseDatabase.getInstance().getReference("TransactionEvent").push().getKey();
+        String id2 = FirebaseDatabase.getInstance().getReference("TransactionUnequal").push().getKey();
         //TransactionInfo transactionInfo = new TransactionInfo(amount, date, event, category, paidBy, note);
-        TransactionInfo transactionInfo = new TransactionInfo(amount, date, category, paidBy);
+        TransactionInfo transactionInfo = new TransactionInfo
+                (amount, date, category, groupnametransaction, eventnametransaction, itemPaidBy);
+        TransactionInfo transactionInfo1 = new TransactionInfo(itemPaidBy, amount);
+        TransactionInfo transactionInfo2 = new TransactionInfo(amountToPay, amountToGet, amount);
+
         databaseTransaction.child(id).setValue(transactionInfo);
+
+        FirebaseDatabase.getInstance().getReference("TransactionEvent")
+                .child(groupnameID).child(eventnameID).child(id1).setValue(transactionInfo1);
         Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+
+        FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+                .child(groupnameID).child(eventnameID).child(itemPaidBy).setValue(transactionInfo2);
+        Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+
+        AddTransaction.super.onBackPressed();
 
     }
 
@@ -238,6 +282,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<EventInfo> eventInfos  = new ArrayList<>();
+
                 for(DataSnapshot snapshot3 : dataSnapshot.getChildren()){
                     System.out.println("SnapShot : "+snapshot3.getValue().toString());
                     EventInfo eventinfo = snapshot3.getValue(EventInfo.class);
@@ -249,6 +294,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     List<String> eventname = new ArrayList<>();
                     List<String> grpId = new ArrayList<>();
                     for (int i = 0; i < eventInfos.size(); i++) {
+                        //System.out.println("ID : " + eventInfos.get(i).GroupID.toString());
                                 if (eventInfos.get(i).GroupID.equals(id)){
                                     eId.add(eventInfos.get(i).ID);
                                     grpId.add(eventInfos.get(i).GroupID);
@@ -314,7 +360,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                             SpinnerPaidBy.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id1) {
-                                    String itemPaidBy = SpinnerPaidBy.getSelectedItem().toString();
+                                    itemPaidBy = SpinnerPaidBy.getSelectedItem().toString();
                                     if(parent.getItemAtPosition(position).equals("Choose User")){
                                         //do Nothing
                                     }
