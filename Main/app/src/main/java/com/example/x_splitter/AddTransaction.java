@@ -186,7 +186,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         FirebaseDatabase.getInstance().getReference("TransactionEvent")
                 .child(groupnameID).child(eventnameID).child(id1).setValue(transactionInfo1);
         Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
-<<<<<<< HEAD
+
 
 
 
@@ -195,9 +195,9 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                 .child(groupnameID).child(eventnameID).child(itemPaidBy).setValue(transactionInfo2);
         Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
 
-=======
+
         AddTransaction.super.onBackPressed();
->>>>>>> a14031e90b0fc3b55209e5a6a8f7d6eaa78ab3dd
+
     }
 
     @Override

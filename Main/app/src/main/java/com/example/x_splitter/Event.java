@@ -25,7 +25,6 @@ import java.util.Objects;
 public class Event extends AppCompatActivity {
     FloatingActionButton fab_add;
     static String GN;
-    static String GID;
     static String ID;
     private static final int Activity_num = 3; // for recognizing menu item number
 
@@ -64,14 +63,15 @@ public class Event extends AppCompatActivity {
                     Map<String, Object> eventdata = (Map<String, Object>) snapshot.getValue();
                     String eventname = (String) Objects.requireNonNull(eventdata).get("EventName");
                     ID = (String) Objects.requireNonNull(eventdata).get("GroupID");
-                    FirebaseDatabase.getInstance().getReference("GroupName").addValueEventListener(new ValueEventListener() {
+                    FirebaseDatabase.getInstance().getReference("GroupName").child(ID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
+
+                                Map<String, Object> groupdata = (Map<String, Object>) dataSnapshot.getValue();
                                 System.out.println(groupdata);
                                 GN = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                               // GID = (String) Objects.requireNonNull(groupdata).get("ID");
+                                System.out.println(GN);
+                            modelHomeEvents.add(new ModelHomeEvent(eventname, GN, "Not Settled", "123.0", "12.0"));
 
 
 
@@ -84,7 +84,6 @@ public class Event extends AppCompatActivity {
                     });
 
 
-                        modelHomeEvents.add(new ModelHomeEvent(eventname, GN, "Not Settled", "123.0", "12.0"));
 
 
                 }
