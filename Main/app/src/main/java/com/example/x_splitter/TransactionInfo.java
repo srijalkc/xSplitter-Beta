@@ -1,15 +1,5 @@
 package com.example.x_splitter;
 
-import androidx.annotation.NonNull;
-
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class TransactionInfo {
     String amount;
     String date;
@@ -62,11 +52,11 @@ public class TransactionInfo {
         this.amountToPay = Integer.toString(equallySplittedAmount);
     }
 
-//    public TransactionInfo(String amountToPay, String amountToGet, String amountInvested) {
-//        this.amountToPay = amountToPay;
-//        this.amountToGet = amountToGet;
-//        this.amountInvested = amountInvested;
-//    }
+    public TransactionInfo(String amountToPay, String amountToGet, String amountInvested) {
+        this.amountToPay = amountToPay;
+        this.amountToGet = amountToGet;
+        this.amountInvested = amountInvested;
+    }
 //
 //    public TransactionInfo(String amount, String date, String category, String group, String event, String paidBy) {
 //        this.amount = amount;

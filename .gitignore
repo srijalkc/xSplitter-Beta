@@ -3,3 +3,4 @@ Main/.idea/vcs.xml
 Main/app/local.properties
 Main/app/src/main/res/layout/home_group_item.xml
 Main/app/src/main/res/layout/home_group_item.xml
+*.json
