@@ -55,7 +55,6 @@ public class Event extends AppCompatActivity {
     public static ArrayList<ModelHomeEvent> getEventData(){
         ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
         modelHomeEvents.clear();
-
         FirebaseDatabase.getInstance().getReference("EventName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

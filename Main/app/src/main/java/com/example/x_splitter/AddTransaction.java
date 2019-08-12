@@ -1,7 +1,6 @@
 package com.example.x_splitter;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -212,8 +211,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //        TransactionInfo transactionInfo = new TransactionInfo
 //                (amount, date, category, groupnametransaction, eventnametransaction, itemPaidBy);
 //        TransactionInfo transactionInfo1 = new TransactionInfo(itemPaidBy, amount);
-        TransactionInfo transactionInfo2 = new TransactionInfo( equallySplittedAmount, amountToPay, amountToGet, amount);
-        TransactionInfo transactionInfo3 = new TransactionInfo( equallySplittedAmount, itemPaidBy, amountToPay, amountToGet, amount);
+//        TransactionInfo transactionInfo2 = new TransactionInfo( equallySplittedAmount, amountToPay, amountToGet, amount);
+//        TransactionInfo transactionInfo3 = new TransactionInfo( equallySplittedAmount, itemPaidBy, amountToPay, amountToGet, amount);
         //databaseTransaction.child(id).setValue(transactionInfo);
 
 //        FirebaseDatabase.getInstance().getReference("TransactionEvent")
@@ -224,8 +223,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         for(int i = 1; i <=memberSize; i++ ) {
             String j = paidByListTransaction.get(i);
             if (j == itemPaidBy) {
-                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
-                        .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo2);
+//                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                        .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo2);
                 Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
 
                 FirebaseDatabase.getInstance().getReference("TransactionUnequal")
@@ -240,12 +239,12 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                             atpTemp = (String) Objects.requireNonNull(maps).get("amountToPay");
                             aiTemp = (String) Objects.requireNonNull(maps).get("amountInvested");
                             String amount2 = TextViewAmount.getText().toString().trim();
-                            TransactionInfo transactionInfo4 = new TransactionInfo(amount2);
-                            if(Integer.parseInt(aiTemp) > 0){
-                                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
-                                        .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo4);
-
-                            }
+                            //TransactionInfo transactionInfo4 = new TransactionInfo(amount2);
+//                            if(Integer.parseInt(aiTemp) > 0){
+//                                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                                        .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo4);
+//
+//                            }
                         }
 
                     @Override
@@ -259,8 +258,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
             }
             else {
-                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
-                        .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo3);
+//                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                        .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo3);
             }
         }
 

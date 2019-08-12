@@ -7,9 +7,9 @@ public class TransactionInfo {
     String group;
     String event;
     String paidBy;
-    String amountToPay;
-    String amountToGet;
-    String amountInvested;
+    int amountToPay;
+    int amountToGet;
+    int amountInvested;
     String amountInvestedTemp;
 //List<String> groupMembers;
     //int equallySplittedAmount;
@@ -21,10 +21,10 @@ public class TransactionInfo {
 
 
 
-    public TransactionInfo( int equallySplittedAmount, String amountToPay, String amountToGet, String amountInvested) {
-        this.amountInvested = amountInvested;
-        amountInvestedTemp = amountInvested;
-        this.amountToGet = Integer.toString(equallySplittedAmount);
+//    public TransactionInfo( int equallySplittedAmount, String amountToPay, String amountToGet, String amountInvested) {
+//        this.amountInvested = amountInvested;
+//        amountInvestedTemp = amountInvested;
+//        this.amountToGet = Integer.toString(equallySplittedAmount);
 
 //        int difference = ((Integer.parseInt(amountInvested)) - equallySplittedAmount);
 //        if(difference>=0)
@@ -46,13 +46,13 @@ public class TransactionInfo {
 //            this.amountToGet=Integer.toString(0);
 
 //        }
-            }
+        //    }
 
-    public TransactionInfo( int equallySplittedAmount, String itemPaidBy, String amountToPay, String amountToGet, String amountInvested) {
-        this.amountToPay = Integer.toString(equallySplittedAmount);
-    }
+//    public TransactionInfo( int equallySplittedAmount, String itemPaidBy, String amountToPay, String amountToGet, String amountInvested) {
+//        this.amountToPay = Integer.toString(equallySplittedAmount);
+//    }
 
-    public TransactionInfo(String amountToPay, String amountToGet, String amountInvested) {
+    public TransactionInfo(int amountToPay, int amountToGet, int amountInvested) {
         this.amountToPay = amountToPay;
         this.amountToGet = amountToGet;
         this.amountInvested = amountInvested;
@@ -75,11 +75,11 @@ public class TransactionInfo {
 //    public TransactionInfo() {
 //    }
 
-    public TransactionInfo( String amountInvested){
-        this.amountInvested = amountInvested + amountInvestedTemp;
-
-
-    }
+//    public TransactionInfo( String amountInvested){
+//        this.amountInvested = amountInvested + amountInvestedTemp;
+//
+//
+//    }
 
 
 }

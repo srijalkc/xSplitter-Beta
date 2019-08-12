@@ -46,9 +46,9 @@ public class AddEvent extends AppCompatActivity {
     List<String> groupMembers;
     String name;
     String gid;
-    String amountToPay="0";
-    String amountToGet="0";
-    String amountInvested="0";
+    int amountToPay = 0;
+    int amountToGet = 0;
+    int amountInvested = 0;
     ArrayList<String> paidByListTransaction;
     String itemPaidBy;
 
