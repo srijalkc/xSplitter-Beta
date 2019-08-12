@@ -5,20 +5,19 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -38,8 +38,23 @@ public class AddEvent extends AppCompatActivity {
     String groupname;
     ModelAddEvent model;
     String s;
+    Spinner SpinnerAddEvent;
+    ArrayList<String> GroupList;
+    int size;
+    String groupSelected;
+    ArrayList<String> GroupLists;
+    List<String> groupMembers;
+    String name;
+    String gid;
+    int amountToPay = 0;
+    int amountToGet = 0;
+    int amountInvested = 0;
+    ArrayList<String> paidByListTransaction;
+    String itemPaidBy;
+
 
     ImageButton btn_back;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,27 +75,31 @@ public class AddEvent extends AppCompatActivity {
                 AddEvent.super.onBackPressed();
             }
         });
+        SpinnerAddEvent = findViewById(R.id.spinner_add_event);
+
+        retrieveEvent();
 
         save = (TextView) findViewById(R.id.textView_save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String event_name = eventName.getText().toString();
+                EventInfo arEvent = new EventInfo(gid);
                 if (TextUtils.isEmpty(event_name)) {
                     Toast.makeText(AddEvent.this, "Please enter Event name", Toast.LENGTH_SHORT).show();
                 } else {
-                    dbReferenceEvent.child(ID).child(eventName.getText().toString()).setValue(arEvent).
+                   dbReferenceEvent.child(ID).child(eventName.getText().toString()).setValue(arEvent).
                             addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        EventInfo eventInfo = new EventInfo(ID, event_name, s);
+                                        EventInfo eventInfo = new EventInfo(ID, event_name, gid);
                                         FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
                                         Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Intent i = new Intent(AddEvent.this, Event.class);
+                                                Intent i = new Intent(AddEvent.this, Home.class);
                                                 startActivity(i);
                                                 finish();
                                             }
@@ -90,62 +109,91 @@ public class AddEvent extends AppCompatActivity {
                                     }
                                 }
                             });
+                    TransactionInfo transactionInfo3 = new TransactionInfo(amountToPay, amountToGet, amountInvested);
+                    for(int i = 1; i < paidByListTransaction.size(); i++ ) {
+                        String j = paidByListTransaction.get(i);
+                        FirebaseDatabase.getInstance().getReference("TransactionUnequal").child(gid).child(ID).child(j).setValue(transactionInfo3);
+                    }
                 }
             }
         });
-
-        ArrayList<ModelAddEvent> groupLists = retrieveEvents();
-        RecyclerView recyclerViewEvent = findViewById(R.id.rv_add_event);
-        AdapterAddEvent adapterAddEvent = new AdapterAddEvent(this, groupLists);
-        recyclerViewEvent.setAdapter(adapterAddEvent);
-        recyclerViewEvent.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewEvent.setItemAnimator(new DefaultItemAnimator());
-
-        FloatingActionButton fab_addGroup = findViewById(R.id.fab_addGroup);
-        fab_addGroup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                arEvent = new ArrayList();
-                StringBuffer sbEvent = new StringBuffer();
-
-                for(ModelAddEvent me : adapterAddEvent.checkedGroups){
-                    arEvent.add(me.getID());
-                    s = me.getID();
-                    sbEvent.append(me.getGroupName());
-                    sbEvent.append("\n");
-                }
-
-                if(adapterAddEvent.checkedGroups.size()>0){
-                    Toast.makeText(AddEvent.this,sbEvent.toString(),Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    Toast.makeText(AddEvent.this,sbEvent.toString(),Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-
     }
 
+    public ArrayList<String> retrieveEvent(){
+        GroupLists = new ArrayList<>();
+        GroupLists.clear();
+        GroupLists.add(0, "Choose Group");
+        FirebaseDatabase.getInstance().getReference("GroupName")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        groupMembers = new ArrayList<>();
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
+                            name = (String) Objects.requireNonNull(data).get("GroupName");
+                            gid = (String) Objects.requireNonNull(data).get("ID");
+                            groupMembers.add(name);
+                        }
 
-    public  ArrayList<ModelAddEvent> retrieveEvents() {
-        ArrayList<ModelAddEvent> groupList = new ArrayList<>();
-        groupList.clear();
-        FirebaseDatabase.getInstance().getReference("GroupName").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
-                    groupname = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                    groupID = (String) Objects.requireNonNull(groupdata).get("ID");
-                    groupList.add(new ModelAddEvent(groupname, false, groupID));
-                }
-            }
+                        GroupLists.addAll(groupMembers);
+                        size = groupMembers.size();
+                        for(int i = 1; i <= size; i++){
+                            System.out.println("Srijal: "+ GroupLists.get(i));
+                        }
+                        ArrayAdapter<String> dataAdapterAddEvent = new ArrayAdapter<String>
+                                (getBaseContext(), android.R.layout.simple_spinner_item, groupMembers);
+                        dataAdapterAddEvent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        SpinnerAddEvent.setAdapter(dataAdapterAddEvent);
+                        SpinnerAddEvent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> parent, View view, int position, long id1) {
+                                groupSelected = SpinnerAddEvent.getSelectedItem().toString();
+                                if (parent.getItemAtPosition(position).equals("Choose Group")) {
+                                    //do Nothing
+                                } else {
+                                    GroupList = new ArrayList();
+                                    GroupList.add(groupSelected);
+                                    retrievePaidBy(gid, name);
+                                }
+                            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            @Override
+                            public void onNothingSelected(AdapterView<?> parent) {
 
-            }
-        });
-        return groupList;
+                            }
+                        });
+                    }
+
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+        return GroupLists;
+    }
+
+    public ArrayList<String> retrievePaidBy(String id,String name){
+        paidByListTransaction = new ArrayList<>();
+        paidByListTransaction.clear();
+        paidByListTransaction.add(0, "Choose User");
+        FirebaseDatabase.getInstance().getReference("Groups")
+                .child(id).child(name).child("Members")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        groupMembers = new ArrayList<>();
+                        for(DataSnapshot snapshot4 : dataSnapshot.getChildren()){
+                            groupMembers.add(snapshot4.getValue().toString());
+                        }
+                        paidByListTransaction.addAll(groupMembers);
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+        return paidByListTransaction;
     }
 }
