@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".FAB_Menu_page"
-    android:background="@color/colorToolbarHead">
+    android:background="@color/Aqua">
 
     <TextView
         android:id="@+id/btn_fab_group"
