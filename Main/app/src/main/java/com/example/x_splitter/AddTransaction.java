@@ -203,7 +203,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //                (amount, date, category, groupnametransaction, eventnametransaction, itemPaidBy);
 //        TransactionInfo transactionInfo1 = new TransactionInfo(itemPaidBy, amount);
 
-    //   TransactionInfo transactionInfo3 = new TransactionInfo( equallySplittedAmount, itemPaidBy, amountToPay, amountToGet, amount);
+        //   TransactionInfo transactionInfo3 = new TransactionInfo( equallySplittedAmount, itemPaidBy, amountToPay, amountToGet, amount);
         //databaseTransaction.child(id).setValue(transactionInfo);
 
 //        FirebaseDatabase.getInstance().getReference("TransactionEvent")
@@ -262,7 +262,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo2);
 
             if (j == itemPaidBy) {
-               //  Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+                //  Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
 
                 Map<String, Object> amountDetail =new HashMap<>();
 
@@ -274,18 +274,18 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //                         amountInvested = (int) Objects.requireNonNull(amountDetail).get("amountInvested");
 //                         amountToGet = (int) Objects.requireNonNull(amountDetail).get("amountToGet");
 //                         amountToPay = (int) Objects.requireNonNull(amountDetail).get("amountToPay");
-                        amountInvested=amountInvested+at;
-                        amountToGet=amountToGet-equallySplittedAmount;
-                      //  TransactionInfo transactionInfo4 = new TransactionInfo(amountInvested,amountToGet,amountToPay);
-                       
-                        amountDetail.put("amountInvested",amountInvested);
-                        amountDetail.put("amountToGet",amountToGet);
+                amountInvested=amountInvested+at;
+                amountToGet=amountToGet-equallySplittedAmount;
+                //  TransactionInfo transactionInfo4 = new TransactionInfo(amountInvested,amountToGet,amountToPay);
+
+                amountDetail.put("amountInvested",amountInvested);
+                amountDetail.put("amountToGet",amountToGet);
 //                        amountDetail.put("amountToPay",amountToPay);
-                        FirebaseDatabase.getInstance().getReference("TransactionUnequal")
-                                .child(groupnameID).child(eventnameID).child(j).updateChildren(amountDetail);
+                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+                        .child(groupnameID).child(eventnameID).child(j).updateChildren(amountDetail);
 
 
-                    }
+            }
 
 
 
@@ -323,7 +323,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
     }
 
-//*********************** Group with Spinner****************************************************
+    //*********************** Group with Spinner****************************************************
     public ArrayList<String> retrievegroup(){
         ArrayList<String> groupListTranscation = new ArrayList<>();
 
@@ -385,7 +385,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     }
 //***********************End of Group**********************************************************
 
-//***********************Event with Spinner****************************************************
+    //***********************Event with Spinner****************************************************
     public ArrayList<String> retrieveEvent(String id){
 
         ArrayList<String> eventListTransaction = new ArrayList<>();
@@ -407,36 +407,37 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     List<String> eventname = new ArrayList<>();
                     List<String> grpId = new ArrayList<>();
                     for (int i = 0; i < eventInfos.size(); i++) {
-                        //System.out.println("ID : " + eventInfos.get(i).GroupID.toString());
-                                if (eventInfos.get(i).GroupID.equals(id)){
-                                    eId.add(eventInfos.get(i).ID);
-                                    grpId.add(eventInfos.get(i).GroupID);
-                                    eventname.add(eventInfos.get(i).EventName);
-                                }
+                        System.out.println("String1 : " + eventInfos.get(i));
+                        System.out.println("ID : " + eventInfos.get(i).GroupID);
+                        if (eventInfos.get(i).GroupID.equals(id)){
+                            eId.add(eventInfos.get(i).ID);
+                            grpId.add(eventInfos.get(i).GroupID);
+                            eventname.add(eventInfos.get(i).EventName);
+                        }
                     }
 
-                ArrayAdapter<String> dataAdapterEvent= new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, eventname);
-                dataAdapterEvent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                SpinnerEvent.setAdapter(dataAdapterEvent);
-                SpinnerEvent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    ArrayAdapter<String> dataAdapterEvent= new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, eventname);
+                    dataAdapterEvent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    SpinnerEvent.setAdapter(dataAdapterEvent);
+                    SpinnerEvent.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                        @Override
+                        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 //                String itemEvent = SpinnerGroup.getSelectedItem().toString();
-                        if(parent.getItemAtPosition(position).equals("Choose Event")){
-                            //do Nothing
+                            if(parent.getItemAtPosition(position).equals("Choose Event")){
+                                //do Nothing
+                            }
+                            else{
+                                eventnameID = eId.get(position);
+                                eventnametransaction = eventname.get(position);
+
+                            }
                         }
-                        else{
-                            eventnameID = eId.get(position);
-                            eventnametransaction = eventname.get(position);
+
+                        @Override
+                        public void onNothingSelected(AdapterView<?> parent) {
 
                         }
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
+                    });
                 });
             }
 
@@ -449,7 +450,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     }
 //***********************End of Event**********************************************************
 
-//***********************PaidBy with Spinner****************************************************
+    //***********************PaidBy with Spinner****************************************************
     public ArrayList<String> retrievePaidBy(String id,String name){
         paidByListTransaction = new ArrayList<>();
         paidByListTransaction.clear();
@@ -497,7 +498,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
                     }
                 });
-    return paidByListTransaction;
+        return paidByListTransaction;
     }
 }
 //***********************End of PaidBy**********************************************************
