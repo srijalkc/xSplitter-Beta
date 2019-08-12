@@ -84,6 +84,7 @@ public class AddEvent extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String event_name = eventName.getText().toString();
+                EventInfo arEvent = new EventInfo(gid);
                 if (TextUtils.isEmpty(event_name)) {
                     Toast.makeText(AddEvent.this, "Please enter Event name", Toast.LENGTH_SHORT).show();
                 } else {
@@ -92,13 +93,13 @@ public class AddEvent extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        EventInfo eventInfo = new EventInfo(ID, event_name, s);
+                                        EventInfo eventInfo = new EventInfo(ID, event_name, gid);
                                         FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
                                         Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                Intent i = new Intent(AddEvent.this, Event.class);
+                                                Intent i = new Intent(AddEvent.this, Home.class);
                                                 startActivity(i);
                                                 finish();
                                             }
