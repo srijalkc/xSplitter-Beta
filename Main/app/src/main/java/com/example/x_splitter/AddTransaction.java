@@ -1,7 +1,6 @@
 package com.example.x_splitter;
 
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,8 +17,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -56,17 +53,17 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     String su;
     String itemPaidBy;
     String amountTotal;
-    long amountToPay ;
-    long amountToGett ;
-    long amountInvestedd;
-    long amountToGet ;
-    long amountInvested;
-    long size;
-    long at;
+    double amountToPay ;
+    double amountToGett ;
+    double amountInvestedd;
+    double amountToGet ;
+    double amountInvested;
+    double size;
+    double at;
     int memberSize;
     ArrayList<String> paidByListTransaction;
     List<String> groupMembers;
-    long equallySplittedAmount;
+    double equallySplittedAmount;
 
     DatabaseReference databaseTransaction;
 
@@ -135,7 +132,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                                 System.out.println("AI"+amountInvested);
                                 System.out.println("ATP"+amountToPay);
                                 System.out.println("ATG"+amountToGet);
-                                long difference = amountToGet-equallySplittedAmount;
+                                double difference = amountToGet-equallySplittedAmount;
                                 if(difference >=0)
                                 {
                                     amountToGet=difference;

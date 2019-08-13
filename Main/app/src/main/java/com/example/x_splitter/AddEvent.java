@@ -51,6 +51,7 @@ public class AddEvent extends AppCompatActivity {
     int amountInvested = 0;
     ArrayList<String> paidByListTransaction;
     String itemPaidBy;
+    String GroupID;
 
 
     ImageButton btn_back;
@@ -81,6 +82,7 @@ public class AddEvent extends AppCompatActivity {
 
         save = (TextView) findViewById(R.id.textView_save);
         save.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 String event_name = eventName.getText().toString();
@@ -151,6 +153,7 @@ public class AddEvent extends AppCompatActivity {
                                 if (parent.getItemAtPosition(position).equals("Choose Group")) {
                                     //do Nothing
                                 } else {
+
                                     GroupList = new ArrayList();
                                     GroupList.add(groupSelected);
                                     retrievePaidBy(gid, name);
