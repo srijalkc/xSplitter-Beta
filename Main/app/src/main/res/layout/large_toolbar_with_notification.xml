@@ -1,0 +1,24 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/large_toolbar_top_notification"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/colorPrimary"
+            android:elevation="2dp"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            android:layout_gravity="top">
+
+                <ImageButton
+                    android:id="@+id/image_button_notification"
+                    android:layout_width="24dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="end|top"
+                    android:layout_marginEnd="25dp"
+                    android:background="@drawable/icn_inbox_dark" />
+
+        </androidx.appcompat.widget.Toolbar>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

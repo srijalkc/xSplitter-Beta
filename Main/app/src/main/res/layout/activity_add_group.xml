@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorInsideBackground"
+    android:fitsSystemWindows="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_add_group_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <include layout="@layout/toolbar_with_back" />
+
+        <TextView
+            android:id="@+id/text_view_add_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/add_group"
+            android:textColor="@color/colorToolbarHead"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.012"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/Aqua"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.956"
+            app:layout_constraintStart_toEndOf="@+id/text_view_add_group"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/add_group"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@color/colorPrimary"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_add_group_toolbar"
+        app:layout_constraintVertical_bias="0.05">
+
+        <EditText
+            android:id="@+id/edit_text_group_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="20"
+            android:hint="@string/group_name"
+            android:inputType="textPersonName" />
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_friend_selected"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:textSize="16sp"-->
+            <!--android:textColor="@color/colorToolbarHead"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/button_add_friend"-->
+            <!--/>-->
+
+        <TextView
+            android:id="@+id/tv_add_friend"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
+            android:textColor="@color/colorToolbarHead"
+            android:layout_below="@+id/edit_text_group_name"
+            android:text="Add friends"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_add_friend"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_below="@+id/tv_add_friend"
+            android:layout_marginTop="10dp"/>
+
+        <!--<Button-->
+            <!--android:id="@+id/button_add_friend"-->
+            <!--android:layout_width="110dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_below="@+id/rv_addgroup"-->
+            <!--android:layout_margin="20dp"-->
+            <!--android:background="@drawable/settle_button"-->
+            <!--android:text="@string/add_friend_group"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textColor="@color/colorPrimary"-->
+            <!--android:textSize="14sp"-->
+            <!--android:layout_centerInParent="true"/>-->
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/rl_add_group"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@+id/edit_text_group_name"-->
+            <!--android:layout_marginTop="20dp">-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/image_view_add_friend"-->
+            <!--android:layout_width="36dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--app:srcCompat="@drawable/add_group" />-->
+
+            <!--<androidx.recyclerview.widget.RecyclerView-->
+                <!--android:id="@+id/recyclerview_addfriends"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:padding="15dp" />-->
+
+            <!--<Spinner-->
+            <!--android:id="@+id/spinner_friend_name"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:background="@drawable/transaction_text_box"-->
+            <!--android:layout_toEndOf="@+id/image_view_add_friend"-->
+            <!--android:textColor="@color/Aqua"-->
+            <!--android:textColorHint="@color/colorInsideHint"-->
+            <!--android:textSize="16sp"-->
+            <!--android:padding="5dp"/>-->
+
+            <!--<ImageButton-->
+            <!--android:id="@+id/btn_del_friend"-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="24dp"-->
+            <!--android:layout_toEndOf="@+id/spinner_friend_name"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--app:srcCompat="@drawable/trash"-->
+            <!--android:onClick="onTrash"/>-->
+
+            <!--<Button-->
+                <!--android:id="@+id/button_add_friend"-->
+                <!--android:layout_width="110dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_below="@+id/recyclerview_addfriends"-->
+                <!--android:layout_margin="20dp"-->
+                <!--android:background="@drawable/settle_button"-->
+                <!--android:text="@string/add_friend_group"-->
+                <!--android:textAllCaps="false"-->
+                <!--android:textColor="@color/colorPrimary"-->
+                <!--android:textSize="14sp"-->
+                <!--android:layout_centerInParent="true"/>-->
+
+        </RelativeLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_addfriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/add_button"
+        android:backgroundTint="@android:color/transparent"
+        android:src="@drawable/add_button"
+        app:borderWidth="0dp"
+        app:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:maxImageSize="56dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

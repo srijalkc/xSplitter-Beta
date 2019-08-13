@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#000000</color>
+    <color name="colorAccent">#009688</color>
+    <color name="getStartedTabText">#ffffff</color>
+    <color name="getStartedTabIndicator">#ffffff</color>
+    <color name="colorInsideBackground">#f0f3f4</color>
+    <color name="colorInsideHint">#9FA2A2</color>
+    <color name="colorToolbarHead">#324755</color>
+    <color name="Aqua">#87bcbf</color>
+    <color name="lightAqua_Item"> #D5E7E9 </color>
+    <color name="item_fill"> #6E8CA0 </color>
+    <color name="groupTab">#6E8CA0</color>
+    <color name="date">#9EA3A4</color>
 </resources>

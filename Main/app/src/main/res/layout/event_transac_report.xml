@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorInsideBackground"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/event_layout_toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <include
+                layout="@layout/large_toolbar_with_notification"
+                />
+
+            <ImageView
+                android:id="@+id/image_view_event_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                app:srcCompat="@drawable/events_top_text"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintVertical_bias="0.24"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_each_event"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/event_layout_toolbar"
+            android:background="@color/lightAqua_Item">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/event_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Event name"
+                    android:textStyle="bold"
+                    android:textColor="@color/item_fill"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/e_to_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To Pay:"
+                    android:textColor="@color/item_fill"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/event_name"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/to_pay_money"
+                    android:layout_marginStart="5dp"
+                    android:layout_toEndOf="@+id/e_to_pay"
+                    android:layout_below="@+id/event_name"
+                    android:text="12"
+                    android:textColor="@color/item_fill"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/e_to_receive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To Receive:"
+                    android:textColor="@color/item_fill"
+                    android:textSize="14sp"
+                    android:layout_below="@+id/e_to_pay"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/to_receive_money"
+                    android:layout_toEndOf="@id/e_to_receive"
+                    android:layout_below="@+id/e_to_pay"
+                    android:text="3"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/item_fill"
+                    android:textSize="14sp"
+                    />
+
+                <Button
+                    android:id="@+id/btn_settle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/settle_button"
+                    android:text="Settle"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="18sp" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_transac_report"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rl_each_event"
+            android:background="@color/colorPrimary"
+            app:tabIndicatorColor="@color/groupTab"
+            app:tabTextColor="@color/groupTab">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Transactions" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Report" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager_transac_report"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tab_transac_report" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/bottom_navbar"
+        layout="@layout/bottom_navigation_bar"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

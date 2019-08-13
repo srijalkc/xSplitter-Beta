@@ -1,3 +1,39 @@
 <resources>
-    <string name="app_name">x-Splitter</string>
+    <string name="app_name">Xplitter</string>
+    <string name="email_hint">Enter your e-mail</string>
+    <string name="signup_img">signup_img</string>
+    <string name="enter_password">Enter password</string>
+    <string name="enter_username">Enter username</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="divider">divider</string>
+    <string name="username">Username</string>
+    <string name="password_hint">Password</string>
+    <string name="forgot_password_hint">Forgot Password?</string>
+    <string name="login_img_desc">login img</string>
+    <string name="textview">TextView</string>
+    <string name="intro_img">intro_img</string>
+    <string name="skip">Skip</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="save">Save</string>
+    <string name="search">Search Group, Event or Transaction</string>
+    <string name="group_name">Group name</string>
+    <string name="friend_name">Friend name</string>
+    <string name="add_group">Add group</string>
+    <string name="add_event">Add event</string>
+    <string name="add_user">Add user</string>
+    <string name="add_friend_group">Add Friend</string>
+    <string name="members"> <u> MEMBERS </u></string>
+    <string name="profile_name">Profile name</string>
+
+    <string-array name="splits">
+        <item> Choose Splitting</item>>
+        <item> Split Equally</item>
+        <item> Split Unequally</item>
+    </string-array>
+
+    <string-array name="friend_name">
+        <item> Friend 1</item>
+        <item> Friend 2</item>
+        <item> Friend 3</item>
+    </string-array>
 </resources>
