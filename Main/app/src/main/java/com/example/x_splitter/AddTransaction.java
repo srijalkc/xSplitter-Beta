@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -126,9 +127,9 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 Map<String, Object> amountDetail = (Map<String, Object>) dataSnapshot.getValue();
-                         amountInvested = (long) Objects.requireNonNull(amountDetail).get("amountInvested");
-                         amountToGet = (long) Objects.requireNonNull(amountDetail).get("amountToGet");
-                         amountToPay = (long) Objects.requireNonNull(amountDetail).get("amountToPay");
+                                amountInvested = (long) Objects.requireNonNull(amountDetail).get("amountInvested");
+                                amountToGet = (long) Objects.requireNonNull(amountDetail).get("amountToGet");
+                                amountToPay = (long) Objects.requireNonNull(amountDetail).get("amountToPay");
                                 System.out.println("AI"+amountInvested);
                                 System.out.println("ATP"+amountToPay);
                                 System.out.println("ATG"+amountToGet);
@@ -149,7 +150,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                                     }
 
 
-                                    }
+                                }
                                 else {
                                     amountToPay = amountToPay- difference;
                                 }
@@ -283,6 +284,9 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     Toast.makeText(AddTransaction.this,"A: "+ equallySplittedAmount ,Toast.LENGTH_SHORT).show();
                 }
                 else if(parent.getItemAtPosition(position).equals("Split Unequally")){
+                    final FragmentManager fr = getSupportFragmentManager();
+                    final FragmentUnequalSplit fragmentUnequalSplit = new FragmentUnequalSplit();
+                    fragmentUnequalSplit.show(fr,"Member");
                     Toast.makeText(AddTransaction.this,"Selected Unequally",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -663,30 +667,30 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                                                 .child(eventnameID)
                                                 .child(itemPaidBy)
                                                 .addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                Map<String,Object> amountDetail = (Map<String, Object>)dataSnapshot.getValue();
-                                                amountInvestedd = (long)Objects.requireNonNull(amountDetail).get("amountInvested");
-                                                amountToGett = (long)Objects.requireNonNull(amountDetail).get("amountToGet");
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                        Map<String,Object> amountDetail = (Map<String, Object>)dataSnapshot.getValue();
+                                                        amountInvestedd = (long)Objects.requireNonNull(amountDetail).get("amountInvested");
+                                                        amountToGett = (long)Objects.requireNonNull(amountDetail).get("amountToGet");
 
-                                                amountInvested=amountInvestedd+at;
-                                                amountToGet=amountToGett+at;
-                                                Map<String,Object> amountDetails = new HashMap<>();
-                                                amountDetails.put("amountInvested",amountInvested);
-                                                amountDetails.put("amountToGet",amountToGet);
+                                                        amountInvested=amountInvestedd+at;
+                                                        amountToGet=amountToGett+at;
+                                                        Map<String,Object> amountDetails = new HashMap<>();
+                                                        amountDetails.put("amountInvested",amountInvested);
+                                                        amountDetails.put("amountToGet",amountToGet);
 //                                               TransactionInfo t1 = new TransactionInfo(amountInvested,amountToGet);
-                                                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
-                                                        .child(groupnameID)
-                                                        .child(eventnameID)
-                                                        .child(itemPaidBy)
-                                                        .updateChildren(amountDetails);
-                                            }
+                                                        FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+                                                                .child(groupnameID)
+                                                                .child(eventnameID)
+                                                                .child(itemPaidBy)
+                                                                .updateChildren(amountDetails);
+                                                    }
 
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                                            }
-                                        });
+                                                    }
+                                                });
 
                                     }
                                 }
