@@ -1,7 +1,6 @@
 package com.example.x_splitter;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,12 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -58,18 +56,21 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     String se;
     String su;
     String itemPaidBy;
-    int amountToPay = 0;
-    int amountToGet = 0;
-    int amountInvested=0;
     String amountTotal;
-    int size;
-    int at;
+    long amountToPay ;
+    long amountToGett ;
+    long amountInvestedd;
+    long amountToGet ;
+    long amountInvested;
+    long size;
+    long at;
     int memberSize;
     ArrayList<String> paidByListTransaction;
     List<String> groupMembers;
-    int equallySplittedAmount;
+    long equallySplittedAmount;
 
     DatabaseReference databaseTransaction;
+
 
 
     @Override
@@ -78,7 +79,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_add_transaction);
 
         btn_back = findViewById(R.id.image_button_back);
-        SpinnerPaidBy = findViewById(R.id.spinner_paidby);
+        SpinnerPaidBy =  findViewById(R.id.spinner_paidby);
         SpinnerEvent = findViewById(R.id.spinner_event);
         totalGroupTransaction = new ArrayList();
         totalEventTransaction = new ArrayList();
@@ -88,11 +89,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         databaseTransaction = FirebaseDatabase.getInstance().getReference("Transaction");
         TextViewAmount = (EditText) findViewById(R.id.text_view_amount);
         TextViewCategory = (EditText) findViewById(R.id.text_view_category);
-
-
-
-
-
 
 
         btn_back.setOnClickListener(new View.OnClickListener() {
@@ -105,40 +101,195 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
         retrievegroup();
 
+
+
+
         Spinner spinner_split = findViewById(R.id.spinner_split);
         se = " Split Equally";
         su = " Split Unequally";
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.splits, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.splits, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_split.setAdapter(adapter);
         spinner_split.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (parent.getItemAtPosition(position).equals("Choose Splitting")) {
+                if (parent.getItemAtPosition(position).equals("Choose Splitting")){
                     //do Nothing
-                } else if (parent.getItemAtPosition(position).equals("Split Equally")) {
+                }
+                else if(parent.getItemAtPosition(position).equals("Split Equally")){
 
-                    Toast.makeText(AddTransaction.this, "Split Equally", Toast.LENGTH_SHORT).show();
-                } else if (parent.getItemAtPosition(position).equals("Split Unequally")) {
+                    equallySplittedAmount=at/size;
+
+                    System.out.println(equallySplittedAmount);
+
+
+                    for(int i=1;i<= size;i++) {
+                        String user = paidByListTransaction.get(i);
+                        System.out.println(user);
+                        FirebaseDatabase.getInstance().getReference("TransactionUnequal").child(groupnameID).child(eventnameID).child(user).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                Map<String, Object> amountDetail = (Map<String, Object>) dataSnapshot.getValue();
+                                amountInvested = (long) Objects.requireNonNull(amountDetail).get("amountInvested");
+                                amountToGet = (long) Objects.requireNonNull(amountDetail).get("amountToGet");
+                                amountToPay = (long) Objects.requireNonNull(amountDetail).get("amountToPay");
+                                System.out.println("AI"+amountInvested);
+                                System.out.println("ATP"+amountToPay);
+                                System.out.println("ATG"+amountToGet);
+                                long difference = amountToGet-equallySplittedAmount;
+                                if(difference >=0)
+                                {
+                                    amountToGet=difference;
+                                    if(amountToPay !=0){
+                                        if(amountToGet < amountToPay)
+                                        {
+                                            amountToPay=amountToPay-amountToGet;
+                                            amountToPay=0;
+                                        }
+                                        else{
+                                            amountToGet= amountToGet-amountToPay;
+                                            amountToPay=0;
+                                        }
+                                    }
+
+
+                                }
+                                else {
+                                    amountToPay = amountToPay- difference;
+                                }
+
+
+
+                                Map<String,Object> amountDetails = new HashMap<>();
+                                amountDetails.put("amountInvested",amountInvested);
+                                amountDetails.put("amountToGet",amountToGet);
+                                amountDetails.put("amountToPay",amountToPay);
+                                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+                                        .child(groupnameID)
+                                        .child(eventnameID)
+                                        .child(user)
+                                        .updateChildren(amountDetails);
+
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+
+
+                    }
+
+//                    amountTotal = TextViewAmount.getText().toString().trim();
+//                    at=Integer.parseInt(amountTotal);
+//                    System.out.println(at);
+//                    System.out.println(groupnameID);
+//                    System.out.println(eventnameID);
+//                    System.out.println("IPB"+itemPaidBy);
+//
+//                    FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                            .child(groupnameID)
+//                            .child(eventnameID)
+//                            .child(itemPaidBy)
+//                            .addListenerForSingleValueEvent(new ValueEventListener() {
+//                                @Override
+//                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                    System.out.println("Event "+eventnameID);
+//                                    Map<String,Object> amountDetail = (Map<String, Object>)dataSnapshot.getValue();
+//                                    amountInvested= (long) Objects.requireNonNull(amountDetail).get("amountInvested");
+//                                    amountToGet = (long) Objects.requireNonNull(amountDetail).get("amountToGet");
+//                                    amountInvestedd=amountInvested+ at;
+//                                    amountToGett=amountToGet + at;
+//
+//
+//
+//                                    System.out.println(amountInvestedd);
+//
+//                                    System.out.println(amountToGett);
+//                                    DatabaseReference ref= FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                                            .child(groupnameID)
+//                                            .child(eventnameID)
+//                                            .child(itemPaidBy);
+//
+//                                    ref.child("amountInvested").setValue(amountInvestedd);
+//                                    ref.child("amountToGet").setValue(amountToGett);
+//
+//                                }
+//
+//                                @Override
+//                                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                                }
+//                            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//                                @Override
+//                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                    System.out.println("Event "+eventnameID);
+//                                    Map<String,Object> amountDetail = (Map<String, Object>)dataSnapshot.getValue();
+//                                    amountInvested= (long) Objects.requireNonNull(amountDetail).get("amountInvested");
+//                                    amountToGet = (long) Objects.requireNonNull(amountDetail).get("amountToGet");
+//                                    amountInvestedd=amountInvested+ at;
+//                                    amountToGett=amountToGet + at;
+//
+//
+//
+//                                    System.out.println(amountInvestedd);
+//
+//                                    System.out.println(amountToGett);
+//                                    DatabaseReference ref= FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                                            .child(groupnameID)
+//                                            .child(eventnameID)
+//                                            .child(itemPaidBy);
+//
+//                                    ref.child("amountInvested").setValue(amountInvestedd);
+//                                    ref.child("amountToGet").setValue(amountToGett).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                        @Override
+//                                        public void onComplete(@NonNull Task<Void> task) {
+//                                            if(task.isSuccessful()){
+//                                                startActivity(new Intent(AddTransaction.this, Group.class));
+//                                            }
+//                                        }
+//                                    });
+//
+//                                }
+//
+//                                @Override
+//                                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                                }
+//                            });
+
+
+
+
+
+
+
+                    Toast.makeText(AddTransaction.this,"A: "+ equallySplittedAmount ,Toast.LENGTH_SHORT).show();
+                }
+                else if(parent.getItemAtPosition(position).equals("Split Unequally")){
                     final FragmentManager fr = getSupportFragmentManager();
                     final FragmentUnequalSplit fragmentUnequalSplit = new FragmentUnequalSplit();
                     fragmentUnequalSplit.show(fr,"Member");
-                    amounttotal = TextViewAmount.getText().toString().trim();
-                    int at = Integer.parseInt(amounttotal);
-                }
-                else if(parent.getItemAtPosition(position).equals("Split Equally")){
-                    amountTotal=TextViewAmount.getText().toString().trim();
-                    at = Integer.parseInt(amountTotal);
-                    memberSize = size;
-                    equallySplittedAmount = at/memberSize;
-
-
-
-
-
-                    Toast.makeText(AddTransaction.this,"A: " + equallySplittedAmount,Toast.LENGTH_SHORT).show();
-                }
-                else if(parent.getItemAtPosition(position).equals("Split Unequally")){
                     Toast.makeText(AddTransaction.this,"Selected Unequally",Toast.LENGTH_SHORT).show();
                 }
             }
@@ -148,6 +299,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
             }
         });
+
 
 
 //***********************Date & Time***************************************************************
@@ -161,13 +313,26 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             }
         };
 
-        TextViewSave = (TextView) findViewById(R.id.textView_save);
+        TextViewSave = (TextView)findViewById(R.id.textView_save);
 
         TextViewSave.setOnClickListener(this);
         TextViewDate.setOnClickListener(this);
     }
 
-    private void dateSelector() {
+
+    private void UpdateChild(long amountInvested,long amountToGet)
+    {
+        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+                .child(groupnameID)
+                .child(eventnameID)
+                .child(itemPaidBy);
+
+        ref.child("amountInvested").setValue(amountInvestedd);
+        ref.child("amountToGet").setValue(amountToGett);
+    }
+
+
+    private void dateSelector(){
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
@@ -182,7 +347,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     }
 //***********************End of Date & Time*********************************************************
 
-    private void saveTransaction() {
+    private void saveTransaction(){
         String amount = TextViewAmount.getText().toString().trim();
         String date = TextViewDate.getText().toString().trim();
         String category = TextViewCategory.getText().toString().trim();
@@ -191,7 +356,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(getApplicationContext(), "Please enter Amount", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (date.isEmpty()) {
+        if(date.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please choose Date", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -199,7 +364,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //            Toast.makeText(getApplicationContext(), "Please enter event", Toast.LENGTH_SHORT).show();
 //            return;
 //        }
-        if (category.isEmpty()) {
+        if(category.isEmpty()){
             Toast.makeText(getApplicationContext(), "Please enter Category", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -224,7 +389,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
 
 //        for(int i = 1; i <=memberSize; i++ ) {
-//            String j = paidByListTransaction.get(i);
+//            String j = ;paidByListTransaction.get(i)
 //            if (j == itemPaidBy) {
 //                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
 //                        .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo2);
@@ -266,52 +431,53 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //            }
 //        }
 
+//ruxana
 
-        for(int i = 1; i <=memberSize; i++ ) {
-            String j = paidByListTransaction.get(i);
-            TransactionInfo transactionInfo2 = new TransactionInfo( amountInvested, amountToPay, amountToGet);
-            FirebaseDatabase.getInstance().getReference("TransactionUnequal")
-                    .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo2);
-
-            if (j == itemPaidBy) {
-                //  Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
-
-                Map<String, Object> amountDetail =new HashMap<>();
-
-
-//                FirebaseDatabase.getInstance().getReference("TransactionUnequal").child(groupnameID).child(eventnameID).child(j).addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        Map<String, Object> amountDetail = (Map<String, Object>) dataSnapshot.getValue();
-//                         amountInvested = (int) Objects.requireNonNull(amountDetail).get("amountInvested");
-//                         amountToGet = (int) Objects.requireNonNull(amountDetail).get("amountToGet");
-//                         amountToPay = (int) Objects.requireNonNull(amountDetail).get("amountToPay");
-                amountInvested=amountInvested+at;
-                amountToGet=amountToGet-equallySplittedAmount;
-                //  TransactionInfo transactionInfo4 = new TransactionInfo(amountInvested,amountToGet,amountToPay);
-
-                amountDetail.put("amountInvested",amountInvested);
-                amountDetail.put("amountToGet",amountToGet);
-//                        amountDetail.put("amountToPay",amountToPay);
-                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
-                        .child(groupnameID).child(eventnameID).child(j).updateChildren(amountDetail);
-
-
-            }
-
-
-
-
-            else {
-                Map<String, Object> amountDetail =new HashMap<>();
-                amountToPay=equallySplittedAmount;
-                amountDetail.put("amountToPay",amountToPay);
-                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
-                        .child(groupnameID).child(eventnameID).child(j).updateChildren(amountDetail);
-            }
-        }
-
-
+//        for(int i = 1; i <=memberSize; i++ ) {
+//            String j = paidByListTransaction.get(i);
+//            TransactionInfo transactionInfo2 = new TransactionInfo( amountInvested, amountToPay, amountToGet);
+//            FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                    .child(groupnameID).child(eventnameID).child(j).setValue(transactionInfo2);
+//
+//            if (j == itemPaidBy) {
+//                //  Toast.makeText(getApplicationContext(), "Transaction Added", Toast.LENGTH_SHORT).show();
+//
+//                Map<String, Object> amountDetail =new HashMap<>();
+//
+//
+////                FirebaseDatabase.getInstance().getReference("TransactionUnequal").child(groupnameID).child(eventnameID).child(j).addValueEventListener(new ValueEventListener() {
+////                    @Override
+////                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+////                        Map<String, Object> amountDetail = (Map<String, Object>) dataSnapshot.getValue();
+////                         amountInvested = (int) Objects.requireNonNull(amountDetail).get("amountInvested");
+////                         amountToGet = (int) Objects.requireNonNull(amountDetail).get("amountToGet");
+////                         amountToPay = (int) Objects.requireNonNull(amountDetail).get("amountToPay");
+//                amountInvested=amountInvested+at;
+//                amountToGet=amountToGet-equallySplittedAmount;
+//                //  TransactionInfo transactionInfo4 = new TransactionInfo(amountInvested,amountToGet,amountToPay);
+//
+//                amountDetail.put("amountInvested",amountInvested);
+//                amountDetail.put("amountToGet",amountToGet);
+////                        amountDetail.put("amountToPay",amountToPay);
+//                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                        .child(groupnameID).child(eventnameID).child(j).updateChildren(amountDetail);
+//
+//
+//            }
+//
+//
+//
+//
+//            else {
+//                Map<String, Object> amountDetail =new HashMap<>();
+//                amountToPay=equallySplittedAmount;
+//                amountDetail.put("amountToPay",amountToPay);
+//                FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                        .child(groupnameID).child(eventnameID).child(j).updateChildren(amountDetail);
+//            }
+//        }
+//
+//
 
 
 
@@ -323,7 +489,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
+        switch (v.getId()){
             case R.id.text_view_date:
                 dateSelector();
                 break;
@@ -345,7 +511,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot snapshot1 : dataSnapshot.getChildren()) {
+                for(DataSnapshot snapshot1: dataSnapshot.getChildren()){
                     groupListTranscation.add(groupnametransaction);
                     GroupInfo info = snapshot1.getValue(GroupInfo.class);
                     groupInfos.add(info);
@@ -376,6 +542,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                                 groupnametransaction = name.get(position);
                                 retrievePaidBy(groupnameID, groupnametransaction);
                                 retrieveEvent(groupnameID);
+
                             }
                         }
 
@@ -406,10 +573,10 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         FirebaseDatabase.getInstance().getReference("EventName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                List<EventInfo> eventInfos = new ArrayList<>();
+                List<EventInfo> eventInfos  = new ArrayList<>();
 
-                for (DataSnapshot snapshot3 : dataSnapshot.getChildren()) {
-                    System.out.println("SnapShot : " + snapshot3.getValue().toString());
+                for(DataSnapshot snapshot3 : dataSnapshot.getChildren()){
+                    System.out.println("SnapShot : "+snapshot3.getValue().toString());
                     EventInfo eventinfo = snapshot3.getValue(EventInfo.class);
                     eventInfos.add(eventinfo);
                 }
@@ -419,8 +586,9 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                     List<String> eventname = new ArrayList<>();
                     List<String> grpId = new ArrayList<>();
                     for (int i = 0; i < eventInfos.size(); i++) {
-                        //System.out.println("ID : " + eventInfos.get(i).GroupID.toString());
-                        if (eventInfos.get(i).GroupID.equals(id)) {
+//                        System.out.println("String1 : " + eventInfos.get(i));
+//                        System.out.println("ID : " + eventInfos.get(i).GroupID);
+                        if (eventInfos.get(i).GroupID.equals(id)){
                             eId.add(eventInfos.get(i).ID);
                             grpId.add(eventInfos.get(i).GroupID);
                             eventname.add(eventInfos.get(i).EventName);
@@ -471,8 +639,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                 .addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        List<String> groupMembers = new ArrayList<>();
-                        for (DataSnapshot snapshot4 : dataSnapshot.getChildren()) {
                         groupMembers = new ArrayList<>();
                         for(DataSnapshot snapshot4 : dataSnapshot.getChildren()){
                             groupMembers.add(snapshot4.getValue().toString());
@@ -489,11 +655,46 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                                 @Override
                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id1) {
                                     itemPaidBy = SpinnerPaidBy.getSelectedItem().toString();
-                                    if (parent.getItemAtPosition(position).equals("Choose User")) {
+                                    if(parent.getItemAtPosition(position).equals("Choose User")){
                                         //do Nothing
-                                    } else {
+                                    }
+                                    else{
                                         totalPaidByTransaction = new ArrayList();
                                         totalPaidByTransaction.add(itemPaidBy);
+
+
+                                        amountTotal = TextViewAmount.getText().toString().trim();
+                                        at=Integer.parseInt(amountTotal);
+                                        FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+                                                .child(id)
+                                                .child(eventnameID)
+                                                .child(itemPaidBy)
+                                                .addListenerForSingleValueEvent(new ValueEventListener() {
+                                                    @Override
+                                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                                        Map<String,Object> amountDetail = (Map<String, Object>)dataSnapshot.getValue();
+                                                        amountInvestedd = (long)Objects.requireNonNull(amountDetail).get("amountInvested");
+                                                        amountToGett = (long)Objects.requireNonNull(amountDetail).get("amountToGet");
+
+                                                        amountInvested=amountInvestedd+at;
+                                                        amountToGet=amountToGett+at;
+                                                        Map<String,Object> amountDetails = new HashMap<>();
+                                                        amountDetails.put("amountInvested",amountInvested);
+                                                        amountDetails.put("amountToGet",amountToGet);
+//                                               TransactionInfo t1 = new TransactionInfo(amountInvested,amountToGet);
+                                                        FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+                                                                .child(groupnameID)
+                                                                .child(eventnameID)
+                                                                .child(itemPaidBy)
+                                                                .updateChildren(amountDetails);
+                                                    }
+
+                                                    @Override
+                                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                    }
+                                                });
+
                                     }
                                 }
 
@@ -512,6 +713,5 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                 });
         return paidByListTransaction;
     }
-
-//***********************End of PaidBy**********************************************************
 }
+//***********************End of PaidBy**********************************************************
