@@ -35,19 +35,11 @@ public class AddGroup extends AppCompatActivity {
 
     private static final String TAG = AddGroup.class.getSimpleName();
     ImageButton btn_back;
-//    Button buttonAddFriend;
-//    TextView friendSelected;
-//    String[] friendList;
-//    boolean[] checkedFriend;
     ArrayList<Integer> groupFriend = new ArrayList<>();
     TextView save;
     EditText groupName;
     DatabaseReference dbReference;
-    //Integer childCount;
     EditText friendName;
-    //String refId;
-    //Spinner spinnerFriendName;
-   // private final String ALPHA_NUMERIC_STRING = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     ArrayList sb;
     StringBuffer sbb =null;
     String ID;

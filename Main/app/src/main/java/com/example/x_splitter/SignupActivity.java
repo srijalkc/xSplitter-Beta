@@ -29,7 +29,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.regex.Pattern;
 
 
-public class SignupActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignupActivity extends AppCompatActivity  {
     private EditText editTextEmail;
     private EditText editTextUsername;
     private EditText editTextPassword;
@@ -62,7 +62,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
         progressDialog = new ProgressDialog(this);
 
-        buttonSignUp.setOnClickListener(this);
+        buttonSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerUser();
+            }
+        });
         //buttonSignUpGmail.setOnClickListener(this);
 
     }
@@ -179,12 +184,12 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId()== R.id.button_signup) {
-                registerUser();
-        }
-    }
+    //@Override
+//    public void onClick(View v) {
+//        if (v.getId()== R.id.button_signup) {
+//                registerUser();
+//        }
+//    }
 }
 
 

@@ -274,18 +274,13 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //
 //                                }
 //                            });
-
-
-
-
-
-
-
                     Toast.makeText(AddTransaction.this,"A: "+ equallySplittedAmount ,Toast.LENGTH_SHORT).show();
                 }
                 else if(parent.getItemAtPosition(position).equals("Split Unequally")){
                     final FragmentManager fr = getSupportFragmentManager();
-                    final FragmentUnequalSplit fragmentUnequalSplit = new FragmentUnequalSplit();
+                    final FragmentUnequalSplit fragmentUnequalSplit = new FragmentUnequalSplit(groupnameID, groupnametransaction);
+//                    System.out.println("Neha" + groupnameID);
+//                    System.out.println("Neha" + groupnametransaction);
                     fragmentUnequalSplit.show(fr,"Member");
                     Toast.makeText(AddTransaction.this,"Selected Unequally",Toast.LENGTH_SHORT).show();
                 }
@@ -475,10 +470,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //        }
 //
 //
-
-
-
-
 
         AddTransaction.super.onBackPressed();
 
