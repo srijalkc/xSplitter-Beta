@@ -303,7 +303,7 @@ public class AddGroup extends AppCompatActivity {
     }
 
 
-    public static ArrayList<ModelAddGroup> retrieve(){
+    public ArrayList<ModelAddGroup> retrieve(){
         ArrayList<ModelAddGroup> friendLists = new ArrayList<>();
         friendLists.clear();
 //        friendLists.add(0, "Choose Friend");

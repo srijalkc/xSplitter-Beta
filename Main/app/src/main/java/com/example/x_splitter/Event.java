@@ -55,7 +55,6 @@ public class Event extends AppCompatActivity {
     public static ArrayList<ModelHomeEvent> getEventData(){
         ArrayList<ModelHomeEvent> modelHomeEvents = new ArrayList<>();
         modelHomeEvents.clear();
-
         FirebaseDatabase.getInstance().getReference("EventName").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -68,9 +67,9 @@ public class Event extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                                 Map<String, Object> groupdata = (Map<String, Object>) dataSnapshot.getValue();
-                                System.out.println(groupdata);
+                               // System.out.println(groupdata);
                                 GN = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                                System.out.println(GN);
+                              //  System.out.println(GN);
                             modelHomeEvents.add(new ModelHomeEvent(eventname, GN, "Not Settled", "123.0", "12.0"));
 
 

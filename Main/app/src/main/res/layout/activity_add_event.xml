@@ -61,73 +61,74 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <RelativeLayout
-            android:id="@+id/add_event"
-            android:layout_width="350dp"
+    <RelativeLayout
+        android:id="@+id/add_event"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:background="@color/colorPrimary"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_add_event_toolbar"
+        app:layout_constraintVertical_bias="0.05">
+
+
+        <EditText
+            android:id="@+id/edit_text_event_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:background="@color/colorPrimary"
-            android:padding="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            android:ems="20"
+            android:hint="Event name"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toTopOf="@+id/layout_add_event"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_add_event_toolbar"
-            app:layout_constraintVertical_bias="0.05">
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <!--<ImageView-->
+        <!--android:id="@+id/image_view_add_group"-->
+        <!--android:layout_width="36dp"-->
+        <!--android:layout_height="30dp"-->
+        <!--app:srcCompat="@drawable/add_group" />-->
 
-            <EditText
-                android:id="@+id/edit_text_event_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:ems="20"
-                android:hint="Event name"
-                android:inputType="textPersonName"
-                app:layout_constraintBottom_toTopOf="@+id/layout_add_event"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <!--<EditText-->
+        <!--android:id="@+id/text_select_gname"-->
+        <!--android:layout_width="240dp"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginStart="60dp"-->
+        <!--android:background="@drawable/transaction_text_box"-->
+        <!--android:hint="Select Group"-->
+        <!--android:inputType="text"-->
+        <!--android:paddingStart="20dp"-->
+        <!--android:paddingEnd="0dp"-->
+        <!--android:textColorHint="@color/colorInsideHint"-->
+        <!--android:textSize="16sp"-->
+        <!--android:textColor="@color/Aqua"/>-->
 
-            <!--<ImageView-->
-                <!--android:id="@+id/image_view_add_group"-->
-                <!--android:layout_width="36dp"-->
-                <!--android:layout_height="30dp"-->
-                <!--app:srcCompat="@drawable/add_group" />-->
+        <TextView
+            android:id="@+id/tv_add_event"
+            android:layout_width="match_parent"
+            android:textSize="16sp"
+            android:textColor="@color/colorToolbarHead"
+            android:text="Add Groups"
+            android:layout_below="@+id/edit_text_event_name"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            />
 
-            <!--<EditText-->
-                <!--android:id="@+id/text_select_gname"-->
-                <!--android:layout_width="240dp"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_marginStart="60dp"-->
-                <!--android:background="@drawable/transaction_text_box"-->
-                <!--android:hint="Select Group"-->
-                <!--android:inputType="text"-->
-                <!--android:paddingStart="20dp"-->
-                <!--android:paddingEnd="0dp"-->
-                <!--android:textColorHint="@color/colorInsideHint"-->
-                <!--android:textSize="16sp"-->
-                <!--android:textColor="@color/Aqua"/>-->
+        <Spinner
+            android:id="@+id/spinner_add_event"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/tv_add_event"
+            android:textSize="15sp"/>
 
-            <TextView
-                android:id="@+id/tv_add_event"
-                android:layout_width="match_parent"
-                android:textSize="16sp"
-                android:textColor="@color/colorToolbarHead"
-                android:text="Add Groups"
-                android:layout_below="@+id/edit_text_event_name"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_add_event"
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:layout_below="@+id/tv_add_event"
-                android:layout_marginTop="10dp"/>
-
-        </RelativeLayout>
+    </RelativeLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_addGroup"

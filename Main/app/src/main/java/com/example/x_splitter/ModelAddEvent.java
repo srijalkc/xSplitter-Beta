@@ -5,6 +5,10 @@ public class ModelAddEvent {
     Boolean isSelectedEvent;
     String ID;
 
+    public ModelAddEvent(String groupName) {
+        this.groupName = groupName;
+    }
+
     ModelAddEvent(){
 
     }
