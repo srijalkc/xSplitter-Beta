@@ -46,9 +46,9 @@ public class AddEvent extends AppCompatActivity {
     List<String> groupMembers;
     String name;
     String gid;
-    int amountToPay = 0;
-    int amountToGet = 0;
-    int amountInvested = 0;
+    double amountToPay = 0;
+    double amountToGet = 0;
+    double amountInvested = 0;
     ArrayList<String> paidByListTransaction;
     String itemPaidBy;
     String ID,grpId, Names;
@@ -121,7 +121,7 @@ public class AddEvent extends AppCompatActivity {
             TransactionInfo transactionInfo3 = new TransactionInfo(amountToPay, amountToGet, amountInvested);
             for(int i = 1; i < paidByListTransaction.size(); i++) {
                 String j = paidByListTransaction.get(i);
-                FirebaseDatabase.getInstance().getReference("TransactionUnequal").child(gid).child(ID).child(j).setValue(transactionInfo3);
+                FirebaseDatabase.getInstance().getReference("TransactionUnequal").child(grpID).child(ID).child(j).setValue(transactionInfo3);
             }
         }
     }

@@ -1,6 +1,7 @@
 package com.example.x_splitter;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -65,6 +66,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     ArrayList<String> paidByListTransaction;
     List<String> groupMembers;
     double equallySplittedAmount;
+    Intent intent;
 
     DatabaseReference databaseTransaction;
 
@@ -127,9 +129,9 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 Map<String, Object> amountDetail = (Map<String, Object>) dataSnapshot.getValue();
-                                amountInvested = (long) Objects.requireNonNull(amountDetail).get("amountInvested");
-                                amountToGet = (long) Objects.requireNonNull(amountDetail).get("amountToGet");
-                                amountToPay = (long) Objects.requireNonNull(amountDetail).get("amountToPay");
+                                amountInvested = (double) Objects.requireNonNull(amountDetail).get("amountInvested");
+                                amountToGet = (double) Objects.requireNonNull(amountDetail).get("amountToGet");
+                                amountToPay = (double) Objects.requireNonNull(amountDetail).get("amountToPay");
                                 System.out.println("AI"+amountInvested);
                                 System.out.println("ATP"+amountToPay);
                                 System.out.println("ATG"+amountToGet);
@@ -278,11 +280,25 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                 }
                 else if(parent.getItemAtPosition(position).equals("Split Unequally")){
                     final FragmentManager fr = getSupportFragmentManager();
-                    final FragmentUnequalSplit fragmentUnequalSplit = new FragmentUnequalSplit(groupnameID, groupnametransaction);
-//                    System.out.println("Neha" + groupnameID);
-//                    System.out.println("Neha" + groupnametransaction);
+                    final FragmentUnequalSplit fragmentUnequalSplit = new FragmentUnequalSplit(groupnameID, groupnametransaction,eventnameID);
                     fragmentUnequalSplit.show(fr,"Member");
+//                    FragmentUnequalSplit fragmentUnequalSplit1 = new FragmentUnequalSplit(groupnameID,eventnameID);
+//                    fragmentUnequalSplit1.show(fr,"Member1");
+                    String ss = TextViewAmount.getText().toString().trim();
+//                    Intent intent = new Intent(AddTransaction.this, FragmentUnequalSplit.class);
+//                    intent.putExtra("AmountReceived", ss);
+//                    startActivity(intent);
+                    System.out.println(ss);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("params", ss);
+                    fragmentUnequalSplit.setArguments(bundle);
+// set MyFragment Arguments
+//                    FragmentUnequalSplit myObj = new FragmentUnequalSplit();
+//                    myObj.setArguments(bundle);
+
+
                     Toast.makeText(AddTransaction.this,"Selected Unequally",Toast.LENGTH_SHORT).show();
+
                 }
             }
 
@@ -312,16 +328,16 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     }
 
 
-    private void UpdateChild(long amountInvested,long amountToGet)
-    {
-        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("TransactionUnequal")
-                .child(groupnameID)
-                .child(eventnameID)
-                .child(itemPaidBy);
-
-        ref.child("amountInvested").setValue(amountInvestedd);
-        ref.child("amountToGet").setValue(amountToGett);
-    }
+//    private void UpdateChild(long amountInvested,long amountToGet)
+//    {
+//        DatabaseReference ref= FirebaseDatabase.getInstance().getReference("TransactionUnequal")
+//                .child(groupnameID)
+//                .child(eventnameID)
+//                .child(itemPaidBy);
+//
+//        ref.child("amountInvested").setValue(amountInvestedd);
+//        ref.child("amountToGet").setValue(amountToGett);
+//    }
 
 
     private void dateSelector(){
@@ -652,7 +668,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
 
                                         amountTotal = TextViewAmount.getText().toString().trim();
-                                        at=Integer.parseInt(amountTotal);
+                                        at=Double.parseDouble(amountTotal);
+
                                         FirebaseDatabase.getInstance().getReference("TransactionUnequal")
                                                 .child(id)
                                                 .child(eventnameID)
@@ -661,8 +678,13 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                                                     @Override
                                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                         Map<String,Object> amountDetail = (Map<String, Object>)dataSnapshot.getValue();
-                                                        amountInvestedd = (long)Objects.requireNonNull(amountDetail).get("amountInvested");
-                                                        amountToGett = (long)Objects.requireNonNull(amountDetail).get("amountToGet");
+                                                        amountInvestedd= Double.parseDouble(Objects.requireNonNull(amountDetail).get("amountInvested").toString());
+                                                        amountToGett= Double.parseDouble(Objects.requireNonNull(amountDetail).get("amountToGet").toString());
+
+//                                                        String amountInvesteddTemp = Objects.requireNonNull(amountDetail).get("amountInvested").toString();
+//                                                        amountInvestedd=Double.parseDouble(amountInvesteddTemp);
+//                                                        String amountToGettTemp = Objects.requireNonNull(amountDetail).get("amountToGet").toString();
+//                                                        amountToGett=Double.parseDouble(amountToGettTemp);
 
                                                         amountInvested=amountInvestedd+at;
                                                         amountToGet=amountToGett+at;
