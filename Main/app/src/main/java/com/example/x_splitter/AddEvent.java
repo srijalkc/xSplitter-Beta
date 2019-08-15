@@ -105,6 +105,7 @@ public class AddEvent extends AppCompatActivity {
                                 EventInfo eventInfo = new EventInfo(ID, event_name, grpID);
                                 FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
                                 Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
+//                                ArrayList<String> myList = (ArrayList<String>) getIntent().getSerializableExtra("EID");
                                 new Handler().postDelayed(new Runnable() {
                                     @Override
                                     public void run() {

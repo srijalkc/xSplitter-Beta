@@ -67,6 +67,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     List<String> groupMembers;
     double equallySplittedAmount;
     Intent intent;
+    List<String> eId;
 
     DatabaseReference databaseTransaction;
 
@@ -223,23 +224,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //                            });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //                                @Override
 //                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //                                    System.out.println("Event "+eventnameID);
@@ -383,7 +367,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
         String id = databaseTransaction.push().getKey();
         String id1 = FirebaseDatabase.getInstance().getReference("TransactionEvent").push().getKey();
         String id2 = FirebaseDatabase.getInstance().getReference("TransactionUnequal").push().getKey();
-        //TransactionInfo transactionInfo = new TransactionInfo(amount, date, event, category, paidBy, note);
+        TransactionInfo2 transactionInfo = new TransactionInfo2(amount, date, category);
+        FirebaseDatabase.getInstance().getReference("Transactions").child(groupnameID).child(eventnameID).push().setValue(transactionInfo);
 //        TransactionInfo transactionInfo = new TransactionInfo
 //                (amount, date, category, groupnametransaction, eventnametransaction, itemPaidBy);
 //        TransactionInfo transactionInfo1 = new TransactionInfo(itemPaidBy, amount);
@@ -548,7 +533,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                                 groupnametransaction = name.get(position);
                                 retrievePaidBy(groupnameID, groupnametransaction);
                                 retrieveEvent(groupnameID);
-
                             }
                         }
 
@@ -580,7 +564,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<EventInfo> eventInfos  = new ArrayList<>();
-
                 for(DataSnapshot snapshot3 : dataSnapshot.getChildren()){
                     System.out.println("SnapShot : "+snapshot3.getValue().toString());
                     EventInfo eventinfo = snapshot3.getValue(EventInfo.class);
@@ -588,7 +571,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                 }
 
                 runOnUiThread(() -> {
-                    List<String> eId = new ArrayList<>();
+                    eId = new ArrayList<>();
                     List<String> eventname = new ArrayList<>();
                     List<String> grpId = new ArrayList<>();
                     for (int i = 0; i < eventInfos.size(); i++) {
@@ -600,6 +583,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                             eventname.add(eventInfos.get(i).EventName);
                         }
                     }
+//                    intent.putExtra("EID", (Parcelable) eId);
+
 
                     ArrayAdapter<String> dataAdapterEvent= new ArrayAdapter<String>(getBaseContext(), android.R.layout.simple_spinner_item, eventname);
                     dataAdapterEvent.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
