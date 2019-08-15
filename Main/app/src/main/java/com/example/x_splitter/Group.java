@@ -2,26 +2,27 @@
 package com.example.x_splitter;
 
         import android.content.Intent;
-        import android.os.Bundle;
-        import androidx.annotation.NonNull;
-        import androidx.annotation.Nullable;
-        import com.google.android.material.bottomnavigation.BottomNavigationView;
-        import com.google.android.material.floatingactionbutton.FloatingActionButton;
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.ValueEventListener;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
-        import androidx.appcompat.app.AppCompatActivity;
-        import androidx.recyclerview.widget.LinearLayoutManager;
-        import androidx.recyclerview.widget.RecyclerView;
-        import android.view.Menu;
-        import android.view.MenuItem;
-        import android.view.View;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-        import java.util.ArrayList;
-        import java.util.Map;
-        import java.util.Objects;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
 
 public class Group extends AppCompatActivity {
     FloatingActionButton fab_add;
@@ -61,7 +62,13 @@ public class Group extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Map<String, Object> groupdata = (Map<String, Object>) snapshot.getValue();
                     String groupname = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                    modelGroups.add(new ModelGroup(R.mipmap.ic_applogo, groupname, "1", "2"));
+                    String ID = (String) Objects.requireNonNull(groupdata).get("ID");
+
+//                    Intent id = new Intent(Group.this, FragmentEvent.class);
+//                    id.putExtra("ID", ID);
+//                    startActivity(id);
+
+                    modelGroups.add(new ModelGroup(R.mipmap.ic_applogo, groupname, ID,  "1", "2"));
                 }
             }
 

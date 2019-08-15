@@ -67,6 +67,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
     List<String> groupMembers;
     double equallySplittedAmount;
     Intent intent;
+    List<String> eventname;
 
     DatabaseReference databaseTransaction;
 
@@ -221,23 +222,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //
 //                                }
 //                            });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //                                @Override
@@ -546,7 +530,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                                 groupnametransaction = name.get(position);
                                 retrievePaidBy(groupnameID, groupnametransaction);
                                 retrieveEvent(groupnameID);
-
                             }
                         }
 
@@ -578,7 +561,6 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 List<EventInfo> eventInfos  = new ArrayList<>();
-
                 for(DataSnapshot snapshot3 : dataSnapshot.getChildren()){
                     System.out.println("SnapShot : "+snapshot3.getValue().toString());
                     EventInfo eventinfo = snapshot3.getValue(EventInfo.class);
@@ -587,7 +569,7 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 
                 runOnUiThread(() -> {
                     List<String> eId = new ArrayList<>();
-                    List<String> eventname = new ArrayList<>();
+                    eventname = new ArrayList<>();
                     List<String> grpId = new ArrayList<>();
                     for (int i = 0; i < eventInfos.size(); i++) {
 //                        System.out.println("String1 : " + eventInfos.get(i));

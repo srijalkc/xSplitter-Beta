@@ -61,20 +61,19 @@ public class Event extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Map<String, Object> eventdata = (Map<String, Object>) snapshot.getValue();
                     String eventname = (String) Objects.requireNonNull(eventdata).get("EventName");
-//                    ID = (String) Objects.requireNonNull(eventdata).get("GroupID");
                     ID = snapshot.child("GroupID").getValue().toString();
+
+//                    FragmentEvent fragmentEvent = new FragmentEvent();
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString("ID", ID);
+//                    fragmentEvent.setArguments(bundle);
+
                     FirebaseDatabase.getInstance().getReference("GroupName").child(ID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                                 Map<String, Object> groupdata = (Map<String, Object>) dataSnapshot.getValue();
-                               // System.out.println(groupdata);
                                 GN = (String) Objects.requireNonNull(groupdata).get("GroupName");
-                              //  System.out.println(GN);
                             modelHomeEvents.add(new ModelHomeEvent(eventname, GN, "Not Settled", "123.0", "12.0"));
-
-
-
                         }
 
                         @Override
