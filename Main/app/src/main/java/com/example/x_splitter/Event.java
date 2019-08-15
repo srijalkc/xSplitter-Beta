@@ -66,10 +66,10 @@ public class Event extends AppCompatActivity {
                     String eventname = (String) Objects.requireNonNull(eventdata).get("EventName");
                     GID = snapshot.child("GroupID").getValue().toString();
                     EID = snapshot.child("ID").getValue().toString();
-                    System.out.println("Aunty:"+EID);
+//                    System.out.println("Aunty:"+EID);
 
-                    Intent intent1 = new Intent(Event.this, Event_transac_report.class);
-                    intent1.putExtra("EventID", EID);
+//                    Intent intent1 = new Intent(Event.this, Event_transac_report.class);
+//                    intent1.putExtra("EventID", EID);
 
 //                    FragmentEvent fragmentEvent = new FragmentEvent();
 //                    Bundle bundle = new Bundle();

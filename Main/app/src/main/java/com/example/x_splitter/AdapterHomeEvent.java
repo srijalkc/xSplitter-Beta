@@ -55,35 +55,25 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.EventName.setText(Data.get(position).getEventName()); //getter made in ModelHomeEvent
         holder.GroupName.setText(Data.get(position).getGroupName());
-//        EventID = Data.get(position).getEventID();
-//        GroupID = Data.get(position).getGroupID();
-//        System.out.println("Uncle:"+GroupID);
-//        System.out.println("Uncle:"+EventID);
         holder.SettleStatus.setText(Data.get(position).getSettleStatus());
         holder.ToPayAmt.setText(Data.get(position).getGroupID()); //typecasting double value to string to put in textview and use settect
 
-        for(int i = 0; i < Data2.size(); i++) {
+        if(holder!= null && Data2.size() !=0) {
             holder.ToReceiveAmt.setText(Data2.get(position).getEventID());
         }
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                ModelHomeEvent mhe = new ModelHomeEvent();
-//                String currentEventID = mhe.getEventID();
-//                String currentGroupID = mhe.getGroupID();
-//                String currentGroupName = mhe.getGroupName();
-//                System.out.println("Uncle:"+currentEventID);
-//                System.out.println("Uncle:"+currentGroupName);
-//                System.out.println("Uncle:"+currentGroupID);
-
                 String currentEventName = holder.EventName.getText().toString();
+                String currentEventID = holder.ToPayAmt.getText().toString();
+                String currentGroupID = holder.ToReceiveAmt.getText().toString();
                 Context context = view.getContext();
                 Intent intent = new Intent(context,Event_transac_report.class);
                 intent.putExtra("currentEventName", currentEventName);
-//                intent.putExtra("currentEventID", currentEventID);
-//                intent.putExtra("currentGroupID", currentGroupID);
-//                intent.putExtra("currentGroupName", currentGroupName);
+                intent.putExtra("currentEventID", currentEventID);
+                intent.putExtra("currentGroupName", currentGroupID);
                 context.startActivity(intent);
             }
         });

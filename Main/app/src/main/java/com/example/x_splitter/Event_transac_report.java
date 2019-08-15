@@ -43,9 +43,10 @@ public class Event_transac_report extends AppCompatActivity {
         CurrentEventName.setText(currentEventName);
 
 
-//        String currentEventID = intent.getStringExtra("currentEventID");
-//        String currentGroupName = intent.getStringExtra("currentGroupName");
-//        String currentGroupID = intent.getStringExtra("currentGroupID");
+        String currentEventID = intent.getStringExtra("currentEventID");
+        String currentGroupName = intent.getStringExtra("currentGroupName");
+        String currentGroupID = intent.getStringExtra("currentGroupID");
+
 
 
 
