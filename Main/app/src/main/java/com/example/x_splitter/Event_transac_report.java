@@ -26,11 +26,17 @@ public class Event_transac_report extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_transac_report);
-
         CurrentEventName = findViewById(R.id.event_name);
+
         Intent intent = getIntent();
         String currentEventName = intent.getStringExtra("currentEventName");
+//        Intent intent2 = getIntent();
+//        String GroupID = intent2.getStringExtra("GroupID");
+//        String EventID = intent2.getStringExtra("EventID");
+//        System.out.println("Uncle:"+GroupID);
+//        System.out.println("Uncle:"+EventID);
         CurrentEventName.setText(currentEventName);
+
 
 //        String currentEventID = intent.getStringExtra("currentEventID");
 //        String currentGroupName = intent.getStringExtra("currentGroupName");

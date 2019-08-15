@@ -8,20 +8,33 @@ public class ModelHomeEvent {
     private String ToPayAmt;
     private String ToReceiveAmt;
 
-    public ModelHomeEvent(String eventName, String groupName, String settleStatus, String toPayAmt, String toReceiveAmt) {
+    private String GroupID;
+    private String EventID;
+
+    public ModelHomeEvent(String eventName, String groupName, String settleStatus, String groupid, String toReceiveAmt) {
         EventName = eventName;
         GroupName = groupName;
         SettleStatus = settleStatus;
-        ToPayAmt = toPayAmt;
-        ToReceiveAmt = toReceiveAmt;
+        GroupID = groupid;
+        ToReceiveAmt= toReceiveAmt;
+    }
+
+    public ModelHomeEvent(String eventID) {
+        EventID = eventID;
+    }
+
+    public String getGroupID() {
+//        System.out.println("Uncle:"+GroupID);
+        return GroupID;
+    }
+
+    public String getEventID() {
+System.out.println("Uncle:"+EventID);
+        return EventID;
     }
 
     public String getGroupName() {
         return GroupName;
-    }
-
-    public void setGroupName(String groupName) {
-        GroupName = groupName;
     }
 
     public String getEventName() {
@@ -34,10 +47,6 @@ public class ModelHomeEvent {
 
     public String getSettleStatus() {
         return SettleStatus;
-    }
-
-    public void setSettleStatus(String settleStatus) {
-        SettleStatus = settleStatus;
     }
 
     public String getToPayAmt() {

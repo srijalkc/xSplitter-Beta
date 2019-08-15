@@ -14,12 +14,17 @@ import java.util.ArrayList;
 
 public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyViewHolder> {
 
-    ArrayList<ModelHomeEvent> Data = new ArrayList<>();
+    ArrayList<ModelHomeEvent> Data;
+    ArrayList<ModelHomeEvent> Data2;
     Context context;
+    String ID;
+    String EventID;
+    String GroupID;
 
-    public AdapterHomeEvent(Context context, ArrayList<ModelHomeEvent> data){
+    public AdapterHomeEvent(Context context, ArrayList<ModelHomeEvent> data, ArrayList<ModelHomeEvent> data2){
         this.context = context;
         Data = data;
+        Data2 = data2;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -50,9 +55,15 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         holder.EventName.setText(Data.get(position).getEventName()); //getter made in ModelHomeEvent
         holder.GroupName.setText(Data.get(position).getGroupName());
+//        EventID = Data.get(position).getEventID();
+//        GroupID = Data.get(position).getGroupID();
+//        System.out.println("Uncle:"+GroupID);
+//        System.out.println("Uncle:"+EventID);
         holder.SettleStatus.setText(Data.get(position).getSettleStatus());
-        holder.ToPayAmt.setText(Data.get(position).getToPayAmt()); //typecasting double value to string to put in textview and use settect
-        holder.ToReceiveAmt.setText(Data.get(position).getToReceiveAmt());
+        holder.ToPayAmt.setText(Data.get(position).getGroupID()); //typecasting double value to string to put in textview and use settect
+//        for()
+        holder.ToReceiveAmt.setText(Data2.get(position).getEventID());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

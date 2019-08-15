@@ -30,10 +30,10 @@ public class FragmentEvent extends Fragment {
 
         String str = intent.getStringExtra("currentGroupName");
         String id =intent.getStringExtra("currentGroupID");
-        System.out.println("NE:"+ str);
-        System.out.println("NE:"+ id);
-
-        AdapterHomeEvent adapterHomeEvent = new AdapterHomeEvent(this.context,Event.getEventData());
+//        System.out.println("NE:"+ str);
+//        System.out.println("NE:"+ id);
+        Event e = new Event();
+        AdapterHomeEvent adapterHomeEvent = new AdapterHomeEvent(this.context,e.getEventData(), e.getEventData2());
         recyclerView.setAdapter(adapterHomeEvent);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.context));
 
