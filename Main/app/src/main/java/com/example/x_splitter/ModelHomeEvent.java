@@ -14,13 +14,10 @@ public class ModelHomeEvent {
     public ModelHomeEvent(String eventName, String groupName, String settleStatus, String groupid, String toReceiveAmt) {
         EventName = eventName;
         GroupName = groupName;
-<<<<<<< HEAD
         SettleStatus = settleStatus;
         GroupID = groupid;
         ToReceiveAmt= toReceiveAmt;
-=======
 
->>>>>>> 48426b4e7f70fe7e80eaef2134bd5962c2d27b1f
     }
 
     public ModelHomeEvent(String eventID) {
