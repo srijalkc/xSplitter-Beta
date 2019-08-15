@@ -15,6 +15,13 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.Map;
+import java.util.Objects;
 
 public class Event_transac_report extends AppCompatActivity {
 
@@ -44,8 +51,27 @@ public class Event_transac_report extends AppCompatActivity {
 
 
         String currentEventID = intent.getStringExtra("currentEventID");
-        String currentGroupName = intent.getStringExtra("currentGroupName");
         String currentGroupID = intent.getStringExtra("currentGroupID");
+
+        FirebaseDatabase.getInstance().getReference("Transactions")
+                .child(currentGroupID)
+                .child(currentEventID)
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                            Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
+                            String amount = (String) Objects.requireNonNull(data).get("amount");
+                            String category = (String) Objects.requireNonNull(data).get("category");
+                            String date = (String) Objects.requireNonNull(data).get("date");
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
 
 
 
