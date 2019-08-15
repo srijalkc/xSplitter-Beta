@@ -61,7 +61,8 @@ public class Event extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     Map<String, Object> eventdata = (Map<String, Object>) snapshot.getValue();
                     String eventname = (String) Objects.requireNonNull(eventdata).get("EventName");
-                    ID = (String) Objects.requireNonNull(eventdata).get("GroupID");
+//                    ID = (String) Objects.requireNonNull(eventdata).get("GroupID");
+                    ID = snapshot.child("GroupID").getValue().toString();
                     FirebaseDatabase.getInstance().getReference("GroupName").child(ID).addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

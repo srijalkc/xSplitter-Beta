@@ -51,6 +51,7 @@ public class AddEvent extends AppCompatActivity {
     int amountInvested = 0;
     ArrayList<String> paidByListTransaction;
     String itemPaidBy;
+    String ID,grpId, Names;
 
 
     ImageButton btn_back;
@@ -81,42 +82,48 @@ public class AddEvent extends AppCompatActivity {
 
         save = (TextView) findViewById(R.id.textView_save);
         save.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                String event_name = eventName.getText().toString();
-                EventInfo arEvent = new EventInfo(gid);
-                if (TextUtils.isEmpty(event_name)) {
-                    Toast.makeText(AddEvent.this, "Please enter Event name", Toast.LENGTH_SHORT).show();
-                } else {
-                   dbReferenceEvent.child(ID).child(eventName.getText().toString()).setValue(arEvent).
-                            addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        EventInfo eventInfo = new EventInfo(ID, event_name, gid);
-                                        FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
-                                        Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
-                                        new Handler().postDelayed(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                Intent i = new Intent(AddEvent.this, Home.class);
-                                                startActivity(i);
-                                                finish();
-                                            }
-                                        }, 1500);
-                                    } else {
-                                        Toast.makeText(AddEvent.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                    TransactionInfo transactionInfo3 = new TransactionInfo(amountToPay, amountToGet, amountInvested);
-                    for(int i = 1; i < paidByListTransaction.size(); i++ ) {
-                        String j = paidByListTransaction.get(i);
-                        FirebaseDatabase.getInstance().getReference("TransactionUnequal").child(gid).child(ID).child(j).setValue(transactionInfo3);
-                    }
-                }
+                saveEvent(ID,grpId);
             }
         });
+    }
+
+   public void saveEvent(String ID, String grpID){
+        String event_name = eventName.getText().toString();
+        //EventInfo arEvent = new EventInfo(gid);
+        if (TextUtils.isEmpty(event_name)) {
+            Toast.makeText(AddEvent.this, "Please enter Event name", Toast.LENGTH_SHORT).show();
+        } else {
+
+            dbReferenceEvent.child(ID).child(eventName.getText().toString()).child("GroupID").setValue(grpID).
+                    addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                EventInfo eventInfo = new EventInfo(ID, event_name, grpID);
+                                FirebaseDatabase.getInstance().getReference("EventName").child(ID).setValue(eventInfo);
+                                Toast.makeText(AddEvent.this, "Event Created", Toast.LENGTH_SHORT).show();
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Intent i = new Intent(AddEvent.this, Home.class);
+                                        startActivity(i);
+                                        finish();
+                                    }
+                                }, 1500);
+                            } else {
+                                Toast.makeText(AddEvent.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+            TransactionInfo transactionInfo3 = new TransactionInfo(amountToPay, amountToGet, amountInvested);
+            for(int i = 1; i < paidByListTransaction.size(); i++) {
+                String j = paidByListTransaction.get(i);
+                FirebaseDatabase.getInstance().getReference("TransactionUnequal").child(gid).child(ID).child(j).setValue(transactionInfo3);
+            }
+        }
     }
 
     public ArrayList<String> retrieveEvent(){
@@ -128,6 +135,19 @@ public class AddEvent extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         groupMembers = new ArrayList<>();
+                        List<GroupInfo> groupInfos = new ArrayList<>();
+                        for(DataSnapshot snapshot1: dataSnapshot.getChildren()){
+                            GroupInfo info = snapshot1.getValue(GroupInfo.class);
+                            groupInfos.add(info);
+                        }
+                        List<String> gId = new ArrayList<>();
+                        List<String> Name = new ArrayList<>();
+
+                        for (int i = 0; i < groupInfos.size(); i++) {
+                            gId.add(groupInfos.get(i).ID);
+                            Name.add(groupInfos.get(i).GroupName);
+
+                        }
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                             Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
                             name = (String) Objects.requireNonNull(data).get("GroupName");
@@ -151,9 +171,11 @@ public class AddEvent extends AppCompatActivity {
                                 if (parent.getItemAtPosition(position).equals("Choose Group")) {
                                     //do Nothing
                                 } else {
+                                    grpId = gId.get(position);
+                                    Names = Name.get(position);
                                     GroupList = new ArrayList();
                                     GroupList.add(groupSelected);
-                                    retrievePaidBy(gid, name);
+                                    retrievePaidBy(grpId, Names);
                                 }
                             }
 

@@ -7,9 +7,9 @@ public class TransactionInfo {
     String group;
     String event;
     String paidBy;
-    int amountToPay;
-    int amountToGet;
-    int amountInvested;
+    double amountToPay;
+    double amountToGet;
+    double amountInvested;
     String amountInvestedTemp;
 //List<String> groupMembers;
     //int equallySplittedAmount;
