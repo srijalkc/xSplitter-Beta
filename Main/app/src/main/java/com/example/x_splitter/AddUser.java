@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -112,14 +113,12 @@ public class AddUser extends AppCompatActivity {
 
     public static class FindUsersViewHolder extends RecyclerView.ViewHolder{
         //View mView;
-        LinearLayout ll_search_item;
         TextView search_uname;
         TextView search_uemail;
 
         public FindUsersViewHolder(@NonNull View itemView) {
             super(itemView);
             //mView = itemView;
-            ll_search_item = itemView.findViewById(R.id.ll_search_item);
             search_uname = itemView.findViewById(R.id.search_uname);
             search_uemail = itemView.findViewById(R.id.search_email);
         }
