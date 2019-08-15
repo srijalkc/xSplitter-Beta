@@ -74,7 +74,7 @@
         app:layout_constraintHorizontal_bias="0.5">
 
         <RelativeLayout
-            android:id="@+id/layout_add_event"
+            android:id="@+id/layout_add_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -85,6 +85,7 @@
                 android:id="@+id/image_view_add_group"
                 android:layout_width="36dp"
                 android:layout_height="30dp"
+                android:layout_margin="3dp"
                 app:srcCompat="@drawable/add_group" />
 
             <EditText
@@ -93,7 +94,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_toEndOf="@+id/image_view_add_group"
-                android:background="@drawable/transaction_text_box"
                 android:hint="User name"
                 android:inputType="text"
                 android:paddingStart="20dp"
@@ -104,8 +104,9 @@
 
             <ImageButton
                 android:id="@+id/image_view_search"
-                android:layout_width="36dp"
-                android:layout_height="30dp"
+                android:layout_width="38dp"
+                android:layout_height="32dp"
+                android:layout_margin="3dp"
                 android:layout_toEndOf="@+id/text_select_uname"
                 android:background="@color/colorPrimary"
                 app:srcCompat="@drawable/search_btn"
