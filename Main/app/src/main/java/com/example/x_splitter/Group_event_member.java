@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,7 @@ import com.google.android.material.tabs.TabLayout;
 public class Group_event_member extends AppCompatActivity {
 
     FloatingActionButton fab_add;
+    TextView CurrentGroupName;
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
@@ -25,6 +27,10 @@ public class Group_event_member extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.group_event_member);
+
+        
+
+
 
         fab_add = findViewById(R.id.fab_add);
         fab_add.setOnClickListener(new View.OnClickListener() {

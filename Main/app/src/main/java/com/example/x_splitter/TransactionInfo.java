@@ -1,15 +1,14 @@
 package com.example.x_splitter;
 
 public class TransactionInfo {
-    String amount;
-    String date;
-    String category;
     String group;
     String event;
     String paidBy;
     double amountToPay;
     double amountToGet;
     double amountInvested;
+
+
     String amountInvestedTemp;
 //List<String> groupMembers;
     //int equallySplittedAmount;
@@ -17,6 +16,7 @@ public class TransactionInfo {
 
     //String ItemPaidBy;
     //int membersize;
+
 
 
 
@@ -52,28 +52,21 @@ public class TransactionInfo {
 //        this.amountToPay = Integer.toString(equallySplittedAmount);
 //    }
 
-    public TransactionInfo(int amountToPay, int amountToGet, int amountInvested) {
+    public TransactionInfo(double amountToPay, double amountToGet, double amountInvested) {
         this.amountToPay = amountToPay;
         this.amountToGet = amountToGet;
         this.amountInvested = amountInvested;
     }
 //
-//    public TransactionInfo(String amount, String date, String category, String group, String event, String paidBy) {
-//        this.amount = amount;
-//        this.date = date;
-//        this.category = category;
-//        this.group = group;
-//        this.event = event;
-//        this.paidBy = paidBy;
-//    }
+
 //
 //    public TransactionInfo(String paidBy, String amount){
 //        this.paidBy = paidBy;
 //        this.amount = amount;
 //    }
 
-//    public TransactionInfo() {
-//    }
+    public TransactionInfo() {
+    }
 
 //    public TransactionInfo( String amountInvested){
 //        this.amountInvested = amountInvested + amountInvestedTemp;

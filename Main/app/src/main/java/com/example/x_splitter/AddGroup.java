@@ -168,6 +168,7 @@ public class AddGroup extends AppCompatActivity {
                                     if (task.isSuccessful()) {
                                         GroupInfo groupInfo = new GroupInfo(ID, groupName.getText().toString());
                                         FirebaseDatabase.getInstance().getReference("GroupName").child(ID).setValue(groupInfo);
+                                        FirebaseDatabase.getInstance().getReference("GroupEvent").child(ID).child("Events").setValue("");
                                         Toast.makeText(AddGroup.this, "Group Created", Toast.LENGTH_SHORT).show();
                                         new Handler().postDelayed(new Runnable() {
                                             @Override

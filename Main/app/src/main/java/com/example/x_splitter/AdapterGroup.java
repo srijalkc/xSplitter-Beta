@@ -1,14 +1,14 @@
 package com.example.x_splitter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -51,13 +51,21 @@ public class AdapterGroup extends RecyclerView.Adapter<AdapterGroup.GroupMyViewH
     public void onBindViewHolder(@NonNull GroupMyViewHolder holder, int position) {
         holder.inGroup_image.setImageResource(data.get(position).getInGroup_image());
         holder.inGroup_name.setText(data.get(position).getInGroup_name());
-        holder.inUnsettle_no.setText(data.get(position).getInUnsettle_no());
-        holder.inSettle_no.setText(data.get(position).getInUnsettle_no());
+//        holder.inUnsettle_no.setText(data.get(position).getInUnsettle_no());
+//        holder.inSettle_no.setText(data.get(position).getInUnsettle_no());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String currentGroupName =holder.inGroup_name.getText().toString();
+                ModelGroup mg= new ModelGroup();
+//                String currentGroupID = mg.getInGroup_id();
+//                System.out.println("Srij:" + currentGroupID);
+
                 Context context = view.getContext();
                 Intent intent = new Intent(context,Group_event_member.class);
+                Intent intent1 = new Intent(context,FragmentEvent.class);
+                intent1.putExtra("currentGroupName", currentGroupName);
+                intent.putExtra("currentGroupName", currentGroupName);
                 context.startActivity(intent);
             }
         });
