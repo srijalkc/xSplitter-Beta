@@ -61,8 +61,10 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
 //        System.out.println("Uncle:"+EventID);
         holder.SettleStatus.setText(Data.get(position).getSettleStatus());
         holder.ToPayAmt.setText(Data.get(position).getGroupID()); //typecasting double value to string to put in textview and use settect
-//        for()
-        holder.ToReceiveAmt.setText(Data2.get(position).getEventID());
+
+        for(int i = 0; i < Data2.size(); i++) {
+            holder.ToReceiveAmt.setText(Data2.get(position).getEventID());
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
