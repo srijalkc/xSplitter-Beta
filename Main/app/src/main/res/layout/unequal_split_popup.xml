@@ -16,7 +16,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_split_unequal"
         android:layout_width="match_parent"
-        android:layout_height="350dp"
+        android:layout_height="340dp"
         android:padding="15dp"
         android:layout_below="@+id/tv_popup_title"/>
 
