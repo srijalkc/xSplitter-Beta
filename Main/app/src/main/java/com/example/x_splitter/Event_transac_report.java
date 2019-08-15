@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +18,9 @@ import com.google.android.material.tabs.TabLayout;
 public class Event_transac_report extends AppCompatActivity {
 
     FloatingActionButton fab_add;
-    TextView CurrentEventName;
+    Button btn_settle;
+
+
     private TabLayout tabLayout;
     private ViewPager viewPager;
 
@@ -26,6 +28,7 @@ public class Event_transac_report extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_transac_report);
+<<<<<<< HEAD
         CurrentEventName = findViewById(R.id.event_name);
 
         Intent intent = getIntent();
@@ -41,8 +44,17 @@ public class Event_transac_report extends AppCompatActivity {
 //        String currentEventID = intent.getStringExtra("currentEventID");
 //        String currentGroupName = intent.getStringExtra("currentGroupName");
 //        String currentGroupID = intent.getStringExtra("currentGroupID");
+=======
+>>>>>>> 48426b4e7f70fe7e80eaef2134bd5962c2d27b1f
 
 
+//        btn_settle=findViewById(R.id.btn_settle);
+//        btn_settle.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
         fab_add = findViewById(R.id.fab_add);
         fab_add.setOnClickListener(new View.OnClickListener() {
             @Override

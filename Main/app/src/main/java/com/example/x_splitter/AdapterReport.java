@@ -22,13 +22,15 @@ public class AdapterReport extends RecyclerView.Adapter<AdapterReport.ReportView
     }
 
     public class ReportViewHolder extends RecyclerView.ViewHolder{
-        TextView incategory_name;
-        TextView incategory_total;
+        TextView user1;
+        TextView user2;
+        TextView amount;
 
         public ReportViewHolder(View itemView){
             super(itemView);
-            incategory_name = itemView.findViewById(R.id.category_name);
-            incategory_total = itemView.findViewById(R.id.category_total);
+            user1 = itemView.findViewById(R.id.tv_user_one);
+            amount = itemView.findViewById(R.id.tv_pay_amount);
+            user2 = itemView.findViewById(R.id.tv_user_two);
         }
     }
 
@@ -41,8 +43,9 @@ public class AdapterReport extends RecyclerView.Adapter<AdapterReport.ReportView
 
     @Override
     public void onBindViewHolder(@NonNull ReportViewHolder holder, int position) {
-        holder.incategory_name.setText(data.get(position).getCategory_name());
-        holder.incategory_total.setText(data.get(position).getCategory_total());
+        holder.user1.setText(data.get(position).getUser1());
+        holder.amount.setText(Double.toString(data.get(position).getAmount()));
+        holder.user2.setText(data.get(position).getUser2());
     }
 
     @Override

@@ -60,26 +60,18 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/add_user"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_add_user_toolbar"
-        app:layout_constraintVertical_bias="0.30"
-        app:layout_constraintHorizontal_bias="0.5">
-
         <RelativeLayout
             android:id="@+id/layout_add_user"
-            android:layout_width="wrap_content"
+            android:padding="15dp"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/layout_add_user_toolbar"
+            app:layout_constraintVertical_bias="0.30"
+            app:layout_constraintHorizontal_bias="0.5">
 
             <ImageView
                 android:id="@+id/image_view_add_group"
@@ -114,16 +106,28 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_add_user"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="500dp"
                 android:layout_below="@+id/text_select_uname"
                 android:layout_marginTop="15dp"/>
 
-
         </RelativeLayout>
 
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_add_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/add_button"
+        android:backgroundTint="@android:color/transparent"
+        android:src="@drawable/add_button"
+        app:borderWidth="0dp"
+        app:elevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.9"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:maxImageSize="56dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

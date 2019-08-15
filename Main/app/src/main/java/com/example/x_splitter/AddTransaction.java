@@ -130,9 +130,9 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 Map<String, Object> amountDetail = (Map<String, Object>) dataSnapshot.getValue();
-                                amountInvested = (double) Objects.requireNonNull(amountDetail).get("amountInvested");
-                                amountToGet = (double) Objects.requireNonNull(amountDetail).get("amountToGet");
-                                amountToPay = (double) Objects.requireNonNull(amountDetail).get("amountToPay");
+                                amountInvested = Double.parseDouble(Objects.requireNonNull(amountDetail).get("amountInvested").toString());
+                                amountToGet = Double.parseDouble(Objects.requireNonNull(amountDetail).get("amountToGet").toString());
+                                amountToPay = Double.parseDouble(Objects.requireNonNull(amountDetail).get("amountToPay").toString());
                                 System.out.println("AI"+amountInvested);
                                 System.out.println("ATP"+amountToPay);
                                 System.out.println("ATG"+amountToGet);
@@ -473,6 +473,8 @@ public class AddTransaction extends AppCompatActivity implements View.OnClickLis
 //
 
         AddTransaction.super.onBackPressed();
+        Intent i = new Intent(AddTransaction.this,Home.class);
+        startActivity(i);
 
     }
 

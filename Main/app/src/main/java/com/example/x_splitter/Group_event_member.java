@@ -28,11 +28,9 @@ public class Group_event_member extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.group_event_member);
 
-        CurrentGroupName = findViewById(R.id.group_name);
+        
 
-        Intent intent = getIntent();
-        String str = intent.getStringExtra("currentGroupName");
-        CurrentGroupName.setText(str);
+
 
         fab_add = findViewById(R.id.fab_add);
         fab_add.setOnClickListener(new View.OnClickListener() {

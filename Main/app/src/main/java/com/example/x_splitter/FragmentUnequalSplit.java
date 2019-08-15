@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,11 +42,11 @@ public class FragmentUnequalSplit extends DialogFragment {
     String EventId;
     double size;
     ArrayList<ModelUnequalSplit> memberData;
-    int totalSum;
-    int amtReceive;
-    int amountInvested;
-    int amountToGet;
-    int amountToPay;
+    double totalSum;
+    double amtReceive;
+    double amountInvested;
+    double amountToGet;
+    double amountToPay;
 
 
 
@@ -54,6 +55,7 @@ public class FragmentUnequalSplit extends DialogFragment {
         GroupId = groupId;
         GroupName = groupname;
         EventId = eventId;
+
     }
 
 
@@ -88,31 +90,44 @@ public class FragmentUnequalSplit extends DialogFragment {
             public void onClick(View v) {
                 Bundle bundle = getActivity().getIntent().getExtras();
                 String aR =getArguments().getString("params");
-                amtReceive= Integer.parseInt(aR);
+                amtReceive= Double.parseDouble(aR);
                 HashMap<String,String> hashMap1 = adapterGroup.hashMap;
                 for (Map.Entry map  :  hashMap1.entrySet())
                 {
-                    totalSum +=  Integer.parseInt((String) map.getValue());
+                    totalSum +=  Double.parseDouble((String) map.getValue());
                 }
                 System.out.println("Total "+totalSum);
-                //totalCompare.setText(totalSum);//print totalsum in fragment
+
+                totalCompare.setText(Double.toString(totalSum));//print totalsum in fragment
                 if(amtReceive == totalSum)
                 {
                         //String display huncha but totalSum chahi display vayena
                     for (Map.Entry map  :  hashMap1.entrySet())
                     {
                         String name = (String) map.getKey();
-                        int value = Integer.parseInt((String) map.getValue());
+                        double value =Double.parseDouble((String) map.getValue());
                         transactionData(GroupId,GroupName,EventId,name,value);
                     }
+
+                    Intent i = new Intent(getActivity(),AddTransaction.class);
+                    startActivity(i);
 
                 }
                 else
                 {
                     System.out.println("Try Again");
+                    Toast.makeText(getActivity(), "Share amount mismatch with total amount",Toast.LENGTH_SHORT).show();
                 }
 
 
+            }
+        });
+
+        btn_cancel.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getActivity(),AddTransaction.class);
+                startActivity(i);
             }
         });
 
@@ -131,7 +146,7 @@ public class FragmentUnequalSplit extends DialogFragment {
 //
 //    }
 
-    public ArrayList<ModelUnequalSplit> transactionData(String groupId, String gname, String eventId, String name, int value){
+    public ArrayList<ModelUnequalSplit> transactionData(String groupId, String gname, String eventId, String name, double value){
         ArrayList<ModelUnequalSplit> modelUnequalSplits1 = new ArrayList<>();
         modelUnequalSplits1.clear();
 
@@ -139,37 +154,34 @@ public class FragmentUnequalSplit extends DialogFragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map<String, Object> amountDetail = (Map<String, Object>) dataSnapshot.getValue();
-                amountInvested = (int) Objects.requireNonNull(amountDetail).get("amountInvested");
-                amountToGet = (int) Objects.requireNonNull(amountDetail).get("amountToGet");
-                amountToPay = (int) Objects.requireNonNull(amountDetail).get("amountToPay");
+                amountInvested = Double.parseDouble( Objects.requireNonNull(amountDetail).get("amountInvested").toString());
+                amountToGet = Double.parseDouble(Objects.requireNonNull(amountDetail).get("amountToGet").toString());
+                amountToPay = Double.parseDouble(Objects.requireNonNull(amountDetail).get("amountToPay").toString());
                 System.out.println("AI"+amountInvested);
                 System.out.println("ATP"+amountToPay);
                 System.out.println("ATG"+amountToGet);
-                int tempAmt=value;
-                int difference = amountToGet-tempAmt;
-                if(difference>=0)
-                {
-                    amountToGet=difference;
-                    if(amountToPay!=0)
-                    {
-                        if(amountToGet<amountToPay)
-                        {
-                            amountToPay= amountToPay-amountToGet;
-                            amountToGet=0;
-                        }
-                        else {
-                            amountToGet=amountToGet-amountToPay;
-                            amountToPay=0;
+                double tempAmt=value;
+                double difference = amountToGet-tempAmt;
+                if(difference>=0) {
+                    amountToGet = difference;
+                    if (amountToPay != 0) {
+                        if (amountToGet < amountToPay) {
+                            amountToPay = amountToPay - amountToGet;
+                            amountToGet = 0;
+                        } else {
+                            amountToGet = amountToGet - amountToPay;
+                            amountToPay = 0;
                         }
                     }
+                }
                     else {
                         amountToPay=amountToPay-difference;
                         amountToGet=0;
                     }
-                }
+
 
                 Map<String,Object> amountDetails = new HashMap<>();
-                amountDetails.put("amountInvested",amountInvested);
+//                amountDetails.put("amountInvested",amountInvested);
                 amountDetails.put("amountToGet",amountToGet);
                 amountDetails.put("amountToPay",amountToPay);
                 FirebaseDatabase.getInstance().getReference("TransactionUnequal")
