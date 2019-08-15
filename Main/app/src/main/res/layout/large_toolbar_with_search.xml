@@ -7,18 +7,33 @@
     <include
         layout="@layout/large_toolbar_with_notification" />
 
-    <EditText
-        android:id="@+id/edit_text_search"
+    <LinearLayout
+        android:id="@+id/ll_search_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
-        android:background="@drawable/search_bar"
-        android:hint="@string/search"
-        android:paddingStart="40dp"
-        android:paddingEnd="8dp"
-        android:textColorHint="@color/colorInsideHint"
-        android:textSize="14sp"
-        android:layout_gravity="center|bottom"
-        android:maxLines="1"
-        android:inputType="text"/>
+        android:orientation="horizontal"
+        android:layout_gravity="center|bottom">
+
+        <ImageButton
+            android:id="@+id/image_view_search"
+            android:layout_width="38dp"
+            android:layout_height="32dp"
+            android:background="@color/colorPrimary"
+            app:maxImageSize="56dp"
+            app:srcCompat="@drawable/magnifying_glass" />
+
+        <EditText
+            android:id="@+id/edit_text_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/search_box"
+            android:hint="@string/search"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="20dp"
+            android:paddingEnd="8dp"
+            android:textColorHint="@color/colorInsideHint"
+            android:textSize="14sp" />
+    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
