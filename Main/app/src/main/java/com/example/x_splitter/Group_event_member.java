@@ -26,6 +26,10 @@ public class Group_event_member extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.group_event_member);
 
+        
+
+
+
         fab_add = findViewById(R.id.fab_add);
         fab_add.setOnClickListener(new View.OnClickListener() {
             @Override

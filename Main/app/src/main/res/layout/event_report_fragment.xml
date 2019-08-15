@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="Expenses:"
+                android:text="Settle Details:"
                 android:textColor="@color/groupTab"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -54,26 +54,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/total_divider">
 
-            <TextView
-                android:id="@+id/tv_total"
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="Total: "
-                android:textColor="@color/groupTab"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/total_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="423421"
-                android:textColor="@color/groupTab"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_alignParentEnd="true"/>
+                android:layout_marginLeft="130dp"
+                android:background="@color/Aqua"
+                android:text="PAY"
+                android:textColor="@color/colorPrimary"/>
         </RelativeLayout>
 
     </RelativeLayout>

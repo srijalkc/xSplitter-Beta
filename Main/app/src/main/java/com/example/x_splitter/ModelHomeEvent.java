@@ -11,9 +11,7 @@ public class ModelHomeEvent {
     public ModelHomeEvent(String eventName, String groupName, String settleStatus, String toPayAmt, String toReceiveAmt) {
         EventName = eventName;
         GroupName = groupName;
-        SettleStatus = settleStatus;
-        ToPayAmt = toPayAmt;
-        ToReceiveAmt = toReceiveAmt;
+
     }
 
     public String getGroupName() {

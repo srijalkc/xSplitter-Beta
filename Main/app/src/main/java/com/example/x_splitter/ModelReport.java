@@ -1,27 +1,37 @@
 package com.example.x_splitter;
 
 public class ModelReport {
-    private String category_name;
-    private String category_total;
+    private String user1;
+    private String user2;
+    private double amount;
 
-    public ModelReport(String category_name, String category_total) {
-        this.category_name = category_name;
-        this.category_total = category_total;
+
+    public ModelReport(String user1,double amount, String user2) {
+        this.user1= user1;
+        this.user2=user2;
     }
 
-    public String getCategory_name() {
-        return category_name;
+    public String getUser1() {
+        return user1;
     }
 
-    public void setCategory_name(String category_name) {
-        this.category_name = category_name;
+    public void setUser1(String user1) {
+        this.user1 = user1;
     }
 
-    public String getCategory_total() {
-        return category_total;
+    public String getUser2() {
+        return user2;
     }
 
-    public void setCategory_total(String category_total) {
-        this.category_total = category_total;
+    public void setUser2(String user2) {
+        this.user2 = user2;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 }
