@@ -75,6 +75,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
+
             <TextView
                 android:id="@+id/logout_button"
                 android:layout_width="wrap_content"
@@ -100,7 +101,7 @@
         android:layout_height="86dp"
         android:layout_margin="10dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/undraw_group_selfie_ijc6"
         app:civ_border_color="#FF000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
