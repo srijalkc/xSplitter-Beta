@@ -1,14 +1,14 @@
 package com.example.x_splitter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -56,8 +56,21 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                ModelHomeEvent mhe = new ModelHomeEvent();
+//                String currentEventID = mhe.getEventID();
+//                String currentGroupID = mhe.getGroupID();
+//                String currentGroupName = mhe.getGroupName();
+//                System.out.println("Uncle:"+currentEventID);
+//                System.out.println("Uncle:"+currentGroupName);
+//                System.out.println("Uncle:"+currentGroupID);
+
+                String currentEventName = holder.EventName.getText().toString();
                 Context context = view.getContext();
                 Intent intent = new Intent(context,Event_transac_report.class);
+                intent.putExtra("currentEventName", currentEventName);
+//                intent.putExtra("currentEventID", currentEventID);
+//                intent.putExtra("currentGroupID", currentGroupID);
+//                intent.putExtra("currentGroupName", currentGroupName);
                 context.startActivity(intent);
             }
         });
