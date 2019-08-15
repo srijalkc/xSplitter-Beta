@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -23,12 +24,13 @@ public class Event_transac_report extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    TextView CurrentEventName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.event_transac_report);
-<<<<<<< HEAD
+
         CurrentEventName = findViewById(R.id.event_name);
 
         Intent intent = getIntent();
@@ -44,8 +46,7 @@ public class Event_transac_report extends AppCompatActivity {
 //        String currentEventID = intent.getStringExtra("currentEventID");
 //        String currentGroupName = intent.getStringExtra("currentGroupName");
 //        String currentGroupID = intent.getStringExtra("currentGroupID");
-=======
->>>>>>> 48426b4e7f70fe7e80eaef2134bd5962c2d27b1f
+
 
 
 //        btn_settle=findViewById(R.id.btn_settle);
