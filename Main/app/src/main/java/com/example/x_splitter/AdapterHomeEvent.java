@@ -14,12 +14,17 @@ import java.util.ArrayList;
 
 public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyViewHolder> {
 
-    ArrayList<ModelHomeEvent> Data = new ArrayList<>();
+    ArrayList<ModelHomeEvent> Data;
+    ArrayList<ModelHomeEvent> Data2;
     Context context;
+    String ID;
+    String EventID;
+    String GroupID;
 
-    public AdapterHomeEvent(Context context, ArrayList<ModelHomeEvent> data){
+    public AdapterHomeEvent(Context context, ArrayList<ModelHomeEvent> data, ArrayList<ModelHomeEvent> data2){
         this.context = context;
         Data = data;
+        Data2 = data2;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -51,26 +56,24 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
         holder.EventName.setText(Data.get(position).getEventName()); //getter made in ModelHomeEvent
         holder.GroupName.setText(Data.get(position).getGroupName());
         holder.SettleStatus.setText(Data.get(position).getSettleStatus());
-        holder.ToPayAmt.setText(Data.get(position).getToPayAmt()); //typecasting double value to string to put in textview and use settect
-        holder.ToReceiveAmt.setText(Data.get(position).getToReceiveAmt());
+        holder.ToPayAmt.setText(Data.get(position).getGroupID()); //typecasting double value to string to put in textview and use settect
+
+        if(holder!= null && Data2.size() !=0) {
+            holder.ToReceiveAmt.setText(Data2.get(position).getEventID());
+        }
+
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                ModelHomeEvent mhe = new ModelHomeEvent();
-//                String currentEventID = mhe.getEventID();
-//                String currentGroupID = mhe.getGroupID();
-//                String currentGroupName = mhe.getGroupName();
-//                System.out.println("Uncle:"+currentEventID);
-//                System.out.println("Uncle:"+currentGroupName);
-//                System.out.println("Uncle:"+currentGroupID);
-
                 String currentEventName = holder.EventName.getText().toString();
+                String currentEventID = holder.ToPayAmt.getText().toString();
+                String currentGroupID = holder.ToReceiveAmt.getText().toString();
                 Context context = view.getContext();
                 Intent intent = new Intent(context,Event_transac_report.class);
                 intent.putExtra("currentEventName", currentEventName);
-//                intent.putExtra("currentEventID", currentEventID);
-//                intent.putExtra("currentGroupID", currentGroupID);
-//                intent.putExtra("currentGroupName", currentGroupName);
+                intent.putExtra("currentEventID", currentEventID);
+                intent.putExtra("currentGroupID", currentGroupID);
                 context.startActivity(intent);
             }
         });

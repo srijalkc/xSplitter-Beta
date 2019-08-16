@@ -1,12 +1,13 @@
 package com.example.x_splitter;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
@@ -80,8 +81,8 @@ public class AdapterHome extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     private void eventView(EventViewHolder holder) {
-
-        AdapterHomeEvent adapter1 = new AdapterHomeEvent(this.context,Home.getEventData());
+        Event e = new Event();
+        AdapterHomeEvent adapter1 = new AdapterHomeEvent(this.context,Home.getEventData(),e.getEventData());
         holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
         holder.recyclerView.setAdapter(adapter1);
     }
