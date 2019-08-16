@@ -111,7 +111,7 @@ public class AddUser extends AppCompatActivity {
                     Toast.makeText(AddUser.this,"Please select friends",Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(AddUser.this, "Group Created", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddUser.this, "Friend added", Toast.LENGTH_SHORT).show();
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
