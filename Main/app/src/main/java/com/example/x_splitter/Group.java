@@ -3,11 +3,14 @@ package com.example.x_splitter;
 
         import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
+        import android.text.Editable;
+        import android.text.TextWatcher;
+        import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+        import android.widget.EditText;
 
-import androidx.annotation.NonNull;
+        import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +29,7 @@ import java.util.Objects;
 
 public class Group extends AppCompatActivity {
     FloatingActionButton fab_add;
+    EditText searchGroup;
 
 
     private static final int Activity_num = 1; // for recognizing menu item number
@@ -43,12 +47,32 @@ public class Group extends AppCompatActivity {
             }
         });
 
+        searchGroup = findViewById(R.id.edit_text_search);
+        //searchGroup.setText("neha");
+
         ArrayList<ModelGroup> group = getGroupData();
 
         RecyclerView recyclerView = findViewById(R.id.group_recycler_view);
         AdapterGroup adapterGroup = new AdapterGroup(this,group);
         recyclerView.setAdapter(adapterGroup);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
+        searchGroup.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    adapterGroup.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
 
         setBottomNavigationView();
     }

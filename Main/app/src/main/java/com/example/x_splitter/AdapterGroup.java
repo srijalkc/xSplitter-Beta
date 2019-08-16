@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,16 +16,19 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AdapterGroup extends RecyclerView.Adapter<AdapterGroup.GroupMyViewHolder> {
+public class AdapterGroup extends RecyclerView.Adapter<AdapterGroup.GroupMyViewHolder> implements Filterable {
 
     private Context context;
     private ArrayList<ModelGroup> data = new ArrayList<>();
+    private ArrayList<ModelGroup> dataFiltered = new ArrayList<>();
 
     public AdapterGroup(Context context, ArrayList<ModelGroup> data) {
 
         this.context = context;
         this.data = data;
+        this.dataFiltered = data;
     }
+
 
     public class GroupMyViewHolder extends RecyclerView.ViewHolder {
         CircleImageView inGroup_image;
@@ -49,8 +54,8 @@ public class AdapterGroup extends RecyclerView.Adapter<AdapterGroup.GroupMyViewH
 
     @Override
     public void onBindViewHolder(@NonNull GroupMyViewHolder holder, int position) {
-        holder.inGroup_image.setImageResource(data.get(position).getInGroup_image());
-        holder.inGroup_name.setText(data.get(position).getInGroup_name());
+        holder.inGroup_image.setImageResource(dataFiltered.get(position).getInGroup_image());
+        holder.inGroup_name.setText(dataFiltered.get(position).getInGroup_name());
 //        holder.inUnsettle_no.setText(data.get(position).getInUnsettle_no());
 //        holder.inSettle_no.setText(data.get(position).getInUnsettle_no());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +78,38 @@ public class AdapterGroup extends RecyclerView.Adapter<AdapterGroup.GroupMyViewH
 
     @Override
     public int getItemCount() {
-        return data.size();
+        return dataFiltered.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String Key = constraint.toString();
+                if(Key.isEmpty()){
+                    dataFiltered = data;
+                }
+
+                else {
+                    ArrayList<ModelGroup> isFiltered = new ArrayList<>();
+                    for(ModelGroup row: data){
+                        if(row.getInGroup_name().toLowerCase().contains(Key.toLowerCase())){
+                            isFiltered.add(row);
+                        }
+                    }
+                    dataFiltered = isFiltered;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = dataFiltered;
+                return  filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                    dataFiltered = (ArrayList<ModelGroup>) results.values;
+                    notifyDataSetChanged();
+            }
+        };
     }
 }
