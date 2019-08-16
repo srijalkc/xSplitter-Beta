@@ -2,6 +2,7 @@ package com.example.x_splitter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,9 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
     String ID;
     String EventID;
     String GroupID;
+    public static String id = null;
+    public static String grpName = null;
+    public static  String grpId = null;
 
     public AdapterHomeEvent(Context context, ArrayList<ModelHomeEvent> data, ArrayList<ModelHomeEvent> data2){
         this.context = context;
@@ -67,13 +71,39 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
             @Override
             public void onClick(View view) {
                 String currentEventName = holder.EventName.getText().toString();
+                String currentGroupName = holder.GroupName.getText().toString();
                 String currentEventID = holder.ToPayAmt.getText().toString();
                 String currentGroupID = holder.ToReceiveAmt.getText().toString();
+//                System.out.println("Mumy:"+ currentEventID);
+//                System.out.println("Mumy:"+ currentEventName);
+//
+//                System.out.println("Mumy:"+ currentGroupID);
+//
+//                System.out.println("Mumy:"+ currentGroupName);
+
+
                 Context context = view.getContext();
-                Intent intent = new Intent(context,Event_transac_report.class);
-                intent.putExtra("currentEventName", currentEventName);
-                intent.putExtra("currentEventID", currentEventID);
-                intent.putExtra("currentGroupName", currentGroupID);
+
+//                final FragmentTransac  fr = new FragmentTransac(currentGroupID, currentEventID);
+                Bundle bundle = new Bundle();
+                bundle.putString("currentEventName", currentEventName);
+                bundle.putString("currentEventID", currentEventID);
+                bundle.putString("currentGroupID", currentGroupID);
+                bundle.putString("currentGroupName", currentGroupName);
+                FragmentReport fr = new FragmentReport();
+                fr.setArguments(bundle);
+
+                id = currentGroupID;
+                grpId = currentEventID;
+                grpName = currentGroupName;
+
+
+               Intent intent = new Intent(context,Event_transac_report.class);
+//                intent.putExtra("currentEventName", currentEventName);
+//                intent.putExtra("currentEventID", currentEventID);
+//                intent.putExtra("currentGroupID", currentGroupID);
+//                intent.putExtra("currentGroupName", currentGroupName);
+//
                 context.startActivity(intent);
             }
         });

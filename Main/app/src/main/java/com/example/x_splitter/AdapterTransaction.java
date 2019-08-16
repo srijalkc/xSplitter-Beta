@@ -49,9 +49,7 @@ public class AdapterTransaction extends RecyclerView.Adapter<AdapterTransaction.
     @Override
     public void onBindViewHolder(@NonNull TransactionViewHolder holder, int position) {
         holder.indate.setText(data.get(position).getDate());
-        holder.intransac_name.setText(data.get(position).getTransac_name());
         holder.intransac_money.setText(data.get(position).getTransac_money());
-        holder.ing_member.setText(data.get(position).getG_member());
         holder.intransac_category.setText(data.get(position).getTransac_category());
     }
 

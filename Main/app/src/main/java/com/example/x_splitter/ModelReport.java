@@ -8,6 +8,7 @@ public class ModelReport {
 
     public ModelReport(String user1,double amount, String user2) {
         this.user1= user1;
+        this.amount=amount;
         this.user2=user2;
     }
 

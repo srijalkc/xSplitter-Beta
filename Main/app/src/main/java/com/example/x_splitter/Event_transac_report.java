@@ -10,11 +10,21 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class Event_transac_report extends AppCompatActivity {
 
@@ -25,6 +35,13 @@ public class Event_transac_report extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     TextView CurrentEventName;
+    Double amountInvested;
+    Double amountToGet;
+    Double amountToPay;
+    Double tempAmt;
+    String user1;
+    String user2;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,20 +60,27 @@ public class Event_transac_report extends AppCompatActivity {
         CurrentEventName.setText(currentEventName);
 
 
-        String currentEventID = intent.getStringExtra("currentEventID");
-        String currentGroupName = intent.getStringExtra("currentGroupName");
-        String currentGroupID = intent.getStringExtra("currentGroupID");
+//        String currentEventID = intent.getStringExtra("currentEventID");
+//       String currentGroupName = intent.getStringExtra("currentGroupName");
+//        String currentGroupID = intent.getStringExtra("currentGroupID");
+
+//        System.out.println("GID" + currentGroupID);
+//        System.out.println("EID" + currentEventID);
+
+
+
+//                FragmentTransaction fr= getSupportFragmentManager().beginTransaction();
+//                fr.replace(R.id.,)
 
 
 
 
-//        btn_settle=findViewById(R.id.btn_settle);
-//        btn_settle.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+//                Intent ij = new Intent(Event_transac_report.this,FragmentReport.class);
+//                ij.putExtra("user1",user1);
+//                ij.putExtra("tempAmt",tempAmt);
+//                ij.putExtra("user2",user2);
+//                startActivity(ij);
+
         fab_add = findViewById(R.id.fab_add);
         fab_add.setOnClickListener(new View.OnClickListener() {
             @Override
