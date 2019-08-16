@@ -2,9 +2,12 @@ package com.example.x_splitter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +31,7 @@ public class Event extends AppCompatActivity {
     String GID;
     String EID;
     String GGID;
+    EditText searchEvent;
     private static final int Activity_num = 3; // for recognizing menu item number
 
     @Override
@@ -43,6 +47,7 @@ public class Event extends AppCompatActivity {
             }
         });
 
+        searchEvent = findViewById(R.id.edit_text_search);
         ArrayList<ModelHomeEvent> event = getEventData();
         ArrayList<ModelHomeEvent> event2 = getEventData2();
 
@@ -52,6 +57,22 @@ public class Event extends AppCompatActivity {
         recyclerView.setAdapter(adapterHomeEvent);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+
+        searchEvent.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapterHomeEvent.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
         setBottomNavigationView();
     }
 

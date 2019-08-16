@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:elevation="0dp">
+
+    <RelativeLayout
+        android:id="@+id/ll_frn_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="roshan posakya"
+            android:id="@+id/frn_uname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="10dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="18sp" />
+        <TextView
+            android:text="roshanposakya07@gmail.com"
+            android:id="@+id/frn_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:paddingStart="10dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_below="@+id/frn_uname"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

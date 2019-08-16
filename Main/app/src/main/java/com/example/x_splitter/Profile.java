@@ -14,11 +14,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
 
 public class Profile extends AppCompatActivity {
 
@@ -27,7 +35,7 @@ public class Profile extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseAuth firebaseAuth;
     private TextView logout_button;
-
+    Set<Map.Entry<String,String>> friendSet;
 
     FloatingActionButton fab_add;
 
@@ -83,7 +91,33 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        if((AddUser.mapAddedUser)!=null){
+            friendSet = AddUser.mapAddedUser.entrySet();
+//        Map<String,String> map = AddUser.mapAddedUser;
+            ArrayList<Map.Entry<String,String>> listOfFren = new ArrayList<Map.Entry<String, String>>(friendSet);
+            System.out.println("try it" + listOfFren);
+
+            ArrayList<ModelProfile> friendlist = getFriendList(listOfFren);
+
+            RecyclerView recyclerView = findViewById(R.id.friendlist_recycler_view);
+            AdapterProfile adapterProfile = new AdapterProfile(this,friendlist);
+            recyclerView.setAdapter(adapterProfile);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        }
+
+
         setBottomNavigationView();
+    }
+
+    public static ArrayList<ModelProfile> getFriendList( ArrayList<Map.Entry<String,String>> listOfFren){
+        ArrayList<ModelProfile> modelProfiles = new ArrayList<>();
+        for(Map.Entry<String,String> entry: listOfFren){
+            String key = entry.getKey();
+            String value = entry.getValue();
+            modelProfiles.add(new ModelProfile(key,value));
+        }
+        System.out.println("rux" + modelProfiles);
+        return modelProfiles;
     }
 
     private void setBottomNavigationView(){

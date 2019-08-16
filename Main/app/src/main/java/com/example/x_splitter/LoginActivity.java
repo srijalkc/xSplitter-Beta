@@ -59,13 +59,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
-                    //if(mAuth.getCurrentUser().isEmailVerified()){
+                    if(mAuth.getCurrentUser().isEmailVerified()){
                         Intent intent = new Intent(LoginActivity.this, Home.class);
                         startActivity(intent);
-                   // }
-                   // else{
-                   //    Toast.makeText(getApplicationContext(), "Please Verify Your Email Address First", Toast.LENGTH_SHORT).show();
-                   // }
+                    }
+                    else{
+                       Toast.makeText(getApplicationContext(), "Please Verify Your Email Address First", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();

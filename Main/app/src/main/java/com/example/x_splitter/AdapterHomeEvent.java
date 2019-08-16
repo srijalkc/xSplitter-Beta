@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,10 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyViewHolder> {
+public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyViewHolder> implements Filterable {
 
     ArrayList<ModelHomeEvent> Data;
     ArrayList<ModelHomeEvent> Data2;
+    ArrayList<ModelHomeEvent> DataFiltered;
     Context context;
     String ID;
     String EventID;
@@ -29,6 +32,7 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
         this.context = context;
         Data = data;
         Data2 = data2;
+        this.DataFiltered = data;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -57,10 +61,10 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        holder.EventName.setText(Data.get(position).getEventName()); //getter made in ModelHomeEvent
-        holder.GroupName.setText(Data.get(position).getGroupName());
-        holder.SettleStatus.setText(Data.get(position).getSettleStatus());
-        holder.ToPayAmt.setText(Data.get(position).getGroupID()); //typecasting double value to string to put in textview and use settect
+        holder.EventName.setText(DataFiltered.get(position).getEventName()); //getter made in ModelHomeEvent
+        holder.GroupName.setText(DataFiltered.get(position).getGroupName());
+        holder.SettleStatus.setText(DataFiltered.get(position).getSettleStatus());
+        holder.ToPayAmt.setText(DataFiltered.get(position).getGroupID()); //typecasting double value to string to put in textview and use settect
 
         if(holder!= null && Data2.size() !=0) {
             holder.ToReceiveAmt.setText(Data2.get(position).getEventID());
@@ -111,6 +115,40 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
 
     @Override
     public int getItemCount() {
-        return Data.size();
+        return DataFiltered.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence constraint) {
+                String Key = constraint.toString();
+                if(Key.isEmpty()){
+                    DataFiltered = Data;
+                }
+
+                else {
+                    ArrayList<ModelHomeEvent> isFiltered = new ArrayList<>();
+                    for(ModelHomeEvent row: Data){
+                        if(row.getEventName().toLowerCase().contains(Key.toLowerCase())){
+                            isFiltered.add(row);
+                        }
+                    }
+                    DataFiltered = isFiltered;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = DataFiltered;
+                return  filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence constraint, FilterResults results) {
+                DataFiltered = (ArrayList<ModelHomeEvent>) results.values;
+                notifyDataSetChanged();
+            }
+        };
+    }
+
+
 }

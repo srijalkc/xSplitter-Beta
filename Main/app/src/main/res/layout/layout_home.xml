@@ -20,7 +20,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <include layout="@layout/large_toolbar_with_search" />
+            <include layout="@layout/large_toolbar_with_notification" />
 
             <ImageView
                 android:id="@+id/image_view_xplitter_title"
