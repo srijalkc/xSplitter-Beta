@@ -21,6 +21,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -71,28 +72,6 @@ public class Event_transac_report extends AppCompatActivity {
 //                FragmentTransaction fr= getSupportFragmentManager().beginTransaction();
 //                fr.replace(R.id.,)
 
-        String currentEventID = intent.getStringExtra("currentEventID");
-        String currentGroupID = intent.getStringExtra("currentGroupID");
-
-        FirebaseDatabase.getInstance().getReference("Transactions")
-                .child(currentGroupID)
-                .child(currentEventID)
-                .addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                            Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
-                            String amount = (String) Objects.requireNonNull(data).get("amount");
-                            String category = (String) Objects.requireNonNull(data).get("category");
-                            String date = (String) Objects.requireNonNull(data).get("date");
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                    }
-                });
 
 
 
