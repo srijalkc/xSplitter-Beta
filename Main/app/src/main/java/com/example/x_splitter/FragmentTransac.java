@@ -31,19 +31,22 @@ public class FragmentTransac extends Fragment {
     String groupName;
     String eventId;
 
-//    public FragmentTransac(String currentGroupId, String currentEventId)
-//    {
-//        this.currentGroupId =currentGroupId;
-//        this.currentEventId = currentEventId;
+//    public FragmentTransac(String currentGroupID, String currentEventID) {
 //    }
-//
-//    public String getCurrentGroupId() {
-//        return currentGroupId;
-//    }
-//
-//    public String getCurrentEventId() {
-//        return currentEventId;
-//    }
+
+    public FragmentTransac(String currentGroupId, String currentEventId)
+    {
+        this.currentGroupId =currentGroupId;
+        this.currentEventId = currentEventId;
+    }
+
+    public String getCurrentGroupId() {
+        return currentGroupId;
+    }
+
+    public String getCurrentEventId() {
+        return currentEventId;
+    }
 
     @Nullable
     @Override
@@ -68,27 +71,27 @@ public class FragmentTransac extends Fragment {
 //        String currentEventID = intent.getStringExtra("currentEventID");
 //        String currentGroupID = intent.getStringExtra("currentGroupID");
 
-//        FirebaseDatabase.getInstance().getReference("Transactions")
-//                .child(currentGroupId)
-//                .child(currentEventId)
-//                .addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-//                    Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
-//                    String amount = (String) Objects.requireNonNull(data).get("amount");
-//                    String category = (String) Objects.requireNonNull(data).get("category");
-//                    String date = (String) Objects.requireNonNull(data).get("date");
-//                modelTransactions.add(new ModelTransaction(date,category,amount));
-//
-//            }
-//            }
+        FirebaseDatabase.getInstance().getReference("Transactions")
+                .child(currentGroupId)
+                .child(currentEventId)
+                .addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Map<String, Object> data = (Map<String, Object>) snapshot.getValue();
+                    String amount = (String) Objects.requireNonNull(data).get("amount");
+                    String category = (String) Objects.requireNonNull(data).get("category");
+                    String date = (String) Objects.requireNonNull(data).get("date");
+                modelTransactions.add(new ModelTransaction(date,category,amount));
 
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+            }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 //        modelTransactions.add(new ModelTransaction("21-10-2013","Lunch","2300","Neha","Food"));
 //        modelTransactions.add(new ModelTransaction("20-11-2014","Skirt","130","Sammy","Dress"));

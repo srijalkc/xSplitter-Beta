@@ -103,10 +103,10 @@ public class AdapterHomeEvent extends RecyclerView.Adapter<AdapterHomeEvent.MyVi
 
 
                Intent intent = new Intent(context,Event_transac_report.class);
-//                intent.putExtra("currentEventName", currentEventName);
-//                intent.putExtra("currentEventID", currentEventID);
-//                intent.putExtra("currentGroupID", currentGroupID);
-//                intent.putExtra("currentGroupName", currentGroupName);
+                intent.putExtra("currentEventName", currentEventName);
+                intent.putExtra("currentEventID", currentEventID);
+                intent.putExtra("currentGroupID", currentGroupID);
+                intent.putExtra("currentGroupName", currentGroupName);
 //
                 context.startActivity(intent);
             }
